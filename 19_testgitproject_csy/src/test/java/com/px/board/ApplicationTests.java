@@ -1,4 +1,4 @@
-package com.hk.calboard;
+package com.px.board;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
