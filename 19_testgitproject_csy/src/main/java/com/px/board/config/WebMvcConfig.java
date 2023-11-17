@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration // 환경설정에 관련된 걸 처리하는 객체
 public class WebMvcConfig implements WebMvcConfigurer {
 	
-	// 구현된 interceptor 객체를 등록
+	// 구현된 interceptor 객체를 등록함
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		

@@ -15,7 +15,7 @@ public class SecurityConfig {
 	
 	@Bean
 	public SecurityFilterChain filerChain(HttpSecurity http) throws Exception {
-//		http.cors().disable().csrf().disable(); // 버전업되면서 사용하지 않음
+//		http.cors().disable().csrf().disable(); // 버전업 --> 사용하지 않음
 		
 		
 //		람다식 문법

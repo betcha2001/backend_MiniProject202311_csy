@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpSession;
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 	
-	// controller에 진입하기 전에 실행하는 메서드
+	// controller에 진입하기 전에 실행하는 메서드!
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {

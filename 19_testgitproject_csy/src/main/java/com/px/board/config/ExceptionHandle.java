@@ -11,7 +11,7 @@ public class ExceptionHandle {
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
-	// Exception이 발생하면 실행시킬 메서드
+	// Exception이 발생하면 실행시킬 메서드!
 	@ExceptionHandler(Exception.class)
 	public String handleException(Exception e, Model model) {
 		logger.error("Exception 발생 : {}", e.getMessage());
