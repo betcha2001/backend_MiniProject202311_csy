@@ -1,4 +1,4 @@
-package com.hk.calboard;
+package com.px.board;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

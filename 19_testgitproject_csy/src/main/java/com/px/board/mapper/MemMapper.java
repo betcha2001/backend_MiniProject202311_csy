@@ -1,6 +1,6 @@
 package com.px.board.mapper;
 
-import com.hk.calboard.dtos.MemDto;
+import com.px.board.dtos.MemDto;
 
 public interface MemMapper {
 

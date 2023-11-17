@@ -1,4 +1,4 @@
-package com.hk.calboard.dtos;
+package com.px.board.dtos;
 
 import java.sql.Date;
 
