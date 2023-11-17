@@ -1,4 +1,4 @@
-package com.hk.calboard.command;
+package com.px.board.command;
 
 public class MemCommand {
 
