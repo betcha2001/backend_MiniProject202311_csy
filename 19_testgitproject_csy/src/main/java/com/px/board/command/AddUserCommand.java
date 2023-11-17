@@ -24,7 +24,6 @@ public class AddUserCommand {
 
 	public AddUserCommand() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public AddUserCommand(@NotBlank(message = "아이디를 입력하세요") String id, @NotBlank(message = "이름을 입력하세요") String name,
