@@ -1,6 +1,5 @@
 package com.hk.calboard.controller;
 
-public class Test03 {
-
+public class TestTest {
 
 }
