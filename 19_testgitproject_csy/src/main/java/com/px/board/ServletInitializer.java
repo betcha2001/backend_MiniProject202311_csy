@@ -1,4 +1,4 @@
-package com.hk.calboard;
+package com.px.board;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
