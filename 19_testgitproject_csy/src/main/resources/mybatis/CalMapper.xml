@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.px.board.mapper.CalMapper">
+	
+	<insert id="insertCalBoard" parameterType="CalDto">
+		INSERT INTO cal
+		VALUES (NULL,#{id},#{startdate},#{enddate}, 
+				#{category},#{title},#{content});
+	</insert>
+	
+	<!-- 	사용자 예약목록 -->
+	<select id="calUserBoardList" parameterType="Map"
+			resultType="CalDto"> 
+		SELECT startdate, enddate, title, category
+		FROM cal
+		WHERE SUBSTRING(startdate,1,8) = #{yyyyMMdd} AND SUBSTRING(enddate,1,8) =#{yyyyMMdd}
+		AND id=#{id};
+		
+	</select>
+	
+	<!-- 	관리자 예약목록 -->
+	<select id="calAdminBoardList" parameterType="Map"
+			resultType="CalDto"> 
+		SELECT id, title, startdate, enddate
+		FROM cal
+		WHERE SUBSTRING(startdate,1,8) = #{yyyyMMdd} AND SUBSTRING(enddate,1,8) = #{yyyyMMdd}
+		AND id=#{id};	
+	</select>
+	
+	
+	<select id="calBoardDetail" parameterType="int" 
+			resultType="CalDto">
+		SELECT id, startdate, enddate, category, title, content
+		FROM cal
+		WHERE number=#{number};
+	</select>
+	
+	
+	<update id="CalBoardUpdate" parameterType="CalDto">
+		UPDATE cal
+		SET startdate=#{startdate}, enddate=#{enddate},
+			category=#{category}, title=#{title}, 
+			content="#{content}"
+		WHERE NUMBER=#{number};	
+	</update>
+	
+	
+	<delete id="calMulDel" parameterType="Integer">
+		DELETE FROM cal WHERE NUMBER=#{number};
+	</delete>
+	
+	
+	<select id="calViewList" parameterType="Map"
+			resultType="CalDto">
+		SELECT number, id, startdate, enddate, 
+		FROM	(SELECT ROW_NUMBER() OVER(PARTITION BY SUBSTR(mdate,1,8)	
+								 ORDER BY mdate) rn, 
+								 seq, id, title, content, mdate, regdate
+	 			FROM cal
+	 			WHERE id=#{id} AND SUBSTR(mdate,1,6) = #{yyyyMM}
+	 			) cal
+		WHERE rn BETWEEN 1 AND 3		
+	</select>
+	
+	
+	<select id="calBoardSummary" parameterType="Map"
+			resultType="Integer">
+		SELECT COUNT(*)
+		FROM calboard
+		WHERE id=#{id} AND SUBSTR(mdate,1,8)=#{yyyyMMdd}		
+	</select>
+	
+</mapper>
+
+
+

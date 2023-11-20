@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.px.board.command.DeleteCalCommand;
 import com.px.board.command.InsertCalCommand;
 import com.px.board.command.UpdateCalCommand;
 import com.px.board.dtos.CalDto;
@@ -155,7 +156,7 @@ public class CalController {
       }
       
       Map<String,String[]>map=new HashMap<>();
-      map.put("seqs", deleteCalCommand.getSeq());
+      map.put("seqs", deleteCalCommand.getNumber());
       calService.calMulDel(map);
       
       return "redirect:/schedule/calBoardList";
