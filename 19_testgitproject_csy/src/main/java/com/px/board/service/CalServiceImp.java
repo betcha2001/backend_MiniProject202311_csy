@@ -127,7 +127,7 @@ public class CalServiceImp implements ICalService {
             + Util.isTwo(updateCalCommand.getMin()+""); // 12자리
       
       CalDto dto = new CalDto();
-      dto.setSeq(updateCalCommand.getSeq());
+      dto.setNumber(updateCalCommand.getNumber());
       dto.setTitle(updateCalCommand.getTitle());
       dto.setContent(updateCalCommand.getContent());
       dto.setStartdate(mdate);

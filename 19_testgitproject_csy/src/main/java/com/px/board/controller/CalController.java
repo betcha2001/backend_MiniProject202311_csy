@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.px.board.command.DeleteCalCommand;
 import com.px.board.command.InsertCalCommand;
 import com.px.board.command.UpdateCalCommand;
 import com.px.board.dtos.CalDto;
@@ -179,14 +178,20 @@ public class CalController {
 	   CalDto dto=calService.calBoardDetail(seq);
 	   
 	   //dto -> command
-	   updateCalCommand.setSeq(dto.getSeq());
+	   updateCalCommand.setNumber(dto.getNumber());
 	   updateCalCommand.setTitle(dto.getTitle());
 	   updateCalCommand.setContent(dto.getContent());
-	   updateCalCommand.setYear(Integer.parseInt(dto.getMdate().substring(0,4)));
-	   updateCalCommand.setMonth(Integer.parseInt(dto.getMdate().substring(4,6)));
-	   updateCalCommand.setDate(Integer.parseInt(dto.getMdate().substring(6,8)));
-	   updateCalCommand.setHour(Integer.parseInt(dto.getMdate().substring(8,10)));
-	   updateCalCommand.setMin(Integer.parseInt(dto.getMdate().substring(10)));
+	   updateCalCommand.setYear(Integer.parseInt(dto.getStartdate().substring(0,4)));
+	   updateCalCommand.setMonth(Integer.parseInt(dto.getStartdate().substring(4,6)));
+	   updateCalCommand.setDate(Integer.parseInt(dto.getStartdate().substring(6,8)));
+	   updateCalCommand.setHour(Integer.parseInt(dto.getStartdate().substring(8,10)));
+	   updateCalCommand.setMin(Integer.parseInt(dto.getStartdate().substring(10)));
+	   
+	   updateCalCommand.setYear(Integer.parseInt(dto.getEnddate().substring(0,4)));
+	   updateCalCommand.setMonth(Integer.parseInt(dto.getEnddate().substring(4,6)));
+	   updateCalCommand.setDate(Integer.parseInt(dto.getEnddate().substring(6,8)));
+	   updateCalCommand.setHour(Integer.parseInt(dto.getEnddate().substring(8,10)));
+	   updateCalCommand.setMin(Integer.parseInt(dto.getEnddate().substring(10)));
 	   
 	   model.addAttribute("updateCalCommand",updateCalCommand);
 	   
@@ -204,7 +209,7 @@ public class CalController {
 	   
 	   calService.calBoardUpdate(updateCalCommand);
 	   
-	   return "redirect:/schedule/calBoardDetail?seq="+updateCalCommand.getSeq();
+	   return "redirect:/schedule/calBoardDetail?seq="+updateCalCommand.getNumber();
    }
    
    @ResponseBody
