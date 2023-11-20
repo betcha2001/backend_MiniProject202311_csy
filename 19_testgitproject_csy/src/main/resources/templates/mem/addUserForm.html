@@ -44,7 +44,7 @@
 	function submitChk() {
 		var classValue = $("#idChk").attr("class");
 		if(classValue == "n") {
-			alert("아이디를 확인하세요!");
+			alert("ID를 확인하세요!");
 		 	return false;
 		} 
 		
@@ -59,12 +59,21 @@
 <body>
 <div layout:fragment="content">
 <div id="container">
-	<h1>회원가입</h1>
+	<h1>SIGN UP</h1>
 	<form onsubmit="return submitChk()" action="/user/addUser" 
 		  method="post" th:object="${addUserCommand}">
-		<table class="table">
+		<table class="table">	
 			<tr>
-				<th>아이디</th>
+				<th>NAME</th>
+				<td><input th:field="*{name}" type="text" 
+						   class="form-control" name="name"/>
+					<span th:if="${#fields.hasErrors('name')}"
+						  th:errors="*{name}"></span>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>ID</th>
 				<td>
 					<input th:field="*{id}" type="text" 
 						   class="form-control" name="id"/>
@@ -75,7 +84,7 @@
 			</tr>
 			
 			<tr>
-				<th>비밀번호</th>
+				<th>PASSWORD</th>
 				<td><input th:field="*{password}" type="password" 
 						   class="form-control" name="password"/>
 					<span th:if="${#fields.hasErrors('password')}"
@@ -83,26 +92,18 @@
 				</td>
 			</tr>
 			
+			
 			<tr>
-				<th>이름</th>
-				<td><input th:field="*{name}" type="text" 
-						   class="form-control" name="name"/>
-					<span th:if="${#fields.hasErrors('name')}"
-						  th:errors="*{name}"></span>
+				<th>PHONE</th>
+				<td><input th:field="*{phone}" type="text" 
+						   class="form-control" name="phone"/>
+					<span th:if="${#fields.hasErrors('phone')}"
+						  th:errors="*{phone}"></span>
 				</td>
 			</tr>
 			
 			<tr>
-				<th>주소</th>
-				<td><input th:field="*{address}" type="text" 
-						   class="form-control" name="address"/>
-					<span th:if="${#fields.hasErrors('address')}"
-						  th:errors="*{address}"></span>
-				</td>
-			</tr>
-			
-			<tr>
-				<th>이메일</th>
+				<th>E-MAIL</th>
 				<td><input th:field="*{email}" type="email" 
 						   class="form-control" name="email"/>
 					<span th:if="${#fields.hasErrors('email')}"
@@ -112,7 +113,7 @@
 			
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="가입" class="btn" />
+					<input type="submit" value="Submit" class="btn" />
 				</td>
 			</tr>
 		</table>
