@@ -1,1 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.px.board.mapper.MemMapper">
+	
+	<insert id="addUser" parameterType="memDto">
+		INSERT INTO mem
+   		VALUES(NULL, #{name}, #{id}, #{password}, #{email}, #{phone}, 
+   			#{grade}, #{unregister}, SYSDATE());	
+	</insert>
+	
+	<select id="idChk" parameterType="String" resultType="String">
+		SELECT ID FROM mem WHERE ID = #{id}
+	</select>
+	
+	<select id="loginUser" parameterType="String" resultType="memDto">
+		SELECT number, NAME, id, PASSWORD, email, phone, grade
+		FROM mem
+		WHERE ID = #{id}
+	</select>
+</mapper>
+
