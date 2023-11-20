@@ -16,7 +16,7 @@
 <div layout:fragment="content">
 
 <div id="container">
-<form action="/user/login" method="post" th:object="${loginCommand}">
+<form action="login" method="post" th:object="${loginCommand}">
 	<table class="table">
 		<tr>
 			<th>ID</th>
@@ -52,18 +52,10 @@
 <th:block th:if="${session.mdto==null}">
    <p>
       <a href="/user/login">Sign In</a>
-      <a href="/user/addUser">Sign Up</a>
+      <a href="user/addUser">Sign Up</a>
    </p>
 </th:block>
 
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-

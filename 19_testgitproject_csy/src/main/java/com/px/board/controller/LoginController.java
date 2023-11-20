@@ -11,8 +11,8 @@ public class LoginController {
 Logger logger=LoggerFactory.getLogger(getClass());
 	
 	@GetMapping(value = "/")
-	public String home() {
-		logger.info("HOME페이지이동");
-		return "home";
+	public String login() {
+		logger.info("LOGIN페이지이동");
+		return "login";
 	}
 }
