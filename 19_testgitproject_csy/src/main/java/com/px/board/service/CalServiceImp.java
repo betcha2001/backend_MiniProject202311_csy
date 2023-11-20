@@ -113,8 +113,8 @@ public class CalServiceImp implements ICalService {
    }
 
    @Override
-   public CalDto calBoardDetail(int seq) {
-      return calMapper.calBoardDetail(seq);
+   public CalDto calBoardDetail(int number) {
+      return calMapper.calBoardDetail(number);
    }
 
    @Override
