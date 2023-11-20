@@ -154,8 +154,8 @@ public class CalServiceImp implements ICalService {
    }
 
    @Override
-   public int calBoardCount(String id, String yyyyMMdd) {
-      return calMapper.calBoardCount(id, yyyyMMdd);
+   public List<CalDto> calBoardSummary(String category, String title) {
+      return calMapper.calBoardSummary(category, title);
    }
    
 }

@@ -22,5 +22,6 @@ public class CalMapper {
 		//일일의 일정 보여주기
 		public List<CalDto> calViewList(String id, String yyyyMM);
 		//일일의 커서올리면 일정 보여주기
-		public int calBoardCount(String category, String title);
+		public List<CalDto> calBoardSummary(String category, String title);
+		
 }

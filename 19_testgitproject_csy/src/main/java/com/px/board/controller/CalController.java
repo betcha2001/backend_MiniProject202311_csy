@@ -213,14 +213,13 @@ public class CalController {
 	   return "redirect:/schedule/calBoardDetail?seq="+updateCalCommand.getNumber();
    }
    
-   @ResponseBody
-   @GetMapping(value = "/calCountAjax")
-   public Map<String, Integer> calCountAjax(String yyyyMMdd){
-	   logger.info("일정개수");
-	   Map<String, Integer>map=new HashMap<>();
-	   String id="aaa";
-	   int count=calService.calBoardCount(id, yyyyMMdd);
-	   map.put("count", count);
-	   return map;
-   }
+//   @ResponseBody
+//   @GetMapping(value = "/calSummaryAjax")
+//   public List<CalDto> calCountAjax(String category, String title){
+//	   //logger.info("일정개수");
+//	   // Map<String, Integer>map=new HashMap<>();
+//	   // String id="aaa";
+//	   // calService.calBoardSummary(category, title);
+//	   // return dto;
+//   }
 }
