@@ -56,12 +56,12 @@ public class MemService {
 			}else {
 				System.out.println("패스워드 틀림");
 				model.addAttribute("msg","패스워드를 확인하세요");
-				path="member/login";
+				path="login";
 			}
 		}else {
 			System.out.println("회원이 아닙니다.");
 			model.addAttribute("msg","아이디를 확인하세요");
-			path="mem/login";
+			path="login";
 		}
 		return path;
 	}
