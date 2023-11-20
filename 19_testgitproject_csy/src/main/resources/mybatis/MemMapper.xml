@@ -6,7 +6,7 @@
 	<insert id="addUser" parameterType="memDto">
 		INSERT INTO mem
    		VALUES(NULL, #{name}, #{id}, #{password}, #{email}, #{phone}, 
-   			#{grade}, #{unregister}, SYSDATE());	
+   			#{grade}, 'N', SYSDATE());	
 	</insert>
 	
 	<select id="idChk" parameterType="String" resultType="String">

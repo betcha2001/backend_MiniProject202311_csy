@@ -36,22 +36,22 @@
 				      th:errors="*{password}"></span>      
 			</td>
 		</tr>
-		<tr>
-			<td colspan="2">
-				  <input type="submit" value="Sign In" class="btn"/>
-				  <span th:text="${msg}"></span>
+<!--		<tr>-->
+<!--			<td colspan="2">-->
+<!--				  <input type="submit" value="Sign In" class="btn"/>-->
+<!--				  <span th:text="${msg}"></span>-->
 				  
-				  <input type="button" value="Sign Up" class="btn"/>
+<!--				  <input type="button" value="Sign Up" class="btn"/>-->
 				   
-			</td>
-		</tr>
+<!--			</td>-->
+<!--		</tr>-->
 	</table>
 </form>
 
 <th:block th:if="${session.mdto==null}">
    <p>
-      <a href="/user/login">Sign In</a>
-      <a href="user/addUser">Sign Up</a>
+      <button><a href="/cal/calendar">Sign In</a></button>
+      <button><a href="/user/addUser">Sign Up</a></button>
    </p>
 </th:block>
 
