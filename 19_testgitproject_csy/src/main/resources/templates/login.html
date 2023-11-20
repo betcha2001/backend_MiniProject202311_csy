@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	  layout:decorate="~{layouts/layout}">
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{layouts/layout}">
 <head>
 <meta charset="UTF-8">
-<title>login</title>
+<title> </title>
 <script type="text/javascript">
 
 </script>
 <style type="text/css">
+
 </style>
 </head>
 <body>
 <div layout:fragment="content">
+
 <div id="container">
-<h1>LOGIN</h1>
 <form action="/user/login" method="post" th:object="${loginCommand}">
 	<table class="table">
 		<tr>
@@ -47,9 +48,22 @@
 	</table>
 </form>
 </div>
+
+<th:block th:if="${session.mdto==null}">
+   <p>
+      <a href="/user/login">Sign In</a>
+      <a href="/user/addUser">Sign Up</a>
+   </p>
+</th:block>
+
 </div>
 </body>
 </html>
+
+
+
+
+
 
 
 
