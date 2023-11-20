@@ -120,18 +120,24 @@ public class CalServiceImp implements ICalService {
    @Override
    public boolean calBoardUpdate(UpdateCalCommand updateCalCommand) {
       // command : year, month, date.. --> dto : mdate
-      String mdate = updateCalCommand.getYear()
+      String startdate = updateCalCommand.getYear()
             + Util.isTwo(updateCalCommand.getMonth()+"")   
             + Util.isTwo(updateCalCommand.getDate()+"")
             + Util.isTwo(updateCalCommand.getHour()+"")
             + Util.isTwo(updateCalCommand.getMin()+""); // 12자리
       
+      String enddate = updateCalCommand.getYear()
+              + Util.isTwo(updateCalCommand.getMonth()+"")   
+              + Util.isTwo(updateCalCommand.getDate()+"")
+              + Util.isTwo(updateCalCommand.getHour()+"")
+              + Util.isTwo(updateCalCommand.getMin()+""); // 12자리
+      
       CalDto dto = new CalDto();
       dto.setNumber(updateCalCommand.getNumber());
       dto.setTitle(updateCalCommand.getTitle());
       dto.setContent(updateCalCommand.getContent());
-      dto.setStartdate(mdate);
-      dto.setEnddate(mdate);
+      dto.setStartdate(startdate);
+      dto.setEnddate(enddate);
       
       return calMapper.calBoardUpdate(dto);
    }
