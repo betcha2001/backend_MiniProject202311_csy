@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{layouts/layout}">
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="UTF-8">
 <title> </title>
@@ -11,8 +10,67 @@
 <style type="text/css">
 
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</script>
+<link th:href:"@{/css/layout.css}" rel="stylesheet">
+
+<style>
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	background-color:  #FFFFFF;
+}
+
+button{
+	border: 1px solid #000000;
+	background-color: #000000;
+	border-radius: 5px;
+	width: 150px;
+	height: 40px;
+	color: white;
+	font-weight: bold;
+}
+
+button:hover{
+	background-color: #000000;
+	color: #FFFFFF;
+}
+
+form{
+	width: 300px;
+	margin: 10% auto;
+}
+
+.loginVal{
+	border: 0px;
+	width: 288px;
+	height: 40px;
+	border-radius: 5px;
+	padding-left: 10px;
+}
+
+input, button{
+	margin: 2px;
+}
+
+p{color:white !important;}
+
+</style>
+
 </head>
 <body>
+<img src="popxhi.png" alt="img" width="200">
 <div layout:fragment="content">
 
 <div id="container">
@@ -49,7 +107,7 @@
 </form>
 
 <th:block th:if="${session.mdto==null}">
-   <p>
+   <p align="center">
       <button><a href="/cal/calendar">Sign In</a></button>
       <button><a href="/user/addUser">Sign Up</a></button>
    </p>
