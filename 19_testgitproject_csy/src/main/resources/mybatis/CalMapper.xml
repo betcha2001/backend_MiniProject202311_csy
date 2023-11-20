@@ -54,12 +54,12 @@
 	<select id="calViewList" parameterType="Map"
 			resultType="CalDto">
 		SELECT number, id, startdate, enddate, 
-		FROM	(SELECT ROW_NUMBER() OVER(PARTITION BY SUBSTR(mdate,1,8)	
-								 ORDER BY mdate) rn, 
-								 seq, id, title, content, mdate, regdate
+		FROM	(SELECT ROW_NUMBER() OVER(PARTITION BY SUBSTR(startdate,1,8)	
+								 ORDER BY startdate) rn, 
+								 number, id, title, content, startdate, endate
 	 			FROM cal
-	 			WHERE id=#{id} AND SUBSTR(mdate,1,6) = #{yyyyMM}
-	 			) cal
+	 			WHERE id=#{id} AND SUBSTR(startdate,1,6) = #{yyyyMM}
+	 			) a
 		WHERE rn BETWEEN 1 AND 3		
 	</select>
 	
