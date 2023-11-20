@@ -9,7 +9,6 @@
 
 </script>
 <style type="text/css">
-
 </style>
 </head>
 <body>
@@ -19,7 +18,7 @@
 <form action="/user/login" method="post" th:object="${loginCommand}">
 	<table class="table">
 		<tr>
-			<th>아이디:</th>
+			<th>ID</th>
 			<td>
 				<input type="text" class="form-control"
 				      name="id" th:field="*{id}" />
@@ -28,7 +27,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>패스워드:</th>
+			<th>PASSWORD</th>
 			<td>
 				<input type="password" class="form-control"
 				      name="password" th:field="*{password}" />
@@ -38,8 +37,11 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				  <input type="submit" value="로그인" class="btn"/>
-				  <span th:text="${msg}"></span> 
+				  <input type="submit" value="Sign In" class="btn"/>
+				  <span th:text="${msg}"></span>
+				  
+				  <input type="button" value="Sign Up" class="btn"/>
+				   
 			</td>
 		</tr>
 	</table>
