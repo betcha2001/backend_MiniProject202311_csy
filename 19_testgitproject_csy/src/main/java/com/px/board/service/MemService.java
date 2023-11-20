@@ -61,7 +61,7 @@ public class MemService {
 		}else {
 			System.out.println("회원이 아닙니다.");
 			model.addAttribute("msg","아이디를 확인하세요");
-			path="member/login";
+			path="mem/login";
 		}
 		return path;
 	}

@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping(value = "/user")
-public class MemberController {
+public class MemController {
 
 	@Autowired
 	private MemService memService;
@@ -34,7 +34,7 @@ public class MemberController {
 		//null일 경우 오류가 발생하기 때문에 보내줘야 함
 		model.addAttribute("addUserCommand", new AddUserCommand());
 		
-		return "member/addUserForm";
+		return "mem/addUserForm";
 	}
 	
 	@PostMapping(value = "/addUser")
@@ -43,7 +43,7 @@ public class MemberController {
 		
 		if(result.hasErrors()) {
 			System.out.println("회원가입 유효값 오류");
-			return "member/addUserForm";
+			return "mem/addUserForm";
 		}
 		
 		try {
@@ -69,18 +69,20 @@ public class MemberController {
 		map.put("id", resultId);
 		return map;
 	}
+	
 	//로그인 폼 이동
 	@GetMapping(value = "/login")
 	public String loginForm(Model model) {
 		model.addAttribute("loginCommand",new LoginCommand());
-		return "member/login";
+		return "login";
 	}
+	
 	//로그인 실행
 	@PostMapping(value = "/login")
 	public String login(@Validated LoginCommand loginCommand, BindingResult result, Model model, HttpServletRequest request) {
 		if(result.hasErrors()) {
 			System.out.println("로그인 유효값 오류");
-			return "member/login";
+			return "login";
 		}
 		
 		String path=memService.login(loginCommand, request, model);
