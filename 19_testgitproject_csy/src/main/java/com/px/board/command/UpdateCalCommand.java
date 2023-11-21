@@ -34,6 +34,8 @@ private int number;
 	@NotNull(message = "분를 입력하세요!")
 	private int min;
 	
+	@NotBlank(message = "카테고리를 입력하세요!") // 문자열만 가능	
+	private String category;
 	
 	@NotBlank(message = "제목을 입력하세요!") // 문자열만 가능	
 	private String title;
@@ -53,7 +55,8 @@ private int number;
 			@NotNull(message = "분를 입력하세요!") int mins, @NotNull(message = "년도를 입력하세요!") int year,
 			@NotNull(message = "월을 입력하세요!") int month, @NotNull(message = "일을 입력하세요!") int date,
 			@NotNull(message = "시간을 입력하세요!") int hour, @NotNull(message = "분를 입력하세요!") int min,
-			@NotBlank(message = "제목을 입력하세요!") String title, @NotBlank(message = "내용을 입력하세요!") String content) {
+			@NotBlank(message = "카테고리를 입력하세요!") String category, @NotBlank(message = "제목을 입력하세요!") String title,
+			@NotBlank(message = "내용을 입력하세요!") String content) {
 		super();
 		this.number = number;
 		this.id = id;
@@ -67,6 +70,7 @@ private int number;
 		this.date = date;
 		this.hour = hour;
 		this.min = min;
+		this.category = category;
 		this.title = title;
 		this.content = content;
 	}
@@ -192,6 +196,16 @@ private int number;
 	}
 
 
+	public String getCategory() {
+		return category;
+	}
+
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
 	public String getTitle() {
 		return title;
 	}
@@ -216,8 +230,8 @@ private int number;
 	public String toString() {
 		return "UpdateCalCommand [number=" + number + ", id=" + id + ", years=" + years + ", months=" + months
 				+ ", dates=" + dates + ", hours=" + hours + ", mins=" + mins + ", year=" + year + ", month=" + month
-				+ ", date=" + date + ", hour=" + hour + ", min=" + min + ", title=" + title + ", content=" + content
-				+ "]";
+				+ ", date=" + date + ", hour=" + hour + ", min=" + min + ", category=" + category + ", title=" + title
+				+ ", content=" + content + "]";
 	}
 }
 
