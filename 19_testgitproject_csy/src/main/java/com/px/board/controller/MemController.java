@@ -98,7 +98,8 @@ public class MemController {
 		model.addAttribute("calMap",map);
 		
 		//clist 가져오기
-		
+		String clist = Util.getCalViewList(i, clist);
+		model.addAttribute("clist", clist);
 		
 		return path;
 	}
