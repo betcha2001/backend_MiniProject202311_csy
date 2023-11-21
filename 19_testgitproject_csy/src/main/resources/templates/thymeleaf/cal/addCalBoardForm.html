@@ -121,6 +121,15 @@
 			</tr>
 			
 			<tr>
+				<th>CATEGORY</th>
+				<td>
+					<input type="text" name="category" th:field="*{category}"/>
+					<span class="errorField" th:if="${#fields.hasErrors('category')}" 
+											 th:errors="*{category}"></span>
+				</td>
+			</tr>
+			
+			<tr>
 				<th>TITLE</th>
 				<td>
 					<input type="text" name="title" th:field="*{title}"/>
