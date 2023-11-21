@@ -47,19 +47,19 @@ public class Util {
 	
 	// 일일별 일정 목록 구하는 기능
 	// 예약이 1일부터 3일부터 잡혀있으면 1, 2, 3일 모두 표시가 될 수 있도록 해야 함
-	public static String getCalViewList(int i, List<CalDto> clist, String startdate, String enddate) {
+	public static String getCalViewList(int i, List<CalDto> clist) {
 //		String d=isTwo(i+""); // 1 -> "01" 2자리로 변환
 		String calList=""; //"<p>title</p><p>title</p><p>title</p>"
-		int sd = Integer.parseInt(startdate);
-		int ed = Integer.parseInt(enddate);
+//		int sd = Integer.parseInt(startdate);
+//		int ed = Integer.parseInt(enddate);
 		
 		for (int j = 0; j < clist.size(); j++) {
 			// 예를 들어 sd = "01" -> 1 / ed = "03" -> 3 => Integer.parseInt()를 이용해 정수로 형변환
 			// 그러나 안 되면 IndexOf("찾을 특정 문자") 이용해서 자를 것
 			// if(1 <= d && 3 >= d) {}
 			
-			if(sd <= Integer.parseInt(clist.get(j).getStartdate().substring(6,8)) &&
-					ed >= Integer.parseInt(clist.get(j).getEnddate().substring(6,8))) {
+			if(i >= Integer.parseInt(clist.get(j).getStartdate().substring(6,8)) &&
+					i <= Integer.parseInt(clist.get(j).getEnddate().substring(6,8))) {
 				calList+="<p>"
 						+(clist.get(j).getTitle().length()>7?
 						 clist.get(j).getTitle().substring(0,7)+"..":

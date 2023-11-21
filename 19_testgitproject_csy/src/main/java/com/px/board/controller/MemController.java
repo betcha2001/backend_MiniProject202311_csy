@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
+import com.px.board.service.CalServiceImp;
 import com.px.board.service.MemService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,6 +26,8 @@ public class MemController {
 
 	@Autowired
 	private MemService memService;
+	@Autowired
+	private CalServiceImp calServiceImp;
 	
 	@GetMapping(value = "/addUser")
 	public String addUserForm(Model model) {
@@ -86,6 +89,8 @@ public class MemController {
 		}
 		
 		String path=memService.login(loginCommand, request, model);
+		Map<String, Integer>map=calServiceImp.makeCalendar(request); 
+		model.addAttribute("calMap",map);
 		
 		return path;
 	}

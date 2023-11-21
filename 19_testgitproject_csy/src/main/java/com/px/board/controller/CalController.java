@@ -140,7 +140,7 @@ public class CalController {
          
          HttpSession session=request.getSession();
 //         String id=session.getAttribute("id");
-         String id="aaa"; // 임시로 id 저장
+         String id="garden"; // 임시로 id 저장
          
          // session에 저장된 ymd 값은 목록 조회할때 추가되는 코드임
          Map<String, String>map=(Map<String, String>)session.getAttribute("ymdMap");
