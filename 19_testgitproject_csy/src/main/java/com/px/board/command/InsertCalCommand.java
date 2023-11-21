@@ -2,13 +2,7 @@ package com.px.board.command;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-//import lombok.Data; 
 
-// 일정추가 페이지에서 입력내용 : ID, 일정날짜, 제목, 내용
-// <select> 2023 11 07 06 10 </select> 선택해서 입력 -> Command
-// DB : seq, id, title, content, mdate, regdate -> DTO
-
-//@Data
 public class InsertCalCommand {
 	
 	private int number;
