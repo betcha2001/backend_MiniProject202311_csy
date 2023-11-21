@@ -5,22 +5,32 @@
 }
 
 body{
-	background-color:  #B4B4FF;
+	background-color:  #FFFFFF;
 }
 
-button{
-	border: 1px solid #FFAAF5;
-	background-color: #FFc8ff;
+.btn2{
+	border: 1px solid #000000;
+	background-color: #000000;
 	border-radius: 5px;
-	width: 300px;
+	width: 150px;
 	height: 40px;
 	color: white;
 	font-weight: bold;
 }
 
 button:hover{
-	background-color: #DD78F6;
-	color: #dcdcdc;
+	background-color: #000000;
+	color: #FFFFFF;
+}
+
+.btn{
+	border: 1px solid #000000;
+	background-color: #000000;
+	border-radius: 5px;
+	width: 150px;
+	height: 40px;
+	color: white;
+	font-weight: bold;
 }
 
 form{
@@ -38,4 +48,13 @@ form{
 
 input, button{
 	margin: 2px;
+}
+
+img {
+	top: 200px;
+	width: 430px;
+	height: 300px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
