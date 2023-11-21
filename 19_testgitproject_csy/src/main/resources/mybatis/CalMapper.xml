@@ -6,7 +6,7 @@
 	<insert id="insertCalBoard" parameterType="CalDto">
 		INSERT INTO cal
 		VALUES (NULL,#{id},#{startdate},#{enddate}, 
-				#{category},#{title},#{content});
+				#{title},#{content})
 	</insert>
 	
 	<!-- 	사용자 예약목록 -->
@@ -14,8 +14,8 @@
 			resultType="CalDto"> 
 		SELECT startdate, enddate, title, category
 		FROM cal
-		WHERE SUBSTRING(startdate,1,8) = #{yyyyMMdd} AND SUBSTRING(enddate,1,8) =#{yyyyMMdd}
-		AND id=#{id};
+		WHERE SUBSTRING(startdate,1,8) = #{yyyyMMdd} AND SUBSTRING(enddate,1,8) = #{yyyyMMdd}
+		AND id=#{id}
 		
 	</select>
 	
@@ -25,7 +25,7 @@
 		SELECT id, title, startdate, enddate
 		FROM cal
 		WHERE SUBSTRING(startdate,1,8) = #{yyyyMMdd} AND SUBSTRING(enddate,1,8) = #{yyyyMMdd}
-		AND id=#{id};	
+		AND id=#{id}	
 	</select>
 	
 	
@@ -33,7 +33,7 @@
 			resultType="CalDto">
 		SELECT id, startdate, enddate, category, title, content
 		FROM cal
-		WHERE number=#{number};
+		WHERE number=#{number}
 	</select>
 	
 	
@@ -42,12 +42,12 @@
 		SET startdate=#{startdate}, enddate=#{enddate},
 			category=#{category}, title=#{title}, 
 			content="#{content}"
-		WHERE NUMBER=#{number};	
+		WHERE NUMBER=#{number}
 	</update>
 	
 	
 	<delete id="calMulDel" parameterType="Integer">
-		DELETE FROM cal WHERE NUMBER=#{number};
+		DELETE FROM cal WHERE NUMBER=#{number}
 	</delete>
 	
 	

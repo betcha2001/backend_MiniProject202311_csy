@@ -92,7 +92,8 @@ public class CalController {
       // 정상적으로 처리가 된다면
       calService.insertCalBoard(insertCalCommand);
       
-      return "redirect:/schedule/calendar?year="+insertCalCommand.getYear()+"&month="+insertCalCommand.getMonth();
+      return "redirect:/schedule/calendar?year="+insertCalCommand.getYear()
+      +"&month="+insertCalCommand.getMonth();
    }
    
    
@@ -103,7 +104,7 @@ public class CalController {
       logger.info("일정목록보기");
 //      HttpSession session=request.getSession();
 //      String id=session.getAttribute("id");
-      String id="white"; // 임시로 id 저장
+        String id="white"; // 임시로 id 저장
       
       // command 유효값 처리를 위해 기본 생성해서 보내줌
       model.addAttribute("deleteCalCommand", new DeleteCalCommand());

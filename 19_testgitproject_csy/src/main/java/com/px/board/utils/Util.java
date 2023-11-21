@@ -17,17 +17,32 @@ public class Util {
 	}
 	
 	// mdate: 날짜 형식 변환 -> yy-MM-dd HH:mm
-	public String toDates(String mdate) {
+	public String toDates(String startdate) {
 		//Date 형식: "yyyy-MM-dd HH:mm:ss"
-		String m=mdate.substring(0,4)+"-"
-				+mdate.substring(4,6)+"-"
-				+mdate.substring(6,8)+" "
-				+mdate.substring(8,10)+":"
-				+mdate.substring(10)+":00";
+		String s=startdate.substring(0,4)+"-"
+				+startdate.substring(4,6)+"-"
+				+startdate.substring(6,8)+" "
+				+startdate.substring(8,10)+":"
+				+startdate.substring(10)+":00";
 		
 		
 		SimpleDateFormat sdf=new SimpleDateFormat("yy-MM-dd HH:mm");
-		Timestamp tm=Timestamp.valueOf(m); //문자열값을 Date타입으로 변환하는 코드
+		Timestamp tm=Timestamp.valueOf(s); //문자열값을 Date타입으로 변환하는 코드
+		sdf.format(tm);// 문자열 타입의 경우 date타입으로 변환해서 사용
+		return sdf.format(tm);
+	}
+	
+	public String toDate(String enddate) {
+		//Date 형식: "yyyy-MM-dd HH:mm:ss"
+		String e=enddate.substring(0,4)+"-"
+				+enddate.substring(4,6)+"-"
+				+enddate.substring(6,8)+" "
+				+enddate.substring(8,10)+":"
+				+enddate.substring(10)+":00";
+		
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yy-MM-dd HH:mm");
+		Timestamp tm=Timestamp.valueOf(e); //문자열값을 Date타입으로 변환하는 코드
 		sdf.format(tm);// 문자열 타입의 경우 date타입으로 변환해서 사용
 		return sdf.format(tm);
 	}
