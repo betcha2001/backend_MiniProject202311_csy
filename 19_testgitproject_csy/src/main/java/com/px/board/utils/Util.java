@@ -47,7 +47,7 @@ public class Util {
 	
 	// 일일별 일정 목록 구하는 기능
 	// 예약이 1일부터 3일부터 잡혀있으면 1, 2, 3일 모두 표시가 될 수 있도록 해야 함
-	public static String getCalViewList(List<CalDto> clist) {
+	public static String getCalViewList(int i, List<CalDto> clist) {
 //		String d=isTwo(i+""); // 1 -> "01" 2자리로 변환
 		String calList=""; //"<p>title</p><p>title</p><p>title</p>"
 //		int sd = Integer.parseInt(startdate);
