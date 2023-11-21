@@ -24,7 +24,7 @@
    
    .d { font-weight: bold; }
    
-   #tbody > div > p { background-color:orange; }
+   #tbody > div > p { background-color:green; color:white; }
    
    .cp { position: absolute;
    		 left: 20px;
@@ -50,9 +50,9 @@
 			var yyyyMMdd = year + (month.length<2?"0"+month:month)
 								+ (date.length<2?"0"+date:date); // 8자리 만들기
 			
-			// alert(yyyyMMdd);
-			
-			if(aDate.nextAll("p").length > 0) { // 일정이 있다는 의미
+		    // alert(yyyyMMdd);
+		 
+		 	if(aDate.nextAll("p").length > 0) { // 일정이 있다는 의미
 			$.ajax({
 				url:"/schedule/calCountAjax",
 				method:"get",
@@ -71,6 +71,7 @@
 		}, function(){
 			$(".cp").remove(); // 마우스가 나갔을 때 일정개수 삭제					
 		});
+			
 	});
 	
 </script>
@@ -78,7 +79,7 @@
 <body>
 <div layout:fragment="content">
    <div id="container"> 
-      <h1>일정관리[달력보기]</h1>
+      <h1>CALENDAR</h1>
       <div class="cal">
          <div id="ctitle">
             <a th:href="@{/schedule/calendar(year=${calMap.year-1},
@@ -96,7 +97,13 @@
          </div>   
          
          <div id="thead">
-            <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
+            <div>SUN</div>
+            <div>&nbsp;MON</div>
+            <div>&nbsp;TUE</div>
+            <div>&nbsp;WED</div>
+            <div>&nbsp;THU</div>
+            <div>&nbsp;FRI</div>
+            <div>&nbsp;SAT</div>
          </div>   
          
          <div id="tbody">
@@ -122,5 +129,4 @@
 </div>
 </body>
 </html>
-
 
