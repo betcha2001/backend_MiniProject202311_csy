@@ -1,5 +1,6 @@
 package com.px.board.controller;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
 import com.px.board.dtos.CalDto;
 import com.px.board.service.CalServiceImp;
+import com.px.board.service.ICalService;
 import com.px.board.service.MemService;
 import com.px.board.utils.Util;
 
@@ -31,6 +33,7 @@ public class MemController {
 	private MemService memService;
 	@Autowired
 	private CalServiceImp calServiceImp;
+	
 	
 	@GetMapping(value = "/addUser")
 	public String addUserForm(Model model) {
@@ -98,8 +101,17 @@ public class MemController {
 		model.addAttribute("calMap",map);
 		
 		//clist 가져오기
-		String clist = Util.getCalViewList(i, clist);
-		model.addAttribute("clist", clist);
+//	    List<CalDto> clist = Util.getCalViewList(, clist);
+//		model.addAttribute("clist", clist);
+		  
+	    	  Calendar cal=Calendar.getInstance();
+	    	  String year=cal.get(Calendar.YEAR)+"";
+	    	  String month=(cal.get(Calendar.MONTH)+1)+"";
+	      
+	      
+	      String yyyyMM=year+Util.isTwo(month); //202311 6자리변환
+	      List<CalDto>clist=calServiceImp.calViewList("white", yyyyMM);
+	      model.addAttribute("clist",clist);
 		
 		return path;
 	}
