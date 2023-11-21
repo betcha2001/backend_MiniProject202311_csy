@@ -11,12 +11,12 @@ import com.px.board.dtos.CalDto;
 @Component
 public class Util {
 
-	//한자리를 두자리로 변환
+	// 한 자리를 두 자리로 변환
 	public static String isTwo(String str) {
 		return str.length()<2?"0"+str:str; // 5 -> "05", 10 -> "10"
 	}
 	
-	//mdate: 날짜 형식 변환 -> yy-MM-dd HH:mm
+	// mdate: 날짜 형식 변환 -> yy-MM-dd HH:mm
 	public String toDates(String mdate) {
 		//Date 형식: "yyyy-MM-dd HH:mm:ss"
 		String m=mdate.substring(0,4)+"-"
@@ -31,9 +31,10 @@ public class Util {
 		sdf.format(tm);// 문자열 타입의 경우 date타입으로 변환해서 사용해야 한다.
 		return sdf.format(tm);
 	}
-	//요일별 날짜 색깔 적용하기 : 파라미터 -i, dayOfWeek 필요
-	//(공백수+현재일)%7==0 토요일
-	//(공백수+현재일)%7==1 일요일
+	
+	// 요일별 날짜 색깔 적용하기 : 파라미터 -i, dayOfWeek 필요
+	// (공백수+현재일)%7==0 토요일
+	// (공백수+현재일)%7==1 일요일
 	public static String fontColor(int i, int dayOfWeek) {
 		String str="black"; //평일
 		if((dayOfWeek-1+i)%7==0) {//토요일
@@ -44,7 +45,8 @@ public class Util {
 		return str;
 	}
 	
-	//일일별 일정 목록 구하는 기능
+	// 일일별 일정 목록 구하는 기능
+	// 예약이 1일부터 3일부터 잡혀있으면 1, 2, 3일 모두 표시가 될 수 있도록 해야 함
 	public static String getCalViewList(int i, List<CalDto> clist, String startdate, String enddate) {
 //		String d=isTwo(i+""); // 1 -> "01" 2자리로 변환
 		String calList=""; //"<p>title</p><p>title</p><p>title</p>"
@@ -52,6 +54,10 @@ public class Util {
 		int ed = Integer.parseInt(enddate);
 		
 		for (int j = 0; j < clist.size(); j++) {
+			// 예를 들어 sd = "01" -> 1 / ed = "03" -> 3 => Integer.parseInt()를 이용해 정수로 형변환
+			// 그러나 안 되면 IndexOf("찾을 특정 문자") 이용해서 자를 것
+			// if(1 <= d && 3 >= d) {}
+			
 			if(sd <= Integer.parseInt(clist.get(j).getStartdate().substring(6,8)) &&
 					ed >= Integer.parseInt(clist.get(j).getEnddate().substring(6,8))) {
 				calList+="<p>"
@@ -65,3 +71,5 @@ public class Util {
 	}
 	
 }
+
+
