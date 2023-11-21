@@ -6,7 +6,7 @@
 	<insert id="insertCalBoard" parameterType="CalDto">
 		INSERT INTO cal
 		VALUES (NULL,#{id},#{startdate},#{enddate}, 
-				#{title},#{content})
+				#{category},#{title},#{content})
 	</insert>
 	
 	<!-- 	사용자 예약목록 -->
