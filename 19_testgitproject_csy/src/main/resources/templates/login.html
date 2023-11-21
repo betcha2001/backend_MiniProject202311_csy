@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title> </title>
@@ -74,7 +73,7 @@ p{color:white !important;}
 <div layout:fragment="content">
 
 <div id="container">
-<form action="login" method="post" th:object="${loginCommand}">
+<form action="/user/login" method="post" th:object="${loginCommand}">
 	<table class="table">
 		<tr>
 			<th>ID</th>
@@ -94,24 +93,17 @@ p{color:white !important;}
 				      th:errors="*{password}"></span>      
 			</td>
 		</tr>
-<!--		<tr>-->
-<!--			<td colspan="2">-->
-<!--				  <input type="submit" value="Sign In" class="btn"/>-->
-<!--				  <span th:text="${msg}"></span>-->
+		<tr>
+			<td colspan="2">
+				  <input type="submit" value="Sign In" class="btn"/>
+				  <span th:text="${msg}"></span>
 				  
-<!--				  <input type="button" value="Sign Up" class="btn"/>-->
+				  <button><a href="/user/addUser">Sign Up</a></button>
 				   
-<!--			</td>-->
-<!--		</tr>-->
+			</td>
+		</tr>
 	</table>
 </form>
-
-<th:block th:if="${session.mdto==null}">
-   <p align="center">
-      <button><a href="/schedule/calendar">Sign In</a></button>
-      <button><a href="/user/addUser">Sign Up</a></button>
-   </p>
-</th:block>
 
 </div>
 </div>

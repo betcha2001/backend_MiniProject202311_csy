@@ -53,10 +53,10 @@
 	
 	<select id="calViewList" parameterType="Map"
 			resultType="CalDto">
-		SELECT number, id, startdate, enddate, 
+		SELECT number, id, startdate, enddate, title, content
 		FROM	(SELECT ROW_NUMBER() OVER(PARTITION BY SUBSTR(startdate,1,8)	
 								 ORDER BY startdate) rn, 
-								 number, id, title, content, startdate, endate
+								 number, id, title, content, startdate, enddate
 	 			FROM cal
 	 			WHERE id=#{id} AND SUBSTR(startdate,1,6) = #{yyyyMM}
 	 			) a

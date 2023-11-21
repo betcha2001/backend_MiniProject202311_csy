@@ -39,10 +39,9 @@ public class CalController {
    
    @GetMapping(value="/calendar")
    public String calendar(Model model, HttpServletRequest request) {
-      logger.info("달력보기"); 
-      
+      logger.info("달력보기");
       //달력에서 일일별 일정목록 구하기
-      String id="aaa"; //나중에 세션에서 가져온 아이디 사용
+      String id="garden"; //나중에 세션에서 가져온 아이디 사용
       
       String year=request.getParameter("year");
       String month=request.getParameter("month");
@@ -173,13 +172,14 @@ public class CalController {
    }
    
    @GetMapping(value = "/calBoardDetail")
-   public String calBoardDetail(UpdateCalCommand updateCalCommand, int seq, Model model) {
+   public String calBoardDetail(UpdateCalCommand updateCalCommand, int number, Model model) {
 	   logger.info("일정상세보기");
 	   
-	   CalDto dto=calService.calBoardDetail(seq);
+	   CalDto dto=calService.calBoardDetail(number);
 	   
 	   //dto -> command
 	   updateCalCommand.setNumber(dto.getNumber());
+	   updateCalCommand.setId(dto.getId());
 	   updateCalCommand.setTitle(dto.getTitle());
 	   updateCalCommand.setContent(dto.getContent());
 	   updateCalCommand.setYear(Integer.parseInt(dto.getStartdate().substring(0,4)));

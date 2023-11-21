@@ -46,7 +46,7 @@ public class MemService {
 	public String login(LoginCommand loginCommand, HttpServletRequest request, 
 			Model model) {
 		MemDto dto = memMapper.loginUser(loginCommand.getId());
-		String path="cal/calendar";
+		String path="thymeleaf/cal/calendar";
 		if(dto!=null) {
 			//로그인 폼에서 입력받은 패스워드값과 DB에 암호화된 패스워드 비교
 			if(passwordEncoder.matches(loginCommand.getPassword(), dto.getPassword())) {
