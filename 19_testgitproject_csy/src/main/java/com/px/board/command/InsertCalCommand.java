@@ -34,12 +34,10 @@ public class InsertCalCommand {
 	@NotNull(message = "분를 입력하세요!")
 	private int min;
 	
-<<<<<<< HEAD
-	
 	@NotBlank(message = "카테고리를 입력하세요!")
-=======
+
 	@NotBlank(message = "카테고리를 입력하세요!") // 문자열만 가능	
->>>>>>> branch 'main' of https://github.com/betcha2001/test_backend20231110_csy.git
+
 	private String category;
 	@NotBlank(message = "제목을 입력하세요!") // 문자열만 가능	
 	private String title;
@@ -205,10 +203,6 @@ public class InsertCalCommand {
 				+ ", content=" + content + "]";
 	}
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'main' of https://github.com/betcha2001/test_backend20231110_csy.git
 }
 
 
