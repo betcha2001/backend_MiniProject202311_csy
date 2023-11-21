@@ -1,6 +1,7 @@
 package com.px.board.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
+import com.px.board.dtos.CalDto;
 import com.px.board.service.CalServiceImp;
 import com.px.board.service.MemService;
+import com.px.board.utils.Util;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -89,8 +92,13 @@ public class MemController {
 		}
 		
 		String path=memService.login(loginCommand, request, model);
+		
+		// makeCalendar 가져오기
 		Map<String, Integer>map=calServiceImp.makeCalendar(request); 
 		model.addAttribute("calMap",map);
+		
+		//clist 가져오기
+		
 		
 		return path;
 	}
