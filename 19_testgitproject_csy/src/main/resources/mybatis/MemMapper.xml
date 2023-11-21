@@ -18,5 +18,10 @@
 		FROM mem
 		WHERE ID = #{id}
 	</select>
+	
+	<select id="userinfo" parameterType="String" resultType="memDto">
+		SELECT NAME, id, PASSWORD, phone, email
+		FROM mem
+	</select>
 </mapper>
 
