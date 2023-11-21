@@ -34,11 +34,10 @@ public class InsertCalCommand {
 	@NotNull(message = "분를 입력하세요!")
 	private int min;
 	
-	@NotBlank(message = "카테고리를 입력하세요!")
 
 	@NotBlank(message = "카테고리를 입력하세요!") // 문자열만 가능	
-
 	private String category;
+	
 	@NotBlank(message = "제목을 입력하세요!") // 문자열만 가능	
 	private String title;
 	@NotBlank(message = "내용을 입력하세요!") // 문자열만 가능	

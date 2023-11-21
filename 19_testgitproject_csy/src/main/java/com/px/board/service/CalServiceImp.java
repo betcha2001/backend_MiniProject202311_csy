@@ -79,11 +79,18 @@ public class CalServiceImp implements ICalService {
       // command --> dto로 값 이동
       // DB에서는 mdate 컬럼, command에서는 year, month...
       // 12자리로 변환하는 작업 필요
-      String mdate = insertCalCommand.getYear()
+      String startdate = insertCalCommand.getYear()
             + Util.isTwo(insertCalCommand.getMonth()+"")   
             + Util.isTwo(insertCalCommand.getDate()+"")
             + Util.isTwo(insertCalCommand.getHour()+"")
             + Util.isTwo(insertCalCommand.getMin()+"");
+      
+      
+      String enddate = insertCalCommand.getYear()
+              + Util.isTwo(insertCalCommand.getMonth()+"")   
+              + Util.isTwo(insertCalCommand.getDate()+"")
+              + Util.isTwo(insertCalCommand.getHour()+"")
+              + Util.isTwo(insertCalCommand.getMin()+"");
       
       // 202311151335_12자리
       // 20231181110_11자리 => 이를 방지하기 위해 Util 클래스 생성
@@ -93,8 +100,9 @@ public class CalServiceImp implements ICalService {
       dto.setId(insertCalCommand.getId());
       dto.setTitle(insertCalCommand.getTitle());
       dto.setContent(insertCalCommand.getContent());
-      dto.setStartdate(mdate); 
-      dto.setEnddate(mdate);
+      dto.setCategory(insertCalCommand.getCategory());
+      dto.setStartdate(startdate); 
+      dto.setEnddate(enddate);
       
       int count = calMapper.insertCalBoard(dto);
       
@@ -120,11 +128,11 @@ public class CalServiceImp implements ICalService {
    @Override
    public boolean calBoardUpdate(UpdateCalCommand updateCalCommand) {
       // command : year, month, date.. --> dto : mdate
-      String startdate = updateCalCommand.getYear()
-            + Util.isTwo(updateCalCommand.getMonth()+"")   
-            + Util.isTwo(updateCalCommand.getDate()+"")
-            + Util.isTwo(updateCalCommand.getHour()+"")
-            + Util.isTwo(updateCalCommand.getMin()+""); // 12자리
+      String startdate = updateCalCommand.getYears()
+            + Util.isTwo(updateCalCommand.getMonths()+"")   
+            + Util.isTwo(updateCalCommand.getDates()+"")
+            + Util.isTwo(updateCalCommand.getHours()+"")
+            + Util.isTwo(updateCalCommand.getMins()+""); // 12자리
       
       String enddate = updateCalCommand.getYear()
               + Util.isTwo(updateCalCommand.getMonth()+"")   
