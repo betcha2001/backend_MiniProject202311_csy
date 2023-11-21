@@ -28,7 +28,7 @@ public class Util {
 		
 		SimpleDateFormat sdf=new SimpleDateFormat("yy-MM-dd HH:mm");
 		Timestamp tm=Timestamp.valueOf(m); //문자열값을 Date타입으로 변환하는 코드
-		sdf.format(tm);// 문자열 타입의 경우 date타입으로 변환해서 사용해야 한다.
+		sdf.format(tm);// 문자열 타입의 경우 date타입으로 변환해서 사용
 		return sdf.format(tm);
 	}
 	
