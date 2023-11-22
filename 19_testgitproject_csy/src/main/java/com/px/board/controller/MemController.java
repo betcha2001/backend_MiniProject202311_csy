@@ -13,8 +13,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hk.user.dtos.UserDto;
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
 import com.px.board.dtos.CalDto;
@@ -124,8 +126,79 @@ public class MemController {
 	}
 	
 	//나의 정보 조회
+	@RequestMapping(value="/myinfo.do",method=RequestMethod.GET)
+	public String myinfo(String id, Model model) {
+
+		System.out.println("myinfo.do요청");
+
+		UserDto dto= userService.getUserInfo(id);
+		model.addAttribute("dto",dto);
+		
+		return "user/userinfo";
+		
+	}
 	
 	//나의 정보 수정
+	@RequestMapping(value="/updateUser.do",method=RequestMethod.POST)
+	public String updateUser(UserDto dto,Model model) {
+
+		System.out.println("updateUser.do요청");
+		
+		boolean isS=userService.updateUser(dto);
+		
+		if(isS) {
+			model.addAttribute("msg","수정성공");
+			return "redirect:myinfo.do";
+		}else {
+			model.addAttribute("msg", "수정실패");
+			return "user/error";// return "페이지이름"; --> viewResolver가 실행됨			
+		}
+		
+	}
 	
 	//회원목록 전체 조회
+	@RequestMapping(value="/getAllUserList.do",method=RequestMethod.GET)
+	public String getAllUserList(Model model) {
+		System.out.println("getAllUserList.do요청");
+		
+		List<UserDto> list=userService.getAllUserList();	
+		model.addAttribute("list", list);
+		
+		return "user/userAllList";// return "페이지이름"; --> viewResolver가 실행됨
+	}
+	//회원목록 전체 조회[사용중]
+	@RequestMapping(value="/getUserList.do",method=RequestMethod.GET)
+	public String getUserList(Model model) {
+		System.out.println("getUserList.do요청");
+		
+		List<UserDto> list=userService.getUserList();	
+		model.addAttribute("list", list);
+		
+		return "user/userList";// return "페이지이름"; --> viewResolver가 실행됨
+	}
+	//회원등급수정폼이동
+	@RequestMapping(value="/roleForm.do",method=RequestMethod.GET)
+	public String roleForm(Model model) {//파리미터 받는 방법(메서드에 파라미터로 선언)
+		System.out.println("roleForm.do요청");
+		
+		return "user/userRoleForm";
+	}
+	
+	//회원등급수정
+	@RequestMapping(value="/userUpdateRole.do",method=RequestMethod.POST)
+	public String userUpdateRole(UserDto dto,Model model) {
+
+		System.out.println("userUpdateRole.do요청");
+		
+		boolean isS=userService.userUpdateRole(dto);
+		
+		if(isS) {
+			model.addAttribute("msg","수정성공");
+			return "redirect:roleForm.do";
+		}else {
+			model.addAttribute("msg", "수정실패");
+			return "user/error";// return "페이지이름"; --> viewResolver가 실행됨			
+		}
+		
+	}
 }
