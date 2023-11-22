@@ -72,8 +72,6 @@ public class MemService {
 	// 나의 정보 조회 
 	public MemDto getmemInfo(String id) {
 		
-		
-		
 		return memMapper.getmemInfo(id);
 	}
 			
@@ -93,9 +91,6 @@ public class MemService {
 	
 	// 회원목록 전체조회
 	public List<MemDto> getAllMemList() {
-		
-		
-		
 		return memMapper.getAllMemList();
 	}
 	
@@ -112,9 +107,6 @@ public class MemService {
 	
 	// 회원 탈퇴
 	public String delMem(String id) {
-		
-		
-		
 		return memMapper.delMem();
 	}
 
