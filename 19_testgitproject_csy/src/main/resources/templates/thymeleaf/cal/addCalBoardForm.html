@@ -21,7 +21,7 @@
 			<tr>
 				<th>ID</th>
 				<td>
-					<input type="text" name="id" th:field="*{id}" />
+					<input type="text" name="id" th:value="${session.mdto.id}" />
 					<span class="errorField" th:if="${#fields.hasErrors('id')}" 
 											 th:errors="*{id}"></span>
 				</td>
@@ -30,7 +30,7 @@
 			<tr>
 				<th>START DATE</th>
 				<td>
-					<select name="year" >
+					<select name="years" >
 						<th:block th:each="i:${#numbers.sequence(insertCalCommand.year-5,insertCalCommand.year+5)}">
 							<th:block th:if="${insertCalCommand.year == i}">
 								<option th:value="${i}" th:text="${i}" selected="selected"></option>
@@ -40,7 +40,7 @@
 							</th:block>
 						</th:block>
 					</select>년
-					<select name="month" >
+					<select name="months" >
 						<th:block th:each="i:${#numbers.sequence(1,12)}">
 							<th:block th:if="${insertCalCommand.month == i}">
 								<option th:value="${i}" th:text="${i}" selected="selected"></option>
@@ -50,7 +50,7 @@
 							</th:block>
 						</th:block>
 					</select>월
-					<select name="date" >
+					<select name="dates" >
 						<th:block th:each="i:${#numbers.sequence(1,31)}">
 							<th:block th:if="${insertCalCommand.date == i}">
 								<option th:value="${i}" th:text="${i}" selected="selected"></option>
@@ -60,12 +60,12 @@
 							</th:block>
 						</th:block>
 					</select>일
-					<select name="hour" >
+					<select name="hours" >
 						<th:block th:each="i:${#numbers.sequence(0,23)}">
 							<option th:value="${i}" th:text="${i}" ></option>
 						</th:block>
 					</select>시
-					<select name="min" >
+					<select name="mins" >
 						<th:block th:each="i:${#numbers.sequence(0,59)}">
 							<option th:value="${i}" th:text="${i}" ></option>
 						</th:block>

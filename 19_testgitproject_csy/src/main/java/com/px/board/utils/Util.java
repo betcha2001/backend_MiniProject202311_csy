@@ -59,7 +59,8 @@ public class Util {
 		}
 		return str;
 	}
-	
+	static String title="";
+	static String color="";
 	// 일일별 일정 목록 구하는 기능
 	// 예약이 1일부터 3일부터 잡혀있으면 1, 2, 3일 모두 표시가 될 수 있도록 해야 함
 	public static String getCalViewList(int i, List<CalDto> clist) {
@@ -75,7 +76,20 @@ public class Util {
 			
 			if(i >= Integer.parseInt(clist.get(j).getStartdate().substring(6,8)) &&
 					i <= Integer.parseInt(clist.get(j).getEnddate().substring(6,8))) {
-				calList+="<p>"
+				if(title=="") {
+					title=clist.get(j).getTitle();	
+					color="yellow";
+				}else {
+					if(title.equals(clist.get(j).getTitle())) {
+//						color="red";
+					}else {
+						title=clist.get(j).getTitle();
+						color="rgb("+(randomColor())+","+(randomColor())+","+(randomColor())+")";
+					}
+					
+				}
+				
+				calList+="<p class='' style='background-color:"+color+";'>"
 						+(clist.get(j).getTitle().length()>7?
 						 clist.get(j).getTitle().substring(0,7)+"..":
 						 clist.get(j).getTitle())
@@ -85,6 +99,9 @@ public class Util {
 		return calList;
 	}
 	
+	public static int randomColor() {
+		return (int)(Math.random()*256);
+	}
 }
 
 

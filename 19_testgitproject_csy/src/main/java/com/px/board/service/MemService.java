@@ -107,6 +107,7 @@ public class MemService {
 		return memMapper.memUpdateRole(mdto);		
 	}
 	
+	
 	// 회원 탈퇴....모르겠음.....
 	public String delMem(String id) {
 			

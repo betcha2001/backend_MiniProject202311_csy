@@ -22,6 +22,7 @@ import com.px.board.command.DeleteCalCommand;
 import com.px.board.command.InsertCalCommand;
 import com.px.board.command.UpdateCalCommand;
 import com.px.board.dtos.CalDto;
+import com.px.board.dtos.MemDto;
 import com.px.board.service.CalServiceImp;
 import com.px.board.service.ICalService;
 import com.px.board.utils.Util;
@@ -42,7 +43,9 @@ public class CalController {
    public String calendar(Model model, HttpServletRequest request) {
       logger.info("달력보기");
       //달력에서 일일별 일정목록 구하기
-      String id="kimtan"; //나중에 세션에서 가져온 아이디 사용
+      HttpSession session = request.getSession();
+      MemDto dto = (MemDto)session.getAttribute("mdto");
+      String id=dto.getId(); //나중에 세션에서 가져온 아이디 사용
       
       String year=request.getParameter("year");
       String month=request.getParameter("month");
