@@ -38,6 +38,5 @@
 		FROM mem
 	</select>
 	
-<!-- 	왜안되는거야 -->
 </mapper>
 
