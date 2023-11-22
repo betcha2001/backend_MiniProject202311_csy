@@ -1,5 +1,7 @@
 package com.px.board.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -64,4 +66,24 @@ public class MemService {
 		}
 		return path;
 	}
+	
+			// 나의 정보 조회 
+			public MemDto getUserInfo(String id);
+			
+			// 나의 정보 수정
+			public boolean updateUser(UserDto dto);
+			
+			// 회원 탈퇴
+			public boolean delUser(String id);
+			
+			// 회원목록 전체조회
+			public List<MemDto> getAllUserList();
+			
+			// 사용중인 회원목록 조회
+			public List<MemDto> getUserList();
+			
+			// 회원등급 수정
+			public boolean userUpdateRole(MemDto dto);
 }
+
+
