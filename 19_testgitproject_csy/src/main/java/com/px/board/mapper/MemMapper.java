@@ -12,4 +12,6 @@ public interface MemMapper {
 	public String idChk(String id);
 	
 	public MemDto loginUser(String id);
+	
+	public String updateMem(MemDto dto);
 }

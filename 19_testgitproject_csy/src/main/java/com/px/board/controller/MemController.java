@@ -168,17 +168,17 @@ public class MemController {
 		} catch (Exception e) {
 			System.out.println("나의 정보 수정 실패");
 			e.printStackTrace();
-			return "redirect:addUser";
+			return "redirect:updateMem";
 		}
 		
 	}
 	
 	//회원목록 전체 조회
-	@RequestMapping(value="/getAllUserList.do",method=RequestMethod.GET)
+	@GetMapping(value="/getAllUserList")
 	public String getAllUserList(Model model) {
-		System.out.println("getAllUserList.do요청");
+		System.out.println("getAllUserList 요청");
 		
-		List<UserDto> list=userService.getAllUserList();	
+		List<MemDto> list=memService.getAllMemList();	
 		model.addAttribute("list", list);
 		
 		return "user/userAllList";// return "페이지이름"; --> viewResolver가 실행됨
