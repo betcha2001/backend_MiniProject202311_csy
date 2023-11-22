@@ -127,6 +127,7 @@ public class MemController {
 		return "redirect:/";
 	}
 	
+	
 	//나의 정보 조회
 	@GetMapping(value="/meminfo")
 	public String meminfo(String id, Model model) {
@@ -140,6 +141,7 @@ public class MemController {
 		
 	}
 	
+	
 	// 나의 정보 수정폼으로 이동
 	@GetMapping(value = "/updateMem")
 	public String updateMemForm(Model model) {
@@ -152,9 +154,10 @@ public class MemController {
 		return "mem/updateMemForm";
 	}
 	
+	
 	// 나의 정보 수정
 	@PostMapping(value="/updateMem")
-	public String updateMem(@Validated AddUserCommand addUserCommand,
+	public String updateMem(@Validated UpdateUserCommand updateUserCommand,
 			BindingResult result, Model model) {
 
 		if(result.hasErrors()) {
@@ -187,7 +190,7 @@ public class MemController {
 	}
 	
 	
-//	// 회원등급수정폼이동
+	// 회원등급수정폼이동
 	@GetMapping(value="/memRoleForm")
 	public String roleForm(Model model) {
 		System.out.println("memRoleForm요청");
@@ -195,9 +198,10 @@ public class MemController {
 		return "user/memRoleForm";
 	}
 	
+	
 	// 회원등급수정
 	@PostMapping(value="/memUpdateRole")
-	public String userUpdateRole(@Validated AddUserCommand addUserCommand,
+	public String userUpdateRole(@Validated UpdateRoleCommand updateRoleCommand,
 			BindingResult result, Model model) {
 
 		System.out.println("memUpdateRole요청");

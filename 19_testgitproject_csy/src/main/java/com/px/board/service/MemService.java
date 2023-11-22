@@ -89,7 +89,9 @@ public class MemService {
 	}
 			
 	// 회원 탈퇴
-//	public boolean delMem(String id);
+	public boolean delMem(String id) {
+		return "";
+	}
 
 	
 	// 회원목록 전체조회

@@ -15,5 +15,5 @@ public interface MemMapper {
 	
 	public boolean updateMem(MemDto dto);
 	
-	public MemDto memUpdateRole(MemDto dto);
+	public boolean memUpdateRole(MemDto dto);
 }
