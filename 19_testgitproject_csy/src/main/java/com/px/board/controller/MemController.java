@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hk.user.dtos.UserDto;
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
 import com.px.board.command.UpdateCalCommand;
@@ -222,4 +223,27 @@ public class MemController {
 		}
 		
 	}
+	
+	//회원 탈퇴하기
+		@PostMapping(value="delMem")
+		public String delUser(MemDto dto,Model model) {
+
+			System.out.println("회원 탈퇴 성공");
+			
+			if(result.hasErrors()) {
+				System.out.println("회원등급 수정 유효값 오류");
+				return "mem/delMem";
+			}
+			
+			try {
+				memService.delMem(updateRoleCommand);
+				System.out.println("회원등급수정 성공");
+				return "redirect:/";
+			} catch (Exception e) {
+				System.out.println("회원등급수정 실패");
+				e.printStackTrace();
+				return "redirect:delMem";
+			}
+			
+		}
 }

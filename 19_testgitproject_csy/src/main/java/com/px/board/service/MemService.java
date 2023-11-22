@@ -104,16 +104,10 @@ public class MemService {
 	}
 	
 	// 회원 탈퇴
-<<<<<<< HEAD
-	public boolean delMem() {
-		
-	}
-	
-=======
 	public boolean delMem(String id) {
 		return;
 	}
->>>>>>> branch 'main' of https://github.com/betcha2001/test_backend20231110_csy.git
+
 }
 
 
