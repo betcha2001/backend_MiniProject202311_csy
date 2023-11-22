@@ -21,7 +21,7 @@
 <div layout:fragment="content">
 <div id="container">
 	<h1>MY PAGE</h1>
-	<form onsubmit="return submitChk()" action="/user/userinfo" 
+	<form onsubmit="return submitChk()" action="/user/meminfo" 
 		  method="post" th:object="${addUserCommand}">
 		<table class="table">	
 			<tr>
@@ -36,8 +36,9 @@
 			<tr>
 				<th>ID</th>
 				<td>
-					<input th:field="*{id}" type="text" 
-						   class="form-control" name="id"/>
+<!--				세션 받아오는 걸 위해 th:value로 바꿨는데 맞나 모르겠다......-->
+					<input th:value="${session.dto.id}" type="text" 
+						   class="form-control" name="id" />
 					<span id="idChk" class="n" ></span>
 					<span th:if="${#fields.hasErrors('id')}"
 						  th:errors="*{id}"></span>

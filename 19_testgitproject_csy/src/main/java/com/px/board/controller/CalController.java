@@ -42,6 +42,7 @@ public class CalController {
    @GetMapping(value="/calendar")
    public String calendar(Model model, HttpServletRequest request) {
       logger.info("달력보기");
+      
       //달력에서 일일별 일정목록 구하기
       HttpSession session = request.getSession();
       MemDto dto = (MemDto)session.getAttribute("mdto");
@@ -105,9 +106,10 @@ public class CalController {
                      , HttpServletRequest request
                      , Model model) {
       logger.info("일정목록보기");
-//      HttpSession session=request.getSession();
-//      String id=session.getAttribute("id");
-        String id="white"; // 임시로 id 저장
+      
+      HttpSession sessionn = request.getSession();
+      MemDto dto = (MemDto)sessionn.getAttribute("mdto");
+      String id=dto.getId(); //나중에 세션에서 가져온 아이디 사용
       
       // command 유효값 처리를 위해 기본 생성해서 보내줌
       model.addAttribute("deleteCalCommand", new DeleteCalCommand());

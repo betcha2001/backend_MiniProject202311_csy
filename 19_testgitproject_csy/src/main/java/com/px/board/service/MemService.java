@@ -17,6 +17,7 @@ import com.px.board.mapper.MemMapper;
 import com.px.board.status.RoleStatus;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Service
 public class MemService {
@@ -70,8 +71,14 @@ public class MemService {
 	
 	
 	// 나의 정보 조회...이게 맞나......
-	public MemDto getmemInfo(String id) {
-		MemDto dto = memMapper.getmemInfo(id);
+	public MemDto getmeminfo(String id) {
+
+		//MemDto dto= memServiSce.getmemInfo(id);
+		
+		//HttpSession session = request.getSession();
+	    //MemDto dto = (MemDto)session.getAttribute("id");
+	    //model.addAttribute("dto",dto);
+	    
 		return memMapper.getmemInfo(id);
 	}
 	
