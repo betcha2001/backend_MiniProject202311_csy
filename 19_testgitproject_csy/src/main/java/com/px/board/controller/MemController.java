@@ -20,6 +20,7 @@ import com.hk.user.dtos.UserDto;
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
 import com.px.board.dtos.CalDto;
+import com.px.board.dtos.MemDto;
 import com.px.board.service.CalServiceImp;
 import com.px.board.service.ICalService;
 import com.px.board.service.MemService;
@@ -131,7 +132,7 @@ public class MemController {
 
 		System.out.println("myinfo.do요청");
 
-		UserDto dto= userService.getUserInfo(id);
+		MemDto dto= memService.getUserInfo(id);
 		model.addAttribute("dto",dto);
 		
 		return "user/userinfo";
