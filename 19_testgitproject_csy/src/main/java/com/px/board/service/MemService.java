@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
+import com.px.board.command.UpdateRoleCommand;
 import com.px.board.command.UpdateUserCommand;
 import com.px.board.dtos.MemDto;
 import com.px.board.mapper.MemMapper;
@@ -69,7 +70,9 @@ public class MemService {
 	}
 	
 	// 나의 정보 조회 
-//	public MemDto getmemInfo(String id);
+	public MemDto getmemInfo(String id) {
+		return "";
+	}
 			
 	// 나의 정보 수정
 	public boolean updateMem(UpdateUserCommand updateUserCommand) {
@@ -87,11 +90,18 @@ public class MemService {
 			
 	// 회원 탈퇴
 //	public boolean delMem(String id);
-//			
-//	// 회원목록 전체조회
+
+	
+	// 회원목록 전체조회
 	public List<MemDto> getAllMemList() {
 		return "";
 	}
+	
+	// 회원 등급 수정
+	public String userUpdateRole(UpdateRoleCommand updateRoleCommand) {
+		return "";
+	}
+	
 }
 
 

@@ -14,4 +14,6 @@ public interface MemMapper {
 	public MemDto loginUser(String id);
 	
 	public boolean updateMem(MemDto dto);
+	
+	public MemDto userUpdateRole(MemDto dto);
 }

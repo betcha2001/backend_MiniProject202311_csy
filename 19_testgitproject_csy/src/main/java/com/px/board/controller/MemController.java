@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
 import com.px.board.command.UpdateCalCommand;
+import com.px.board.command.UpdateRoleCommand;
 import com.px.board.command.UpdateUserCommand;
 import com.px.board.dtos.CalDto;
 import com.px.board.dtos.MemDto;
@@ -151,7 +152,7 @@ public class MemController {
 		return "mem/updateMemForm";
 	}
 	
-	//나의 정보 수정
+	// 나의 정보 수정
 	@PostMapping(value="/updateMem")
 	public String updateMem(@Validated AddUserCommand addUserCommand,
 			BindingResult result, Model model) {
@@ -173,7 +174,8 @@ public class MemController {
 		
 	}
 	
-	//회원목록 전체 조회
+	
+	// 회원목록 전체 조회
 	@GetMapping(value="/getAllUserList")
 	public String getAllUserList(Model model) {
 		System.out.println("getAllUserList 요청");
@@ -184,28 +186,35 @@ public class MemController {
 		return "user/userAllList";// return "페이지이름"; --> viewResolver가 실행됨
 	}
 	
-	//회원등급수정폼이동
-	@RequestMapping(value="/roleForm.do",method=RequestMethod.GET)
-	public String roleForm(Model model) {//파리미터 받는 방법(메서드에 파라미터로 선언)
-		System.out.println("roleForm.do요청");
+	
+//	// 회원등급수정폼이동
+	@GetMapping(value="/memRoleForm")
+	public String roleForm(Model model) {
+		System.out.println("memRoleForm요청");
 		
-		return "user/userRoleForm";
+		return "user/memRoleForm";
 	}
 	
-	//회원등급수정
-	@RequestMapping(value="/userUpdateRole.do",method=RequestMethod.POST)
-	public String userUpdateRole(UserDto dto,Model model) {
+	// 회원등급수정
+	@PostMapping(value="/memUpdateRole")
+	public String userUpdateRole(@Validated AddUserCommand addUserCommand,
+			BindingResult result, Model model) {
 
-		System.out.println("userUpdateRole.do요청");
+		System.out.println("memUpdateRole요청");
 		
-		boolean isS=userService.userUpdateRole(dto);
+		if(result.hasErrors()) {
+			System.out.println("회원등급 수정 유효값 오류");
+			return "mem/memUpdateRole";
+		}
 		
-		if(isS) {
-			model.addAttribute("msg","수정성공");
-			return "redirect:roleForm.do";
-		}else {
-			model.addAttribute("msg", "수정실패");
-			return "user/error";// return "페이지이름"; --> viewResolver가 실행됨			
+		try {
+			memService.memUpdateRole(updateRoleCommand);
+			System.out.println("회원등급수정 성공");
+			return "redirect:/";
+		} catch (Exception e) {
+			System.out.println("회원등급수정 실패");
+			e.printStackTrace();
+			return "redirect:memUpdateRole";
 		}
 		
 	}
