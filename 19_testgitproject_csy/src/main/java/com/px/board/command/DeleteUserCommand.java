@@ -26,9 +26,5 @@ public class DeleteUserCommand {
 	public String toString() {
 		return "DeleteUserCommand [id=" + id + "]";
 	}
-	
-	
-	
-	
 
 }
