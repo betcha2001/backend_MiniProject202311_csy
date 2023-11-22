@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.user.dtos.UserDto;
 import com.px.board.command.AddUserCommand;
+import com.px.board.command.DeleteUserCommand;
 import com.px.board.command.LoginCommand;
 import com.px.board.command.UpdateCalCommand;
 import com.px.board.command.UpdateRoleCommand;
@@ -226,7 +227,8 @@ public class MemController {
 	
 	//회원 탈퇴하기
 		@PostMapping(value="delMem")
-		public String delUser(MemDto dto,Model model) {
+		public String delUser(@Validated DeleteUserCommand deleteUserCommand,
+		         BindingResult result, Model model) {
 
 			System.out.println("회원 탈퇴 성공");
 			
@@ -236,7 +238,7 @@ public class MemController {
 			}
 			
 			try {
-				memService.delMem(updateRoleCommand);
+				memService.delMem(deleteUserCommand);
 				System.out.println("회원등급수정 성공");
 				return "redirect:/";
 			} catch (Exception e) {
