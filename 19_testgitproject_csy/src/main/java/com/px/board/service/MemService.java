@@ -18,7 +18,6 @@ import com.px.board.status.RoleStatus;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-
 @Service
 public class MemService {
 	
@@ -69,12 +68,14 @@ public class MemService {
 		return path;
 	}
 	
-	// 나의 정보 조회 
+	
+	// 나의 정보 조회...이게 맞나......
 	public MemDto getmemInfo(String id) {
-		
+		MemDto dto = memMapper.getmemInfo(id);
 		return memMapper.getmemInfo(id);
 	}
-			
+	
+	
 	// 나의 정보 수정
 	public boolean updateMem(UpdateUserCommand updateUserCommand) {
 		MemDto mdto=new MemDto();
@@ -89,8 +90,9 @@ public class MemService {
 	}
 		
 	
-	// 회원목록 전체조회
-	public List<MemDto> getAllMemList() {
+	// 회원목록 전체조회......이게 맞나......
+	public List<MemDto> getAllMemList() {		
+		List<MemDto> list = memMapper.getAllMemList();
 		return memMapper.getAllMemList();
 	}
 	
@@ -105,8 +107,9 @@ public class MemService {
 		return memMapper.memUpdateRole(mdto);		
 	}
 	
-	// 회원 탈퇴
+	// 회원 탈퇴....모르겠음.....
 	public String delMem(String id) {
+			
 		return memMapper.delMem();
 	}
 

@@ -184,11 +184,12 @@ public class CalController {
 	   updateCalCommand.setId(dto.getId());
 	   updateCalCommand.setTitle(dto.getTitle());
 	   updateCalCommand.setContent(dto.getContent());
-	   updateCalCommand.setYear(Integer.parseInt(dto.getStartdate().substring(0,4)));
-	   updateCalCommand.setMonth(Integer.parseInt(dto.getStartdate().substring(4,6)));
-	   updateCalCommand.setDate(Integer.parseInt(dto.getStartdate().substring(6,8)));
-	   updateCalCommand.setHour(Integer.parseInt(dto.getStartdate().substring(8,10)));
-	   updateCalCommand.setMin(Integer.parseInt(dto.getStartdate().substring(10)));
+	   
+	   updateCalCommand.setYears(Integer.parseInt(dto.getStartdate().substring(0,4)));
+	   updateCalCommand.setMonths(Integer.parseInt(dto.getStartdate().substring(4,6)));
+	   updateCalCommand.setDates(Integer.parseInt(dto.getStartdate().substring(6,8)));
+	   updateCalCommand.setHours(Integer.parseInt(dto.getStartdate().substring(8,10)));
+	   updateCalCommand.setMins(Integer.parseInt(dto.getStartdate().substring(10)));
 	   
 	   updateCalCommand.setYear(Integer.parseInt(dto.getEnddate().substring(0,4)));
 	   updateCalCommand.setMonth(Integer.parseInt(dto.getEnddate().substring(4,6)));
