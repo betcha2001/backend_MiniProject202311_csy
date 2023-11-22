@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.px.board.command.AddUserCommand;
+import com.px.board.command.DeleteCalCommand;
 import com.px.board.command.LoginCommand;
 import com.px.board.command.UpdateRoleCommand;
 import com.px.board.command.UpdateUserCommand;
@@ -104,7 +105,7 @@ public class MemService {
 	}
 	
 	// 회원 탈퇴
-	public boolean delMem(String id) {
+	public boolean delMem(DeleteCalCommand deleteCalCommand) {
 		return;
 	}
 

@@ -1,5 +1,7 @@
 package com.px.board.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.px.board.dtos.MemDto;
@@ -12,6 +14,8 @@ public interface MemMapper {
 	public String idChk(String id);
 	
 	public MemDto loginUser(String id);
+	
+	public List<MemDto> getAllMemList();
 	
 	public boolean updateMem(MemDto dto);
 	

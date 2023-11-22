@@ -181,14 +181,14 @@ public class MemController {
 	
 	
 	// 회원목록 전체 조회
-	@GetMapping(value="/getAllUserList")
+	@GetMapping(value="/getAllMemList")
 	public String getAllUserList(Model model) {
-		System.out.println("getAllUserList 요청");
+		System.out.println("getAllUserMem 요청");
 		
 		List<MemDto> list=memService.getAllMemList();	
 		model.addAttribute("list", list);
 		
-		return "user/userAllList";// return "페이지이름"; --> viewResolver가 실행됨
+		return "user/memAllList";
 	}
 	
 	
@@ -226,23 +226,23 @@ public class MemController {
 	}
 	
 	//회원 탈퇴하기
-		@PostMapping(value="delMem")
-		public String delUser(@Validated DeleteUserCommand deleteUserCommand,
-		         BindingResult result, Model model) {
+	@PostMapping(value="delMem")
+	public String delUser(@Validated DeleteUserCommand deleteUserCommand,
+			BindingResult result, Model model) {
 
 			System.out.println("회원 탈퇴 성공");
 			
 			if(result.hasErrors()) {
-				System.out.println("회원등급 수정 유효값 오류");
+				System.out.println("회원 탈퇴 유효값 오류");
 				return "mem/delMem";
 			}
 			
 			try {
 				memService.delMem(deleteUserCommand);
-				System.out.println("회원등급수정 성공");
+				System.out.println("회원 탈퇴 성공");
 				return "redirect:/";
 			} catch (Exception e) {
-				System.out.println("회원등급수정 실패");
+				System.out.println("회원 탈퇴 실패");
 				e.printStackTrace();
 				return "redirect:delMem";
 			}
