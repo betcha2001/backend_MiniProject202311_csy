@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hk.user.dtos.UserDto;
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.DeleteUserCommand;
 import com.px.board.command.LoginCommand;
@@ -31,6 +30,7 @@ import com.px.board.service.MemService;
 import com.px.board.utils.Util;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -85,14 +85,14 @@ public class MemController {
 		return map;
 	}
 	
-	//로그인 폼 이동
+	// 로그인 폼 이동
 	@GetMapping(value = "/login")
 	public String loginForm(Model model) {
 		model.addAttribute("loginCommand",new LoginCommand());
 		return "login";
 	}
 	
-	//로그인 실행
+	// 로그인 실행
 	@PostMapping(value = "/login")
 	public String login(@Validated LoginCommand loginCommand, BindingResult result, Model model, HttpServletRequest request) {
 		if(result.hasErrors()) {
@@ -131,7 +131,7 @@ public class MemController {
 	}
 	
 	
-	//나의 정보 조회
+	// 나의 정보 조회
 	@GetMapping(value="/meminfo")
 	public String meminfo(String id, Model model) {
 
@@ -225,27 +225,17 @@ public class MemController {
 		
 	}
 	
-	//회원 탈퇴하기
-	@PostMapping(value="delMem")
-	public String delUser(@Validated DeleteUserCommand deleteUserCommand,
-			BindingResult result, Model model) {
-
-			System.out.println("회원 탈퇴 성공");
-			
-			if(result.hasErrors()) {
-				System.out.println("회원 탈퇴 유효값 오류");
-				return "mem/delMem";
-			}
-			
-			try {
-				memService.delMem(deleteUserCommand);
-				System.out.println("회원 탈퇴 성공");
-				return "redirect:/";
-			} catch (Exception e) {
-				System.out.println("회원 탈퇴 실패");
-				e.printStackTrace();
-				return "redirect:delMem";
-			}
-			
-		}
+	// 회원 탈퇴하기
+	@PostMapping(value="/delMem")
+	public String delMem(@Validated DeleteUserCommand deleteUserCommand,
+			BindingResult result, Model model, HttpSession session) {
+		
+		String id = (String) session.getAttribute("id");
+		memService.delMem(id);
+		session.invalidate();
+		return "login";			
+	}
 }
+
+
+

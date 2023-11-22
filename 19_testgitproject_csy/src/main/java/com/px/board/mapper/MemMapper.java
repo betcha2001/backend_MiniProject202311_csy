@@ -15,11 +15,13 @@ public interface MemMapper {
 	
 	public MemDto loginUser(String id);
 	
+	public MemDto getmemInfo(String id);
+	
 	public List<MemDto> getAllMemList();
 	
 	public boolean updateMem(MemDto dto);
 	
 	public boolean memUpdateRole(MemDto dto);
 	
-	public boolean delMem(String id);
+	public String delMem();
 }
