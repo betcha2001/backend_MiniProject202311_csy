@@ -43,5 +43,12 @@
 		UPDATE mem SET GRADE=#{grade}
 		WHERE ID=#{id}
 	</update>
+	
+<!-- 	// 회원 탈퇴 -->
+
+	<update id="delMem" parameterType="String">
+		UPDATE mem SET unregister='Y'
+		WHERE ID=#{id}
+	</update>
 </mapper>
 

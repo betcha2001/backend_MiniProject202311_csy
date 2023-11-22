@@ -6,7 +6,6 @@ public class DeleteUserCommand {
 
 	public DeleteUserCommand() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public DeleteUserCommand(String id) {

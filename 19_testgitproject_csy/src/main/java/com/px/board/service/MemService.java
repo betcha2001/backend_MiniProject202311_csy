@@ -85,17 +85,13 @@ public class MemService {
 		
 		return memMapper.updateMem(mdto);
 	}
-			
-	// 회원 탈퇴
-	public boolean delMem(String id) {
-		return;
-	}
-
+		
 	
 	// 회원목록 전체조회
 	public List<MemDto> getAllMemList() {
 		return;
 	}
+	
 	
 	// 회원 등급 수정
 	public boolean memUpdateRole(UpdateRoleCommand updateRoleCommand) {
@@ -108,10 +104,16 @@ public class MemService {
 	}
 	
 	// 회원 탈퇴
+<<<<<<< HEAD
 	public boolean delMem() {
 		
 	}
 	
+=======
+	public boolean delMem(String id) {
+		return;
+	}
+>>>>>>> branch 'main' of https://github.com/betcha2001/test_backend20231110_csy.git
 }
 
 
