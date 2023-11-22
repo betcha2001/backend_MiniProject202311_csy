@@ -98,11 +98,11 @@ public class MemService {
 	}
 	
 	// 회원 등급 수정
-	public boolean userUpdateRole(UpdateRoleCommand updateRoleCommand) {
+	public boolean memUpdateRole(UpdateRoleCommand updateRoleCommand) {
 		MemDto mdto=new MemDto();
 		mdto.setName(updateRoleCommand.getGrade());		
 		
-		return memMapper.userUpdateRole(mdto);
+		return memMapper.memUpdateRole(mdto);
 		
 		
 	}
