@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
 import com.px.board.command.UpdateCalCommand;
+import com.px.board.command.UpdateUserCommand;
 import com.px.board.dtos.CalDto;
 import com.px.board.dtos.MemDto;
 import com.px.board.service.CalServiceImp;
@@ -131,7 +132,7 @@ public class MemController {
 
 		System.out.println("meminfo 요청");
 
-		MemDto dto= memService.getUserInfo(id);
+		MemDto dto= memService.getmemInfo(id);
 		model.addAttribute("dto",dto);
 		
 		return "user/meminfo";
@@ -140,12 +141,12 @@ public class MemController {
 	
 	// 나의 정보 수정폼으로 이동
 	@GetMapping(value = "/updateMem")
-	public String updateMem(Model model) {
+	public String updateMemForm(Model model) {
 		System.out.println("나의정보수정폼 이동");
 		
 		//회원가입폼에서 addUserCommand객체를 사용하는 코드가 작성되어 있어서
 		//null일 경우 오류가 발생하기 때문에 보내줘야 함
-		model.addAttribute("updateUserCommand", new UpdateCalCommand());
+		model.addAttribute("updateUserCommand", new UpdateUserCommand());
 		
 		return "mem/updateMemForm";
 	}
@@ -161,11 +162,11 @@ public class MemController {
 		}
 		
 		try {
-			memService.addUser(addUserCommand);
-			System.out.println("회원가입 성공");
+			memService.updateMem(updateUserCommand);
+			System.out.println("나의 정보 수정 성공");
 			return "redirect:/";
 		} catch (Exception e) {
-			System.out.println("회원가입실패");
+			System.out.println("나의 정보 수정 실패");
 			e.printStackTrace();
 			return "redirect:addUser";
 		}
@@ -182,16 +183,7 @@ public class MemController {
 		
 		return "user/userAllList";// return "페이지이름"; --> viewResolver가 실행됨
 	}
-	//회원목록 전체 조회[사용중]
-	@RequestMapping(value="/getUserList.do",method=RequestMethod.GET)
-	public String getUserList(Model model) {
-		System.out.println("getUserList.do요청");
-		
-		List<UserDto> list=userService.getUserList();	
-		model.addAttribute("list", list);
-		
-		return "user/userList";// return "페이지이름"; --> viewResolver가 실행됨
-	}
+	
 	//회원등급수정폼이동
 	@RequestMapping(value="/roleForm.do",method=RequestMethod.GET)
 	public String roleForm(Model model) {//파리미터 받는 방법(메서드에 파라미터로 선언)
