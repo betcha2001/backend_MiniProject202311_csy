@@ -16,4 +16,6 @@ public interface MemMapper {
 	public boolean updateMem(MemDto dto);
 	
 	public boolean memUpdateRole(MemDto dto);
+	
+	public boolean delMem(String id);
 }

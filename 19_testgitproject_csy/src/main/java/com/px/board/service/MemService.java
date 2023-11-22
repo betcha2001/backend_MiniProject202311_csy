@@ -79,8 +79,7 @@ public class MemService {
 		mdto.setName(updateUserCommand.getName());		
 		//password 암호화하여 저장
 		mdto.setPassword(passwordEncoder.encode(updateUserCommand.getPassword()));
-	
-		
+			
 		mdto.setEmail(updateUserCommand.getEmail());
 		mdto.setPhone(updateUserCommand.getPhone());
 		
@@ -101,9 +100,16 @@ public class MemService {
 	// 회원 등급 수정
 	public boolean memUpdateRole(UpdateRoleCommand updateRoleCommand) {
 		MemDto mdto=new MemDto();
-		mdto.setName(updateRoleCommand.getGrade());		
+		mdto.setId(updateRoleCommand.getId());
+		mdto.setName(updateRoleCommand.getName());		
+		mdto.setGrade(updateRoleCommand.getGrade());
 		
 		return memMapper.memUpdateRole(mdto);		
+	}
+	
+	// 회원 탈퇴
+	public boolean delMem() {
+		
 	}
 	
 }
