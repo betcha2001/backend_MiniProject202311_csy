@@ -79,11 +79,11 @@ public class CalServiceImp implements ICalService {
       // command --> dto로 값 이동
       // DB에서는 mdate 컬럼, command에서는 year, month...
       // 12자리로 변환하는 작업 필요
-      String startdate = insertCalCommand.getYear()
-            + Util.isTwo(insertCalCommand.getMonth()+"")   
-            + Util.isTwo(insertCalCommand.getDate()+"")
-            + Util.isTwo(insertCalCommand.getHour()+"")
-            + Util.isTwo(insertCalCommand.getMin()+"");
+      String startdate = insertCalCommand.getYears()
+            + Util.isTwo(insertCalCommand.getMonths()+"")   
+            + Util.isTwo(insertCalCommand.getDates()+"")
+            + Util.isTwo(insertCalCommand.getHours()+"")
+            + Util.isTwo(insertCalCommand.getMins()+"");
       
       
       String enddate = insertCalCommand.getYear()
