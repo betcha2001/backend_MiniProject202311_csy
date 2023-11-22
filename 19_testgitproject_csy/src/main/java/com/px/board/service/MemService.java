@@ -79,9 +79,6 @@ public class MemService {
 			// 회원목록 전체조회
 			public List<MemDto> getAllMemList();
 			
-			// 사용중인 회원목록 조회
-			public List<MemDto> getMemList();
-			
 			// 회원등급 수정
 			public boolean userUpdateRole(MemDto dto);
 }
