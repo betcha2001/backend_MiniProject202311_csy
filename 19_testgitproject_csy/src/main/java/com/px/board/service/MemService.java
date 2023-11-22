@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
+import com.px.board.command.UpdateUserCommand;
 import com.px.board.dtos.MemDto;
 import com.px.board.mapper.MemMapper;
 import com.px.board.status.RoleStatus;
@@ -67,20 +68,30 @@ public class MemService {
 		return path;
 	}
 	
-			// 나의 정보 조회 
-			public MemDto getmemInfo(String id);
+	// 나의 정보 조회 
+//	public MemDto getmemInfo(String id);
 			
-			// 나의 정보 수정
-			public boolean getupdateMem(MemDto dto);
+	// 나의 정보 수정
+	public boolean updateMem(UpdateUserCommand updateUserCommand) {
+		MemDto mdto=new MemDto();
+		mdto.setName(updateUserCommand.getName());		
+		//password 암호화하여 저장
+		mdto.setPassword(passwordEncoder.encode(updateUserCommand.getPassword()));
+	
+		
+		mdto.setEmail(updateUserCommand.getEmail());
+		mdto.setPhone(updateUserCommand.getPhone());
+		
+		return memMapper.updateMem(mdto);
+	}
 			
-			// 회원 탈퇴
-			public boolean delMem(String id);
-			
-			// 회원목록 전체조회
-			public List<MemDto> getAllMemList();
-			
-			// 회원등급 수정
-			public boolean userUpdateRole(MemDto dto);
+	// 회원 탈퇴
+//	public boolean delMem(String id);
+//			
+//	// 회원목록 전체조회
+	public List<MemDto> getAllMemList() {
+		return "";
+	}
 }
 
 

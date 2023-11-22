@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hk.user.dtos.UserDto;
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.LoginCommand;
+import com.px.board.command.UpdateCalCommand;
+import com.px.board.command.UpdateUserCommand;
 import com.px.board.dtos.CalDto;
 import com.px.board.dtos.MemDto;
 import com.px.board.service.CalServiceImp;
@@ -50,7 +51,8 @@ public class MemController {
 	}
 	
 	@PostMapping(value = "/addUser")
-	public String addUser(@Validated AddUserCommand addUserCommand,BindingResult result, Model model) {
+	public String addUser(@Validated AddUserCommand addUserCommand,
+			BindingResult result, Model model) {
 		System.out.println("회원가입하기");
 		
 		if(result.hasErrors()) {
@@ -75,8 +77,6 @@ public class MemController {
 	public Map<String, String> idChk(String id){
 		System.out.println("ID중복체크");
 		String resultId=memService.idChk(id);
-		//json객체로 보내기 위해 Map에 담아서 응답
-		//text라면 그냥 String으로 보내도 됨
 		Map<String, String>map=new HashMap<>();
 		map.put("id", resultId);
 		return map;
@@ -107,14 +107,14 @@ public class MemController {
 //	    List<CalDto> clist = Util.getCalViewList(, clist);
 //		model.addAttribute("clist", clist);
 		  
-	    	  Calendar cal=Calendar.getInstance();
-	    	  String year=cal.get(Calendar.YEAR)+"";
-	    	  String month=(cal.get(Calendar.MONTH)+1)+"";
+	    Calendar cal=Calendar.getInstance();
+	    String year=cal.get(Calendar.YEAR)+"";
+	    String month=(cal.get(Calendar.MONTH)+1)+"";
 	      
 	      
-	      String yyyyMM=year+Util.isTwo(month); //202311 6자리변환
-	      List<CalDto>clist=calServiceImp.calViewList("white", yyyyMM);
-	      model.addAttribute("clist",clist);
+	    String yyyyMM=year+Util.isTwo(month); //202311 6자리변환
+	    List<CalDto>clist=calServiceImp.calViewList("white", yyyyMM);
+	    model.addAttribute("clist",clist);
 		
 		return path;
 	}
@@ -127,56 +127,63 @@ public class MemController {
 	}
 	
 	//나의 정보 조회
-	@RequestMapping(value="/myinfo.do",method=RequestMethod.GET)
-	public String myinfo(String id, Model model) {
+	@GetMapping(value="/meminfo")
+	public String meminfo(String id, Model model) {
 
-		System.out.println("myinfo.do요청");
+		System.out.println("meminfo 요청");
 
-		MemDto dto= memService.getUserInfo(id);
+		MemDto dto= memService.getmemInfo(id);
 		model.addAttribute("dto",dto);
 		
-		return "user/userinfo";
+		return "user/meminfo";
 		
 	}
 	
+	// 나의 정보 수정폼으로 이동
+	@GetMapping(value = "/updateMem")
+	public String updateMemForm(Model model) {
+		System.out.println("나의정보수정폼 이동");
+		
+		//회원가입폼에서 addUserCommand객체를 사용하는 코드가 작성되어 있어서
+		//null일 경우 오류가 발생하기 때문에 보내줘야 함
+		model.addAttribute("updateUserCommand", new UpdateUserCommand());
+		
+		return "mem/updateMemForm";
+	}
+	
 	//나의 정보 수정
-	@RequestMapping(value="/updateUser.do",method=RequestMethod.POST)
-	public String updateUser(UserDto dto,Model model) {
+	@PostMapping(value="/updateMem")
+	public String updateMem(@Validated AddUserCommand addUserCommand,
+			BindingResult result, Model model) {
 
-		System.out.println("updateUser.do요청");
+		if(result.hasErrors()) {
+			System.out.println("나의 정보 수정 유효값 오류");
+			return "mem/updateMemForm";
+		}
 		
-		boolean isS=userService.updateUser(dto);
-		
-		if(isS) {
-			model.addAttribute("msg","수정성공");
-			return "redirect:myinfo.do";
-		}else {
-			model.addAttribute("msg", "수정실패");
-			return "user/error";// return "페이지이름"; --> viewResolver가 실행됨			
+		try {
+			memService.updateMem(updateUserCommand);
+			System.out.println("나의 정보 수정 성공");
+			return "redirect:/";
+		} catch (Exception e) {
+			System.out.println("나의 정보 수정 실패");
+			e.printStackTrace();
+			return "redirect:updateMem";
 		}
 		
 	}
 	
 	//회원목록 전체 조회
-	@RequestMapping(value="/getAllUserList.do",method=RequestMethod.GET)
+	@GetMapping(value="/getAllUserList")
 	public String getAllUserList(Model model) {
-		System.out.println("getAllUserList.do요청");
+		System.out.println("getAllUserList 요청");
 		
-		List<UserDto> list=userService.getAllUserList();	
+		List<MemDto> list=memService.getAllMemList();	
 		model.addAttribute("list", list);
 		
 		return "user/userAllList";// return "페이지이름"; --> viewResolver가 실행됨
 	}
-	//회원목록 전체 조회[사용중]
-	@RequestMapping(value="/getUserList.do",method=RequestMethod.GET)
-	public String getUserList(Model model) {
-		System.out.println("getUserList.do요청");
-		
-		List<UserDto> list=userService.getUserList();	
-		model.addAttribute("list", list);
-		
-		return "user/userList";// return "페이지이름"; --> viewResolver가 실행됨
-	}
+	
 	//회원등급수정폼이동
 	@RequestMapping(value="/roleForm.do",method=RequestMethod.GET)
 	public String roleForm(Model model) {//파리미터 받는 방법(메서드에 파라미터로 선언)
