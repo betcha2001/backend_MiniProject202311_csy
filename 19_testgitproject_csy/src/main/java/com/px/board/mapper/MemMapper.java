@@ -25,3 +25,5 @@ public interface MemMapper {
 	
 	public String delMem();
 }
+
+
