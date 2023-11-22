@@ -120,6 +120,7 @@ public class MemController {
 		return path;
 	}
 	
+	
 	@GetMapping(value = "/logout")
 	public String logout(HttpServletRequest request) {
 		System.out.println("로그아웃");
@@ -173,8 +174,7 @@ public class MemController {
 			System.out.println("나의 정보 수정 실패");
 			e.printStackTrace();
 			return "redirect:updateMem";
-		}
-		
+		}		
 	}
 	
 	

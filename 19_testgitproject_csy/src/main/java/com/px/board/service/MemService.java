@@ -33,8 +33,7 @@ public class MemService {
 		
 		//password 암호화하여 저장
 		mdto.setPassword(passwordEncoder.encode(addUserCommand.getPassword()));
-	
-		
+			
 		mdto.setEmail(addUserCommand.getEmail());
 		mdto.setPhone(addUserCommand.getPhone());
 		mdto.setGrade(RoleStatus.USER+"");
@@ -71,7 +70,7 @@ public class MemService {
 	
 	// 나의 정보 조회 
 	public MemDto getmemInfo(String id) {
-		return "";
+		return;
 	}
 			
 	// 나의 정보 수정
@@ -90,13 +89,13 @@ public class MemService {
 			
 	// 회원 탈퇴
 	public boolean delMem(String id) {
-		return "";
+		return;
 	}
 
 	
 	// 회원목록 전체조회
 	public List<MemDto> getAllMemList() {
-		return "";
+		return;
 	}
 	
 	// 회원 등급 수정
@@ -104,11 +103,7 @@ public class MemService {
 		MemDto mdto=new MemDto();
 		mdto.setName(updateRoleCommand.getGrade());		
 		
-		return memMapper.memUpdateRole(mdto);
-		
-		
-		
-		
+		return memMapper.memUpdateRole(mdto);		
 	}
 	
 }
