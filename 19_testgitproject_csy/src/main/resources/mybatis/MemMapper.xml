@@ -38,6 +38,10 @@
 		FROM mem
 	</select>
 	
-<!-- 	왜안되냐고~~~~ -->
+<!-- 	// 회원 등급 수정 -->
+	<update id="memUpdateRole" parameterType="memDto">
+		UPDATE mem SET GRADE=#{grade}
+		WHERE ID=#{id}
+	</update>
 </mapper>
 
