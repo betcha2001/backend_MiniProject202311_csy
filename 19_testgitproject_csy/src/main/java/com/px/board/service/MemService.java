@@ -71,7 +71,7 @@ public class MemService {
 	
 	
 	// 나의 정보 조회...이게 맞나......
-	public MemDto getmeminfo(String id) {
+	public MemDto memInfo(String id) { // MemDto인지 String인지...
 
 		//MemDto dto= memServiSce.getmemInfo(id);
 		
