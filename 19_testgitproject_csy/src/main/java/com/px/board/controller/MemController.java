@@ -133,14 +133,14 @@ public class MemController {
 	
 	// 나의 정보 조회
 	@GetMapping(value="/memInfo")
-	public String memInfo(Model model, HttpServletRequest request) {
+	public String memInfo(String id, Model model, HttpServletRequest request) {
 
 		System.out.println("memInfo 요청");
 
 		//MemDto dto= memService.getmemInfo(id);
 		// 이게 맞나......
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
+		//HttpSession session = request.getSession();
+		//String id = (String) session.getAttribute("id");
 		MemDto dto = memService.memInfo(id);	
 	    model.addAttribute("dto",dto);
 				
