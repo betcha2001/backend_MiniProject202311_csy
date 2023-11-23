@@ -17,13 +17,14 @@
 	<div id="container">
 		<h1>Reservation List</h1>
 			<table class="table">
-				<col width="50px"/>
+<!--				<col width="50px"/>-->
 				<col width="200px"/>
 				<col width="300px"/>
 				<col width="200px"/>
 				<col width="300px"/>
 				<tr>
-					<th><input type="checkbox" name="all" onclick="allSel(this.checked)"/></th>
+<!--					<th><input type="checkbox" name="all" onclick="allSel(this.checked)"/></th>-->
+					<th>ID</th>
 					<th>START DATE</th>
 					<th>END DATE</th>
 					<th>TITLE</th>
@@ -36,23 +37,25 @@
 				</th:block>
 				<th:block th:unless="${#lists.isEmpty(list)}">
 					<tr th:each="dto:${list}">
-						<td><input type="checkbox" name="number" th:value="${dto.number}"/></td>
+<!--						<td><input type="text" name="number" th:value="${dto.number}"/></td>-->
+						<td th:text="${dto.id}"></td>
 						<td th:text="${@util.toDates(dto.startdate)}"></td>
 						<td th:text="${@util.toDates(dto.enddate)}"></td>
 						<td> 
-							<a th:href="@{/schedule/calBoardDetail(number=${dto.number})}" th:text="${dto.title}"></a>
+							<a th:href="@{/schedule/calBoardDetail(id=${mdto.id})}" th:text="${dto.title}"></a>
 						</td>
+						<td th:text="${dto.category}"></td>
 					</tr>				
 				</th:block>
 				
 				<tr>
 					<td colspan="4">
-						<button type="submit" title="일정삭제" class="btn btn-default" >
-						</button>
+<!--						<button type="submit" title="일정삭제" class="btn btn-default" value="D>-->
+<!--						</button>-->
 						
 						<button type="button" title="달력보기" class="btn btn-default" 
 								th:onclick="|location.href='@{/schedule/calendar(year=${session.ymdMap.year}, month=${session.ymdMap.month})}'|">
-						</button>
+						CALENDAR</button>
 						
 					</td>
 				</tr>
