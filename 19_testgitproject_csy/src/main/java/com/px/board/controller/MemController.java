@@ -185,12 +185,12 @@ public class MemController {
 	
 	
 	// 회원목록 전체 조회
-	@GetMapping(value="/getAllMemList")
+	@GetMapping(value="/MemAllList")
 	public String getAllUserList(Model model) {
-		System.out.println("getAllMemList 요청");
+		System.out.println("MemAllList 요청");
 		
-		List<MemDto> list=memService.getAllMemList();	
-		model.addAttribute("list", list);
+		List<MemDto> mDtoList=memService.getAllMemList();	
+		model.addAttribute("list", mDtoList);
 		
 		return "user/memAllList";
 	}
