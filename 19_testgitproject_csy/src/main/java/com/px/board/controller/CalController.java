@@ -61,7 +61,7 @@ public class CalController {
       List<CalDto>clist=calService.calViewList(id, yyyyMM);
       model.addAttribute("clist",clist);
       
-      //달력만들기위한 값 구하기
+      // 달력만들기위한 값 구하기
       Map<String, Integer>map=calService.makeCalendar(request);
       model.addAttribute("calMap", map);
       
@@ -152,7 +152,7 @@ public class CalController {
          // session에 저장된 ymd 값은 목록 조회할때 추가되는 코드임
          Map<String, String>map=(Map<String, String>)session.getAttribute("ymdMap");
          
-         // 달력에서 전달받은 파라미터 year, month, date를 8자리로 만든다.
+         // 달력에서 전달받은 파라미터 year, month, date를 8자리로 만듦
          String yyyyMMdd=map.get("year")
                       +Util.isTwo(map.get("month"))
                       +Util.isTwo(map.get("date"));
@@ -221,13 +221,19 @@ public class CalController {
 	   return "redirect:/schedule/calBoardDetail?seq="+updateCalCommand.getNumber();
    }
    
-//   @ResponseBody
-//   @GetMapping(value = "/calSummaryAjax")
-//   public List<CalDto> calCountAjax(String category, String title){
-//	   //logger.info("일정개수");
-//	   // Map<String, Integer>map=new HashMap<>();
-//	   // String id="aaa";
-//	   // calService.calBoardSummary(category, title);
-//	   // return dto;
-//   }
+   @ResponseBody
+   @GetMapping(value = "/calCountAjax")
+   public Map<String, Integer> calCountAjax(String yyyyMMdd, HttpServletRequest request) {
+	   logger.info("일정개수");
+	   Map<String, Integer> map = new HashMap<>();
+	 
+	   HttpSession session = request.getSession();
+	   MemDto dto = (MemDto)session.getAttribute("mdto");
+	   String id=dto.getId(); //나중에 세션에서 가져온 아이디 사용
+	   // String id = "st";
+	   int count = calService.calBoardCount(id, yyyyMMdd);
+	   map.put("count", count);
+		
+	   return map;	
+   }
 }

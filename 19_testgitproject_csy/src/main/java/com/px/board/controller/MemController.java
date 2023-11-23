@@ -96,20 +96,45 @@ public class MemController {
 	
 	// 로그인 실행
 	@PostMapping(value = "/login")
-	public String login(@Validated LoginCommand loginCommand, BindingResult result, Model model, HttpServletRequest request
-			) {
+	public String login(@Validated LoginCommand loginCommand, 
+			BindingResult result, Model model, HttpServletRequest request) {
 		if(result.hasErrors()) {
 			System.out.println("로그인 유효값 오류");
 			return "login";
 		}
+<<<<<<< HEAD
 	
+=======
+		
+		MemDto dto = memMapper.loginUser(loginCommand.getId());
+		// MemDto ldto = memService.login(new MemDto());
+		
+		
+		if(dto == null || dto.getId() == null) {
+			model.addAttribute("msg", "회원이 아닙니다. 가입해주세요");
+			return "login";
+		}else {
+			HttpSession session = request.getSession();
+			// 회원이면 session 객체에 회원정보를 저장
+			session.setAttribute("dto", dto);
+			session.setMaxInactiveInterval(10*60);
+			
+			// 회원 등급에 따라 메인 페이지 이동
+			if(dto.getGrade().toUpperCase().equals("ADMIN")) {
+				return "cal/calendar_ADMIN";
+			}else if(dto.getGrade().toUpperCase().equals("USER")) {
+				return "cal/calendar";
+			}
+		}
+		
+>>>>>>> refs/remotes/origin/main
 		String path=memService.login(loginCommand, request, model);
 		
 		// makeCalendar 가져오기
 		Map<String, Integer>map=calServiceImp.makeCalendar(request); 
 		model.addAttribute("calMap",map);
 		
-		//clist 가져오기
+		// clist 가져오기
 //	    List<CalDto> clist = Util.getCalViewList(, clist);
 //		model.addAttribute("clist", clist);
 		  
@@ -165,7 +190,6 @@ public class MemController {
 		System.out.println("memInfo 요청");
 
 //		MemDto dto= memService.getmemInfo(id);
-		// 이게 맞나......
 //		HttpSession session = request.getSession();
 //		String  = (String) session.getAttribute("id");
 		MemDto dto = memService.getmemInfo(id, model, request);	
@@ -256,7 +280,7 @@ public class MemController {
 		
 	}
 	
-	// 회원 탈퇴하기
+	// 회원탈퇴
 	@PostMapping(value="/delMem")
 	public String delMem(@Validated DeleteUserCommand deleteUserCommand,
 			BindingResult result, Model model, HttpSession session) {
