@@ -106,7 +106,6 @@ public class MemController {
 	
 
 		
-<<<<<<< HEAD
 //		MemDto dto = memMapper.loginUser(loginCommand.getId());
 //		// MemDto ldto = memService.login(new MemDto());
 //		
