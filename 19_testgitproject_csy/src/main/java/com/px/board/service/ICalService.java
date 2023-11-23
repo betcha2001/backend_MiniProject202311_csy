@@ -17,7 +17,7 @@ public interface ICalService {
 		// 일정 추가
 	    public boolean insertCalBoard(InsertCalCommand insertCalCommand)throws Exception;
 		// 일정 목록
-		public List<CalDto> calBoardList(String id, String yyyyMMdd);
+		public List<CalDto> getcalBoardList(String id, String yyyyMMdd);
 		// 일정 상세조회
 		public CalDto calBoardDetail(int seq);
 		// 일정 수정하기

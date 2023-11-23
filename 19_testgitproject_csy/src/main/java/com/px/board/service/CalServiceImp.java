@@ -110,8 +110,8 @@ public class CalServiceImp implements ICalService {
    }
 
    @Override
-   public List<CalDto> calBoardList(String id, String yyyyMMdd) {      
-      return calMapper.calBoardList(id, yyyyMMdd);
+   public List<CalDto> getcalBoardList(String id, String yyyyMMdd) {      
+      return calMapper.getcalBoardList(id, yyyyMMdd);
    }
 
    @Override

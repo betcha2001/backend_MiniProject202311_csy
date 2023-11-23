@@ -9,8 +9,8 @@
 				#{category},#{title},#{content})
 	</insert>
 	
-	<!-- 	사용자 예약목록 -->
-	<select id="calUserBoardList" parameterType="Map"
+	<!-- 예약목록 -->
+	<select id="getcalBoardList" parameterType="Map"
 			resultType="CalDto"> 
 		SELECT startdate, enddate, title, category
 		FROM cal
@@ -19,14 +19,7 @@
 		
 	</select>
 	
-	<!-- 	관리자 예약목록 -->
-	<select id="calAdminBoardList" parameterType="Map"
-			resultType="CalDto"> 
-		SELECT id, title, startdate, enddate
-		FROM cal
-		WHERE SUBSTRING(startdate,1,8) = #{yyyyMMdd} AND SUBSTRING(enddate,1,8) = #{yyyyMMdd}
-		AND id=#{id}	
-	</select>
+
 	
 	
 	<select id="calBoardDetail" parameterType="int" 

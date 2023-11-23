@@ -77,10 +77,9 @@ public class MemService {
 		//MemDto dto= memServiSce.getmemInfo(id);
 		
 		HttpSession session = request.getSession();
-	    MemDto dto = (MemDto)session.getAttribute("id");
-	    model.addAttribute("dto",dto);
+	    MemDto dto = (MemDto)session.getAttribute("mdto");
 	    
-		return memMapper.getmemInfo(id);
+		return memMapper.getmemInfo(dto.getId());
 	}
 	
 	

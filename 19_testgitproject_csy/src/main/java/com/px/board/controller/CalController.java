@@ -111,9 +111,6 @@ public class CalController {
       MemDto dto = (MemDto)sessionn.getAttribute("mdto");
       String id=dto.getId(); //나중에 세션에서 가져온 아이디 사용
       
-      // command 유효값 처리를 위해 기본 생성해서 보내줌
-      model.addAttribute("deleteCalCommand", new DeleteCalCommand());
-      
       // 일정목록을 조회할때마다 year, month, date를 세션에 저장
       HttpSession session=request.getSession();
       
@@ -129,44 +126,12 @@ public class CalController {
       String yyyyMMdd=map.get("year")
                    +Util.isTwo(map.get("month"))
                    +Util.isTwo(map.get("date"));
-      List<CalDto> list= calService.calBoardList(id, yyyyMMdd);
+      List<CalDto> list= calService.getcalBoardList(id, yyyyMMdd);
       model.addAttribute("list", list);
       
       return "thymeleaf/cal/calBoardList";
    }
    
-   
-   @PostMapping(value = "/calMulDel")
-   public String calMulDel(@Validated DeleteCalCommand deleteCalCommand,
-                     BindingResult result,
-                     HttpServletRequest request,
-                     Model model) {
-      
-      if(result.hasErrors()) {
-         System.out.println("최소 하나 이상 체크하기");
-         
-         HttpSession session=request.getSession();
-//         String id=session.getAttribute("id");
-         String id="garden"; // 임시로 id 저장
-         
-         // session에 저장된 ymd 값은 목록 조회할때 추가되는 코드임
-         Map<String, String>map=(Map<String, String>)session.getAttribute("ymdMap");
-         
-         // 달력에서 전달받은 파라미터 year, month, date를 8자리로 만듦
-         String yyyyMMdd=map.get("year")
-                      +Util.isTwo(map.get("month"))
-                      +Util.isTwo(map.get("date"));
-         List<CalDto> list= calService.calBoardList(id, yyyyMMdd);
-         model.addAttribute("list", list);
-         return "thymeleaf/cal/calBoardList";
-      }
-      
-      Map<String,String[]>map=new HashMap<>();
-      map.put("seqs", deleteCalCommand.getNumber());
-      calService.calMulDel(map);
-      
-      return "redirect:/schedule/calBoardList";
-   }
    
    @GetMapping("/calMulDel")
    public String calDel(String[] seq) {

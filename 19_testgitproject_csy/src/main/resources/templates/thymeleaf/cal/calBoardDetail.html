@@ -168,7 +168,7 @@
 				<tr>
 					<td colspan="2">
 						<button type="submit" class="btn btn-default">Modify</button>
-						<button type="button" title="Cancel" class="btn btn-default" th:onclick="|location.href='@{/schedule/calMulDel(seq=${updateCalCommand.seq})}'|">
+						<button type="button" title="Cancel" class="btn btn-default" th:onclick="|location.href='@{/schedule/calMulDel(number=${updateCalCommand.number})}'|">
                        		<span class="glyphicon glyphicon-trash" ></span>
                   		</button>
                   		<button type="button" title="List" class="btn btn-default" th:onclick="|location.href='@{/schedule/calBoardList}'|">
