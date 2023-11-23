@@ -187,7 +187,7 @@ public class MemController {
 	// 회원목록 전체 조회
 	@GetMapping(value="/getAllMemList")
 	public String getAllUserList(Model model) {
-		System.out.println("getAllUserMem 요청");
+		System.out.println("getAllMemList 요청");
 		
 		List<MemDto> list=memService.getAllMemList();	
 		model.addAttribute("list", list);
