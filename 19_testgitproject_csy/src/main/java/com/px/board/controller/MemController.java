@@ -135,7 +135,7 @@ public class MemController {
 			session.setAttribute("dto", dto);
 			session.setMaxInactiveInterval(10*60);
 			
-			//회원 등급에 따라 메인 페이지 이동 안돼.....
+			//회원 등급에 따라 메인 페이지 이동 안돼.............
 			if(dto.getGrade().toUpperCase().equals("ADMIN")) {
 				return "cal/calendar_ADMIN";
 			}else if(dto.getGrade().toUpperCase().equals("USER")) {
