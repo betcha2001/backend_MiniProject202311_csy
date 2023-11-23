@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hk.user.dtos.UserDto;
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.DeleteUserCommand;
 import com.px.board.command.LoginCommand;
@@ -146,7 +145,7 @@ public class MemController {
 		return path;
 	}
 	
-	
+	// 로그아웃
 	@GetMapping(value = "/logout")
 	public String logout(HttpServletRequest request) {
 		System.out.println("로그아웃");
