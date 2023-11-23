@@ -102,10 +102,6 @@ public class MemController {
 			System.out.println("로그인 유효값 오류");
 			return "login";
 		}
-
-
-		
-		
 		
 		String path=memService.login(loginCommand, request, model);
 		
@@ -196,7 +192,7 @@ public class MemController {
 		List<MemDto> mDtoList=memService.getAllMemList();	
 		model.addAttribute("list", mDtoList);
 		
-		return "user/memAllList";
+		return "mem/memAllList";
 	}
 	
 	
