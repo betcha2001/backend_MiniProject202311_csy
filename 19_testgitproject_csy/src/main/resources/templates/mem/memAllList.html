@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{thymeleaf/layouts/layout}">
+     layout:decorate="~{layouts/layout}">
 <head>
 <meta charset="UTF-8">
 <title>memAllList</title>
@@ -14,7 +14,54 @@
 </head>
 <body>
 <div layout:fragment="content">
-
+<div id="container">
+	<div class="main">
+		<div class="lead">
+			<span><a href="memAllList">회원전체조회</a></span>
+		</div>	
+		
+		<div class="contents">
+			<h2>회원전체목록</h2>
+			<div id="userAllList">
+				<table class="table">
+					<tr>
+						<th>NUMBER</th>
+						<th>ID</th>
+						<th>NAME</th>
+						<th>E-MAIL</th>
+						<th>PHONE</th>
+						<th>GRADE</th>
+						<th>UNREGISTER</th>
+						<th>JOIN</th>
+					</tr>
+					
+					<c:choose>
+						<c:when test="${empty list}">
+							<tr>
+								<td colspan="8">--가입된 회원이 없습니다.--</td>							
+							</tr>						
+						</c:when>
+						
+						<c:otherwise>
+							<c:forEach items="${list}" var="dto">
+								<tr>
+									<td>${dto.seq}</td>
+									<td>${dto.id}</td>
+									<td>${dto.name}</td>
+									<td>${dto.address}</td>
+									<td>${dto.email}</td>
+									<td>${dto.role}</td>
+									<td>${dto.enabled eq "Y"?"가입중":"탈퇴"}</td>
+									<td>${dto.regDate}</td>
+								</tr>															
+							</c:forEach>							
+						</c:otherwise>
+					</c:choose>
+				</table>			
+			</div>
+		</div>
+	</div>
+</div>
 </div>
 </body>
 </html>
