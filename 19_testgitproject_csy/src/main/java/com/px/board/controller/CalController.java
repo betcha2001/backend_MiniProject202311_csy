@@ -152,7 +152,7 @@ public class CalController {
          // session에 저장된 ymd 값은 목록 조회할때 추가되는 코드임
          Map<String, String>map=(Map<String, String>)session.getAttribute("ymdMap");
          
-         // 달력에서 전달받은 파라미터 year, month, date를 8자리로 만든다.
+         // 달력에서 전달받은 파라미터 year, month, date를 8자리로 만듦
          String yyyyMMdd=map.get("year")
                       +Util.isTwo(map.get("month"))
                       +Util.isTwo(map.get("date"));
