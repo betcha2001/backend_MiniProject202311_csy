@@ -121,27 +121,29 @@ public class MemController {
 	    String yyyyMM=year+Util.isTwo(month); //202311 6자리변환
 	    List<CalDto>clist=calServiceImp.calViewList("white", yyyyMM);
 	    model.addAttribute("clist",clist);
-	    MemDto dto = new MemDto();
-		MemDto ldto = memMapper.loginUser(dto);
-		//MemDto ldto = memService.login(new MemDto());
-		
-		// user, admin 등급에 따라 페이지 이동
-		if(ldto == null || ldto.getId() == null) {
-			model.addAttribute("msg", "회원이 아닙니다. 가입해주세요");
-			return "login";
-		}else {
-			HttpSession session = request.getSession();
-			//회원이면 session 객체에 회원정보를 저장
-			session.setAttribute("ldto", ldto);
-			session.setMaxInactiveInterval(10*60);
-			
-			//회원 등급에 따라 메인 페이지 이동 왜 안돼ㅠㅠㅠㅠ
-			if(ldto.getGrade().toUpperCase().equals("ADMIN")) {
-				return "cal/calendar_ADMIN";
-			}else if(ldto.getGrade().toUpperCase().equals("USER")) {
-				return "cal/calendar";
-			}
-		}
+	    
+//	    // 등급에 따라 페이지 이동
+//	    MemDto dto = new MemDto();
+//		MemDto ldto = memMapper.loginUser(dto);
+//		//MemDto ldto = memService.login(new MemDto());
+//		
+//		// user, admin 등급에 따라 페이지 이동
+//		if(ldto == null || ldto.getId() == null) {
+//			model.addAttribute("msg", "회원이 아닙니다. 가입해주세요");
+//			return "login";
+//		}else {
+//			HttpSession session = request.getSession();
+//			//회원이면 session 객체에 회원정보를 저장
+//			session.setAttribute("ldto", ldto);
+//			session.setMaxInactiveInterval(10*60);
+//			
+//			//회원 등급에 따라 메인 페이지 이동 왜 안돼ㅠㅠㅠㅠ
+//			if(ldto.getGrade().toUpperCase().equals("ADMIN")) {
+//				return "cal/calendar_ADMIN";
+//			}else if(ldto.getGrade().toUpperCase().equals("USER")) {
+//				return "cal/calendar";
+//			}
+//		}
 		
 		
 		return path;
