@@ -102,27 +102,7 @@ public class MemController {
 			System.out.println("로그인 유효값 오류");
 			return "login";
 		}
-		MemDto dto = memMapper.loginUser(loginCommand.getId());
-		//MemDto ldto = memService.login(new MemDto());
-		
-		
-		if(dto == null || dto.getId() == null) {
-			model.addAttribute("msg", "회원이 아닙니다. 가입해주세요");
-			return "login";
-		}else {
-			HttpSession session = request.getSession();
-			//회원이면 session 객체에 회원정보를 저장
-			session.setAttribute("dto", dto);
-			session.setMaxInactiveInterval(10*60);
-			
-			//회원 등급에 따라 메인 페이지 이동
-			if(dto.getGrade().toUpperCase().equals("ADMIN")) {
-				return "cal/calendar_ADMIN";
-			}else if(dto.getGrade().toUpperCase().equals("USER")) {
-				return "cal/calendar";
-			}
-		}
-		
+	
 		String path=memService.login(loginCommand, request, model);
 		
 		// makeCalendar 가져오기
@@ -141,6 +121,28 @@ public class MemController {
 	    String yyyyMM=year+Util.isTwo(month); //202311 6자리변환
 	    List<CalDto>clist=calServiceImp.calViewList("white", yyyyMM);
 	    model.addAttribute("clist",clist);
+	    
+		MemDto dto = memMapper.loginUser(loginCommand.getId());
+		//MemDto ldto = memService.login(new MemDto());
+		
+		// user, admin 등급에 따라 페이지 이동
+		if(dto == null || dto.getId() == null) {
+			model.addAttribute("msg", "회원이 아닙니다. 가입해주세요");
+			return "login";
+		}else {
+			HttpSession session = request.getSession();
+			//회원이면 session 객체에 회원정보를 저장
+			session.setAttribute("dto", dto);
+			session.setMaxInactiveInterval(10*60);
+			
+			//회원 등급에 따라 메인 페이지 이동
+			if(dto.getGrade().toUpperCase().equals("ADMIN")) {
+				return "cal/calendar_ADMIN";
+			}else if(dto.getGrade().toUpperCase().equals("USER")) {
+				return "cal/calendar";
+			}
+		}
+		
 		
 		return path;
 	}
