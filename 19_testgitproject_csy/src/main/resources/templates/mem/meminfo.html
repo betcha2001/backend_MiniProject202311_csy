@@ -21,7 +21,7 @@
 <div layout:fragment="content">
 <div id="container">
 	<h1>MY PAGE</h1>
-	<form onsubmit="return submitChk()" th:action="@{/user/getmemInfo}"
+	<form onsubmit="return submitChk()" th:action="@{/user/memInfo}"
 		  method="post" th:object="${addUserCommand}">
 		<table class="table">	
 			<tr>
