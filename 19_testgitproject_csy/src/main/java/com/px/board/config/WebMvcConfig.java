@@ -16,6 +16,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.addPathPatterns("/**") // 전체 요청에 대해 적용
 				.excludePathPatterns("/error", "/board/**", "/", 
 									 "/user/**", "/css/**", "/js/**", "img/**"); // 제외시킴
+=======
+				.excludePathPatterns("/error", "/board/**", "/", 
+
+									 "/user/**", "/css/**", "/js/**", "/img/**"); // 제외시킴
+
+>>>>>>> branch 'main' of https://github.com/betcha2001/test_backend20231110_csy.git
 		
 	}
 
