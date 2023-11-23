@@ -96,14 +96,15 @@ public class MemController {
 	
 	// 로그인 실행
 	@PostMapping(value = "/login")
-	public String login(@Validated LoginCommand loginCommand, BindingResult result, Model model, HttpServletRequest request
-			) {
+	public String login(@Validated LoginCommand loginCommand, 
+			BindingResult result, Model model, HttpServletRequest request) {
 		if(result.hasErrors()) {
 			System.out.println("로그인 유효값 오류");
 			return "login";
 		}
+		
 		MemDto dto = memMapper.loginUser(loginCommand.getId());
-		//MemDto ldto = memService.login(new MemDto());
+		// MemDto ldto = memService.login(new MemDto());
 		
 		
 		if(dto == null || dto.getId() == null) {
