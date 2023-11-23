@@ -252,7 +252,7 @@ public class MemController {
 		
 	}
 	
-	// 회원 탈퇴하기
+	// 회원탈퇴
 	@PostMapping(value="/delMem")
 	public String delMem(@Validated DeleteUserCommand deleteUserCommand,
 			BindingResult result, Model model, HttpSession session) {
