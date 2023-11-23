@@ -19,12 +19,11 @@
 <div id="container">
 <!--사용자 나의 정보 조회 페이지-->
 	<h1>MY PAGE</h1>
-	<form onsubmit="return submitChk()" th:action="@{/user/memInfo}"
-		  method="post">
+	<form onsubmit="return submitChk()" method="post">
 		<table class="table">	
 			<tr>
 				<th>NAME</th>
-				<td><input th:value="${dto.name}" type="text" 
+				<td><input th:value="${mdto.name}" type="text" 
 						   class="form-control" name="name"/>
 
 				</td>
@@ -34,7 +33,7 @@
 				<th>ID</th>
 				<td>
 <!--				세션 받아오는 걸 위해 th:value로 바꿨는데 맞나 모르겠다......-->
-					<input th:value="${dto.id}" type="text" 
+					<input th:value="${mdto.id}" type="text" 
 						   class="form-control" name="id" />
 					
 				</td>
@@ -45,7 +44,7 @@
 			
 			<tr>
 				<th>PHONE</th>
-				<td><input th:value="${dto.phone}" type="text" 
+				<td><input th:value="${mdto.phone}" type="text" 
 						   class="form-control" name="phone"/>
 					
 				</td>
@@ -53,7 +52,7 @@
 			
 			<tr>
 				<th>E-MAIL</th>
-				<td><input th:value="${dto.email}" type="email" 
+				<td><input th:value="${mdto.email}" type="email" 
 						   class="form-control" name="email"/>
 					
 				</td>

@@ -71,15 +71,13 @@ public class MemService {
 	}
 	
 	
-	// 나의 정보 조회...이게 맞나......
+	// 나의 정보 조회
 	public MemDto getmemInfo(String id, Model model, HttpServletRequest request) { // MemDto인지 String인지...
-
-		//MemDto dto= memServiSce.getmemInfo(id);
 		
 		HttpSession session = request.getSession();
-	    MemDto dto = (MemDto)session.getAttribute("mdto");
+	    MemDto mdto = (MemDto)session.getAttribute("mdto");
 	    
-		return memMapper.getmemInfo(dto.getId());
+		return memMapper.getmemInfo(mdto.getId());
 	}
 	
 	

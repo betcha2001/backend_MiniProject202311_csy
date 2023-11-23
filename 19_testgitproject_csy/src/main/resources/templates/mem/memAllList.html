@@ -17,7 +17,62 @@
 <!--관리자 회원 전체 조회 페이지-->
 <div id="container">
 <table class="table">
-
+<div class="main">
+        <div class="contents">
+            <h1>Member List</h1>
+            
+            <div id="memAllList">
+                 <table class="table">
+                     <tr>
+						<th>NUMBER</th>
+    					<th>ID</th>
+    					<th>NAME</th>
+    					<th>E-MAIL</th>
+    					<th>PHONE</th>
+   					    <th>GRADE</th>
+    					<th>UNREGISTER</th>
+    					<th>JOIN</th>
+					</tr>
+                     <th:block>
+                         <th:if test="${empty list}">
+                             <tr>
+                                 <td colspan="8">--가입된 회원이 없습니다.--</td>
+                             </tr>
+                         </th:if>
+                         <th:unless>
+                             <tr th:each items="${list}" var="dto">
+                                 <tr>
+                                     <td>
+                                     <input type="text" name="number" th:value="${dto.number}"
+                                     </td>
+                                     <td>
+                                     <input type="text" name="id" th:value="${dto.id}"
+                                     </td>
+                                     <td>
+                                     <input type="text" name="email" th:value="${dto.email}"
+                                     </td>
+                                     <td>
+                                     <input type="text" name="phone" th:value="${dto.phone}"
+                                     </td>
+                                     <td>
+                                     <input type="text" name="grade" th:value="${dto.grade}"
+                                     </td>
+                                     <td>
+                                     <input type="text" name="unregister" th:value="${dto.unregister}"
+                                     </td>
+                                     <td>
+                                     <input type="text" name="join" th:value="${dto.join}"
+                                     </td>
+                                     
+<!--                                     <td>${dto.unregister eq "Y"?"가입중":"탈퇴"}</td>-->
+                                 </tr>
+                             </tr>
+                         </th:unless>
+                     </th:block>
+                 </table>
+            </div>
+        </div>
+    </div>
 </table>
 </div>
 </body>

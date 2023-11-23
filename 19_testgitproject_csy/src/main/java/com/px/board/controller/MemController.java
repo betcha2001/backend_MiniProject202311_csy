@@ -103,52 +103,9 @@ public class MemController {
 			return "login";
 		}
 
-	
 
 		
-//		MemDto dto = memMapper.loginUser(loginCommand.getId());
-//		// MemDto ldto = memService.login(new MemDto());
-//		
-//		
-//		if(dto == null || dto.getId() == null) {
-//			model.addAttribute("msg", "회원이 아닙니다. 가입해주세요");
-//			return "login";
-//		}else {
-//			HttpSession session = request.getSession();
-//			// 회원이면 session 객체에 회원정보를 저장
-//			session.setAttribute("dto", dto);
-//			session.setMaxInactiveInterval(10*60);
-//			
-//			// 회원 등급에 따라 메인 페이지 이동
-//			if(dto.getGrade().toUpperCase().equals("ADMIN")) {
-//				return "cal/calendar_ADMIN";
-//			}else if(dto.getGrade().toUpperCase().equals("USER")) {
-//				return "cal/calendar";
-//			}
-//		}
-
 		
-
-		MemDto dto = memMapper.loginUser(loginCommand.getId());
-		// MemDto ldto = memService.login(new MemDto());
-		
-		
-		if(dto == null || dto.getId() == null) {
-			model.addAttribute("msg", "회원이 아닙니다. 가입해주세요");
-			return "login";
-		}else {
-			HttpSession session = request.getSession();
-			// 회원이면 session 객체에 회원정보를 저장
-			session.setAttribute("dto", dto);
-			session.setMaxInactiveInterval(10*60);
-			
-			// 회원 등급에 따라 메인 페이지 이동
-			if(dto.getGrade().toUpperCase().equals("ADMIN")) {
-				return "cal/calendar_ADMIN";
-			}else if(dto.getGrade().toUpperCase().equals("USER")) {
-				return "cal/calendar";
-			}
-		}
 		
 		String path=memService.login(loginCommand, request, model);
 		
@@ -188,11 +145,8 @@ public class MemController {
 
 		System.out.println("memInfo 요청");
 
-//		MemDto dto= memService.getmemInfo(id);
-//		HttpSession session = request.getSession();
-//		String  = (String) session.getAttribute("id");
-		MemDto dto = memService.getmemInfo(id, model, request);	
-	    model.addAttribute("dto",dto);
+		MemDto mdto = memService.getmemInfo(id, model, request);	
+	    model.addAttribute("mdto",mdto);
 				
 		return "mem/meminfo";
 		
