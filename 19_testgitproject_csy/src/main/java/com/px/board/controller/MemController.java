@@ -48,8 +48,8 @@ public class MemController {
 	public String addUserForm(Model model) {
 		System.out.println("회원가입폼 이동");
 		
-		//회원가입폼에서 addUserCommand객체를 사용하는 코드가 작성되어 있어서
-		//null일 경우 오류가 발생하기 때문에 보내줘야 함
+		// 회원가입폼에서 addUserCommand객체를 사용하는 코드가 작성되어 있어서
+		// null일 경우 오류가 발생하기 때문에 보내줘야 함
 		model.addAttribute("addUserCommand", new AddUserCommand());
 		
 		return "mem/addUserForm";
