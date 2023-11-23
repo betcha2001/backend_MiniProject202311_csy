@@ -20,7 +20,7 @@
 	</select>
 	
 <!-- 	// 나의 정보 조회 -->
-	<select id="getmemInfo" parameterType="String" resultType="memDto">
+	<select id="memInfo" parameterType="String" resultType="memDto">
 		SELECT NAME, id, PASSWORD, phone, email
 		FROM mem
 	</select>

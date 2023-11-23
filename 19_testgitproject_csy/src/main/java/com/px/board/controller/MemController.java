@@ -132,16 +132,16 @@ public class MemController {
 	
 	
 	// 나의 정보 조회
-	@GetMapping(value="/getmemInfo")
-	public String getmemInfo(String id, Model model, HttpServletRequest request) {
+	@GetMapping(value="/memInfo")
+	public String memInfo(String id, Model model, HttpServletRequest request) {
 
-		System.out.println("getmemInfo 요청");
+		System.out.println("memInfo 요청");
 
-		//MemDto dto= memService.getmemInfo(id);
+//		MemDto dto= memService.getmemInfo(id);
 		// 이게 맞나......
-		//HttpSession session = request.getSession();
-		//String id = (String) session.getAttribute("id");
-		MemDto dto = memService.getmemInfo(id);	
+//		HttpSession session = request.getSession();
+//		String  = (String) session.getAttribute("id");
+		MemDto dto = memService.getmemInfo(id, model, request);	
 	    model.addAttribute("dto",dto);
 				
 		return "mem/meminfo";
