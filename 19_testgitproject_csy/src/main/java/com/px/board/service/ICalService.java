@@ -29,5 +29,5 @@ public interface ICalService {
 		// 하루에 일정이 몇 개 있는지 보여주기
 		public int calBoardCount(String id, String yyyyMMdd);
 		// 일일의 카테고리,제목 보여주기
-		public List<CalDto> calBoardSummary(String category, String title);
+		// public List<CalDto> calBoardSummary(String category, String title);
 }
