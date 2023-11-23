@@ -102,9 +102,9 @@ public class MemController {
 			System.out.println("로그인 유효값 오류");
 			return "login";
 		}
-<<<<<<< HEAD
+
 	
-=======
+
 		
 		MemDto dto = memMapper.loginUser(loginCommand.getId());
 		// MemDto ldto = memService.login(new MemDto());
@@ -127,7 +127,6 @@ public class MemController {
 			}
 		}
 		
->>>>>>> refs/remotes/origin/main
 		String path=memService.login(loginCommand, request, model);
 		
 		// makeCalendar 가져오기
