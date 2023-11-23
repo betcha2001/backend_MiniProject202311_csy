@@ -1,5 +1,6 @@
 package com.px.board.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,8 +100,12 @@ public class MemService {
 	
 	// 회원목록 전체조회......이게 맞나......
 	public List<MemDto> getAllMemList() {		
-		List<MemDto> list = memMapper.getAllMemList();
-		return memMapper.getAllMemList();
+		List<MemDto> mList = memMapper.getAllMemList();
+		List<MemDto> mDtoList = new ArrayList<>();
+		for (MemDto memDto : mList) {
+			mDtoList.add(memDto);
+		}
+		return mDtoList;
 	}
 	
 	
