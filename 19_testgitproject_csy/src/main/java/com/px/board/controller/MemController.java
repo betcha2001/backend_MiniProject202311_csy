@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hk.user.dtos.UserDto;
 import com.px.board.command.AddUserCommand;
 import com.px.board.command.DeleteUserCommand;
 import com.px.board.command.LoginCommand;
@@ -24,6 +25,7 @@ import com.px.board.command.UpdateRoleCommand;
 import com.px.board.command.UpdateUserCommand;
 import com.px.board.dtos.CalDto;
 import com.px.board.dtos.MemDto;
+import com.px.board.mapper.MemMapper;
 import com.px.board.service.CalServiceImp;
 import com.px.board.service.ICalService;
 import com.px.board.service.MemService;
@@ -40,7 +42,8 @@ public class MemController {
 	private MemService memService;
 	@Autowired
 	private CalServiceImp calServiceImp;
-	
+	@Autowired
+	private MemMapper memMapper;
 	
 	@GetMapping(value = "/addUser")
 	public String addUserForm(Model model) {
@@ -94,10 +97,31 @@ public class MemController {
 	
 	// 로그인 실행
 	@PostMapping(value = "/login")
-	public String login(@Validated LoginCommand loginCommand, BindingResult result, Model model, HttpServletRequest request) {
+	public String login(@Validated LoginCommand loginCommand, BindingResult result, Model model, HttpServletRequest request
+			) {
 		if(result.hasErrors()) {
 			System.out.println("로그인 유효값 오류");
 			return "login";
+		}
+		MemDto dto = memMapper.loginUser(loginCommand.getId());
+		//MemDto ldto = memService.login(new MemDto());
+		
+		
+		if(dto == null || dto.getId() == null) {
+			model.addAttribute("msg", "회원이 아닙니다. 가입해주세요");
+			return "login";
+		}else {
+			HttpSession session = request.getSession();
+			//회원이면 session 객체에 회원정보를 저장
+			session.setAttribute("dto", dto);
+			session.setMaxInactiveInterval(10*60);
+			
+			//회원 등급에 따라 메인 페이지 이동
+			if(dto.getGrade().toUpperCase().equals("ADMIN")) {
+				return "cal/calendar_ADMIN";
+			}else if(dto.getGrade().toUpperCase().equals("USER")) {
+				return "cal/calendar";
+			}
 		}
 		
 		String path=memService.login(loginCommand, request, model);

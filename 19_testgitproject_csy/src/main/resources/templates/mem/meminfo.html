@@ -20,6 +20,7 @@
 <body>
 <div layout:fragment="content">
 <div id="container">
+<!--사용자 나의 정보 조회 페이지-->
 	<h1>MY PAGE</h1>
 	<form onsubmit="return submitChk()" th:action="@{/user/memInfo}"
 		  method="post" th:object="${addUserCommand}">

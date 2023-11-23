@@ -4,7 +4,7 @@
      layout:decorate="~{thymeleaf/layouts/layout}">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>updateMemForm</title>
 <script type="text/javascript">
 
 </script>
@@ -14,7 +14,69 @@
 </head>
 <body>
 <div layout:fragment="content">
-
+<!--사용자 마이페이지에서 정보 수정하는 페이지-->
+<h1>MY PAGE</h1>
+	<form onsubmit="return submitChk()" th:action="@{/user/memInfo}"
+		  method="post" th:object="${addUserCommand}">
+		<table class="table">	
+			<tr>
+				<th>NAME</th>
+				<td><input th:field="*{name}" type="text" 
+						   class="form-control" name="name"/>
+					<span th:if="${#fields.hasErrors('name')}"
+						  th:errors="*{name}"></span>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>ID</th>
+				<td>
+<!--				세션 받아오는 걸 위해 th:value로 바꿨는데 맞나 모르겠다......-->
+					<input th:value="${session.dto.id}" type="text" 
+						   class="form-control" name="id" />
+					<span id="idChk" class="n" ></span>
+					<span th:if="${#fields.hasErrors('id')}"
+						  th:errors="*{id}"></span>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>PASSWORD</th>
+				<td><input th:field="*{password}" type="password" 
+						   class="form-control" name="password"/>
+					<span th:if="${#fields.hasErrors('password')}"
+						  th:errors="*{password}"></span>
+				</td>
+			</tr>
+			
+			
+			<tr>
+				<th>PHONE</th>
+				<td><input th:field="*{phone}" type="text" 
+						   class="form-control" name="phone"/>
+					<span th:if="${#fields.hasErrors('phone')}"
+						  th:errors="*{phone}"></span>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>E-MAIL</th>
+				<td><input th:field="*{email}" type="email" 
+						   class="form-control" name="email"/>
+					<span th:if="${#fields.hasErrors('email')}"
+						  th:errors="*{email}"></span>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="Modify" class="btn" />
+				</td>
+			</tr>
+			
+			
+		</table>
+	</form>
 </div>
 </body>
 </html>
