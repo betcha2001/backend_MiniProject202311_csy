@@ -130,7 +130,7 @@ public class MemController {
 		Map<String, Integer>map=calServiceImp.makeCalendar(request); 
 		model.addAttribute("calMap",map);
 		
-		//clist 가져오기
+		// clist 가져오기
 //	    List<CalDto> clist = Util.getCalViewList(, clist);
 //		model.addAttribute("clist", clist);
 		  
@@ -162,7 +162,6 @@ public class MemController {
 		System.out.println("memInfo 요청");
 
 //		MemDto dto= memService.getmemInfo(id);
-		// 이게 맞나......
 //		HttpSession session = request.getSession();
 //		String  = (String) session.getAttribute("id");
 		MemDto dto = memService.getmemInfo(id, model, request);	
