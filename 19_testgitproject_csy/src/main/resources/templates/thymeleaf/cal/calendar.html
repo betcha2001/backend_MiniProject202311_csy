@@ -37,6 +37,10 @@
    		 text-align: center;
    		 font-weight: bold; }
    
+   .choice{
+   		text-align: right;
+		padding: 10px;
+   }
 </style>
 <script type="text/javascript">
 
@@ -80,6 +84,24 @@
 <div layout:fragment="content">
    <div id="container"> 
       <h1>CALENDAR</h1>
+      
+      <div class="choice">
+      	<div id="cho">
+      <th:block th:if="${session.mdto.grade == 'ADMIN'}">
+      		<span><a th:href="@{/mem/memAllList}">Member List</a></span>
+<!--			<button type="button" title="Member List" class="btn btn-default" -->
+<!--			th:onclick="|location.href='@{/mem/memAllList}'|">         -->
+<!--            </button>-->
+<!--	  </th:block>-->
+<!--	  <th:block th:unless="${session.mdto.grade == 'USER'}">-->
+<!--	  		<span><a th:href="@{/mem/meminfo}">My Page</a></span>-->
+<!--			<button type="button" title="My Page" class="btn btn-default" -->
+<!--			th:onclick="|location.href='@{/mem/meminfo}'|">         -->
+<!--            </button>-->
+<!--	  </th:block>-->
+	  	</div>
+      </div>
+      
       <div class="cal">
          <div id="ctitle">
             <a th:href="@{/schedule/calendar(year=${calMap.year-1},
