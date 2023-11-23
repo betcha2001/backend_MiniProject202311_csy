@@ -122,7 +122,7 @@ public class MemController {
 	    List<CalDto>clist=calServiceImp.calViewList("white", yyyyMM);
 	    model.addAttribute("clist",clist);
 	    
-//	    // 등급에 따라 페이지 이동
+//	    // 등급에 따라 페이지 이동 왜 안되는거지?
 //	    MemDto dto = new MemDto();
 //		MemDto ldto = memMapper.loginUser(dto);
 //		//MemDto ldto = memService.login(new MemDto());
