@@ -14,34 +14,33 @@
 </head>
 <body>
 <div layout:fragment="content">
-			<h2>Change Role</h2>
+			<h2>Change Grade</h2>
 			<div id="userAllList">
 				<form action="userUpdateRole" method="post">
 					<input type="hidden" name="id" value="${dto.id}" />
 					<table class="table">
 						<tr>
-							<th>아이디</th>
-							<td>${dto.id}</td>						
+							<th>ID</th>
+							<td>
+							<input th:value="${session.dto.id}" type="text" class="form-control" name="id" />
+							</td>			
 						</tr>
 						<tr>
-							<th>이름</th>
-							<td>${dto.name}</td>						
+							<th>NAME</th>
+							<td><input th:field="*{name}" type="text" class="form-control" name="name"/></td>						
 						</tr>
 						<tr>
-							<th>등급</th>
-							
-							
+							<th>GRADE</th>
 							<td>
 								<select name="role">
-									<option value="ADMIN"   ${dto.role eq "ADMIN" ? "selected": ""}>관리자</option>
-									<option value="MANAGER" ${dto.role eq "MANAGER" ? "selected": ""}>정회원</option>
-									<option value="USER"    ${dto.role eq "USER" ? "selected": ""}>일반회원</option>								
+									<option value="ADMIN"   ${session.dto.grade eq "ADMIN" ? "selected": ""}>관리자</option>
+									<option value="USER"    ${session.dto.grade "USER" ? "selected": ""}>일반회원</option>								
 								</select>
 							</td>						
 						</tr>
 						<tr>
 							<td colspan="2">
-								<button type="submit">수정</button>
+								<button type="submit">MODIFY</button>
 							</td>						
 						</tr>
 					</table>	
