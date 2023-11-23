@@ -74,7 +74,7 @@ public class CalController {
       logger.info("일정추가폼이동");
       System.out.println(insertCalCommand);
       
-      //addCalBoardfForm 페이지에서 유효값 처리를 위해 
+      // addCalBoardfForm 페이지에서 유효값 처리를 위해 
       // insertCalCommand 받고 있기 때문에 보내줘야 해!
       model.addAttribute("insertCalCommand", insertCalCommand);
       return "thymeleaf/cal/addCalBoardForm";
