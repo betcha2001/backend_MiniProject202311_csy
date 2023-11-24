@@ -156,19 +156,6 @@ public class MemController {
 	}
 	
 	
-	// 나의 정보 수정폼으로 이동
-	@GetMapping(value = "/updateMem")
-	public String updateMemForm(Model model) {
-		System.out.println("나의정보수정폼 이동");
-		
-		//회원가입폼에서 addUserCommand객체를 사용하는 코드가 작성되어 있어서
-		//null일 경우 오류가 발생하기 때문에 보내줘야 함
-		model.addAttribute("updateUserCommand", new UpdateUserCommand());
-		
-		return "mem/updateMemForm";
-	}
-	
-	
 	// 나의 정보 수정
 	@PostMapping(value="/updateMem")
 	public String updateMem(@Validated UpdateUserCommand updateUserCommand,
@@ -182,11 +169,11 @@ public class MemController {
 		try {
 			memService.updateMem(updateUserCommand);
 			System.out.println("나의 정보 수정 성공");
-			return "redirect:/";
+			return "redirect:/updateMem";
 		} catch (Exception e) {
 			System.out.println("나의 정보 수정 실패");
 			e.printStackTrace();
-			return "redirect:updateMem";
+			return "error";
 		}		
 	}
 	
