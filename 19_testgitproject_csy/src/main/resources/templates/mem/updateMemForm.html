@@ -17,14 +17,12 @@
 <!--사용자 마이페이지에서 정보 수정하는 페이지-->
 <h1>MY PAGE</h1>
 	<form onsubmit="return submitChk()" th:action="@{/user/memInfo}"
-		  method="post" th:object="${addUserCommand}">
+		  method="post" th:object="${updateUserCommand}">
 		<table class="table">	
 			<tr>
 				<th>NAME</th>
-				<td><input th:field="*{name}" type="text" 
-						   class="form-control" name="name"/>
-					<span th:if="${#fields.hasErrors('name')}"
-						  th:errors="*{name}"></span>
+				<td><input th:value="${mdto.name}" type="text" 
+						   class="form-control" name="name"/>			
 				</td>
 			</tr>
 			
@@ -32,20 +30,16 @@
 				<th>ID</th>
 				<td>
 <!--				세션 받아오는 걸 위해 th:value로 바꿨는데 맞나 모르겠다......-->
-					<input th:value="${session.dto.id}" type="text" 
+					<input th:value="${mdto.id}" type="text" 
 						   class="form-control" name="id" />
-					<span id="idChk" class="n" ></span>
-					<span th:if="${#fields.hasErrors('id')}"
-						  th:errors="*{id}"></span>
+					<span id="idChk" class="n" ></span>				
 				</td>
 			</tr>
 			
 			<tr>
 				<th>PASSWORD</th>
-				<td><input th:field="*{password}" type="password" 
-						   class="form-control" name="password"/>
-					<span th:if="${#fields.hasErrors('password')}"
-						  th:errors="*{password}"></span>
+				<td><input th:value="${mdto.id}"type="password" 
+						   class="form-control" name="password"/>					
 				</td>
 			</tr>
 			
@@ -53,18 +47,14 @@
 			<tr>
 				<th>PHONE</th>
 				<td><input th:field="*{phone}" type="text" 
-						   class="form-control" name="phone"/>
-					<span th:if="${#fields.hasErrors('phone')}"
-						  th:errors="*{phone}"></span>
+						   class="form-control" name="phone"/>					
 				</td>
 			</tr>
 			
 			<tr>
 				<th>E-MAIL</th>
 				<td><input th:field="*{email}" type="email" 
-						   class="form-control" name="email"/>
-					<span th:if="${#fields.hasErrors('email')}"
-						  th:errors="*{email}"></span>
+						   class="form-control" name="email"/>				
 				</td>
 			</tr>
 			
