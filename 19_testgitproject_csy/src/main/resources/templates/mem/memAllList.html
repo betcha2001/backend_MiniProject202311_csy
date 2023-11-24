@@ -39,35 +39,35 @@
                              </tr>
                          </th:if>
                          <th:unless>
-                             <tr th:each="dto:${list}">
+                             <tr th:each="mdto:${mDtoList}">
                                  <tr>
                                      <td>
                                      	<input type="text" name="number" 
-                                     		   th:value="${dto.number}"
+                                     		   th:value="${mdto.number}"
                                      </td>
                                      <td>
                                      	<input type="text" name="id" 
-                                     	       th:value="${dto.id}"
+                                     	       th:value="${mdto.id}"
                                      </td>
                                      <td>
                                      	<input type="text" name="email" 
-                                     	       th:value="${dto.email}"
+                                     	       th:value="${mdto.email}"
                                      </td>
                                      <td>
                                      	<input type="text" name="phone" 
-                                     		   th:value="${dto.phone}"
+                                     		   th:value="${mdto.phone}"
                                      </td>
                                      <td>
                                      	<input type="text" name="grade" 
-                                     		   th:value="${dto.grade}"
+                                     		   th:value="${mdto.grade}"
                                      </td>
                                      <td>
                                      	<input type="text" name="unregister" 
-                                     		   th:value="${dto.unregister}"
+                                     		   th:value="${mdto.unregister}"
                                      </td>
                                      <td>
                                      	<input type="text" name="join" 
-                                     		   th:value="${dto.join}"
+                                     		   th:value="${mdto.join}"
                                      </td>
                                      
 <!--                                     <td>${dto.unregister eq "Y"?"가입중":"탈퇴"}</td>-->
