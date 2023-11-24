@@ -153,10 +153,8 @@ public class CalController {
 	   
 	   //dto -> command
 	   updateCalCommand.setNumber(dto.getNumber());
-	   updateCalCommand.setId(dto.getId());
-	   updateCalCommand.setTitle(dto.getTitle());
-	   updateCalCommand.setContent(dto.getContent());
 	   
+	   updateCalCommand.setId(dto.getId());
 	   updateCalCommand.setYears(Integer.parseInt(dto.getStartdate().substring(0,4)));
 	   updateCalCommand.setMonths(Integer.parseInt(dto.getStartdate().substring(4,6)));
 	   updateCalCommand.setDates(Integer.parseInt(dto.getStartdate().substring(6,8)));
@@ -169,6 +167,9 @@ public class CalController {
 	   updateCalCommand.setHour(Integer.parseInt(dto.getEnddate().substring(8,10)));
 	   updateCalCommand.setMin(Integer.parseInt(dto.getEnddate().substring(10)));
 	   
+	   updateCalCommand.setCategory(dto.getCategory());
+	   updateCalCommand.setTitle(dto.getTitle());
+	   updateCalCommand.setContent(dto.getContent());
 	   model.addAttribute("updateCalCommand",updateCalCommand);
 	   
 	   return "thymeleaf/cal/calBoardDetail";

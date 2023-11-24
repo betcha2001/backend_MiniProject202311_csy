@@ -40,7 +40,7 @@
 <!--						<td><input type="text" name="number" th:value="${dto.number}"/></td>-->
 						<td th:text="${dto.id}"></td>
 						<td> 
-							<a th:href="@{/schedule/calBoardDetail(id=${dto.id})}" th:text="${dto.title}"></a>
+							<a th:href="@{/schedule/calBoardDetail(number=${dto.number})}" th:text="${dto.title}"></a>
 						</td>
 						<td th:text="${dto.startdate}"></td>
 						<td th:text="${dto.enddate}"></td>
