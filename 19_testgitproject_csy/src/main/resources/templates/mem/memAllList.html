@@ -36,19 +36,18 @@
 					</tr>
 				 </thead>
 				 <tbody>
-                     <th:block>
-                         <th:if="${not #lists.isEmpty(mdto}" th:each="list:${mdto}">
+                         <th:if="${not #lists.isEmpty{mdto}" th:each="list:${mdto}">
                              <td th:text="${list.number}"></td>
                              <td th:text="${list.id}"></td>
+                             <td th:text="${list.name}"></td>
                              <td th:text="${list.email}"></td>
                              <td th:text="${list.phone}"></td>
                              <td th:text="${list.grade}"></td>
                              <td th:text="${list.unregister}"></td>
                              <td th:text="${list.regdate}"></td>
+                          
                          <th:unless="${not #lists.isEmpty(mdto}">
                              <td colsapne="8">등록된 회원의 정보가 없습니다.</td>
-                         </th:unless>
-                     </th:block>
                   </tbody>
                  </table>
                  </th:block>
