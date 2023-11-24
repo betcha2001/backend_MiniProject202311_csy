@@ -25,9 +25,9 @@
 				<tr>
 <!--					<th><input type="checkbox" name="all" onclick="allSel(this.checked)"/></th>-->
 					<th>ID</th>
+					<th>TITLE</th>
 					<th>START DATE</th>
 					<th>END DATE</th>
-					<th>TITLE</th>
 					<th>CATEGORY</th>
 				</tr>
 				<th:block th:if="${#lists.isEmpty(list)}">
@@ -39,11 +39,13 @@
 					<tr th:each="dto:${list}">
 <!--						<td><input type="text" name="number" th:value="${dto.number}"/></td>-->
 						<td th:text="${dto.id}"></td>
-						<td th:text="${@util.toDates(dto.startdate)}"></td>
-						<td th:text="${@util.toDates(dto.enddate)}"></td>
 						<td> 
-							<a th:href="@{/schedule/calBoardDetail(id=${mdto.id})}" th:text="${dto.title}"></a>
+							<a th:href="@{/schedule/calBoardDetail(id=${dto.id})}" th:text="${dto.title}"></a>
 						</td>
+						<td th:text="${dto.startdate}"></td>
+						<td th:text="${dto.enddate}"></td>
+<!--						<td th:text="${@util.toDates(dto.startdate)}"></td>-->
+<!--						<td th:text="${@util.toDate(dto.enddate)}"></td>-->
 						<td th:text="${dto.category}"></td>
 					</tr>				
 				</th:block>

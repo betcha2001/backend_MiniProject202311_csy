@@ -10,13 +10,10 @@
 	</insert>
 	
 	<!-- 예약목록 -->
-	<select id="getcalBoardList" parameterType="Map"
-			resultType="CalDto"> 
-		SELECT startdate, enddate, title, category
-		FROM cal
-		WHERE SUBSTRING(startdate,1,8) = #{yyyyMMdd} AND SUBSTRING(enddate,1,8) = #{yyyyMMdd}
-		AND id=#{id}
-		
+	<select id="getcalBoardList" parameterType="Map" resultType="CalDto"> 
+			SELECT id, startdate, enddate, title, category
+			FROM cal
+			WHERE #{yyyyMMdd} BETWEEN SUBSTRING(startdate,1,8) AND SUBSTRING(enddate,1,8) 
 	</select>
 	
 	<select id="calBoardDetail" parameterType="int" 
