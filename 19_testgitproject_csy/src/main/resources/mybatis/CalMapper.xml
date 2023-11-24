@@ -11,12 +11,12 @@
 	
 	<!-- 예약목록 -->
 	<select id="getcalBoardList" parameterType="Map" resultType="CalDto"> 
-			SELECT id, startdate, enddate, title, category
+			SELECT number,id, startdate, enddate, title, category
 			FROM cal
 			WHERE #{yyyyMMdd} BETWEEN SUBSTRING(startdate,1,8) AND SUBSTRING(enddate,1,8) 
 	</select>
 	
-	<select id="getcalBoardDetail" parameterType="int" resultType="CalDto">
+	<select id="calBoardDetail" parameterType="int" resultType="CalDto">
 		SELECT id, startdate, enddate, category, title, content
 		FROM cal
 		WHERE number=#{number}

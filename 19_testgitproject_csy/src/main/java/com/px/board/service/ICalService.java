@@ -19,7 +19,7 @@ public interface ICalService {
 		// 일정 목록
 		public List<CalDto> getcalBoardList(String id, String yyyyMMdd);
 		// 일정 상세조회
-		public CalDto getcalBoardDetail(int number);
+		public CalDto calBoardDetail(int number);
 		// 일정 수정하기
 		public boolean calBoardUpdate(UpdateCalCommand updateCalCommand);
 		// 일정 삭제하기

@@ -149,7 +149,7 @@ public class CalController {
    public String calBoardDetail(UpdateCalCommand updateCalCommand, int number, Model model) {
 	   logger.info("일정상세보기");
 	   
-	   CalDto dto=calService.getcalBoardDetail(number);
+	   CalDto dto=calService.calBoardDetail(number);
 	   
 	   //dto -> command
 	   updateCalCommand.setNumber(dto.getNumber());
