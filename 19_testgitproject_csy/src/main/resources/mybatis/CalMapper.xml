@@ -16,7 +16,7 @@
 			WHERE #{yyyyMMdd} BETWEEN SUBSTRING(startdate,1,8) AND SUBSTRING(enddate,1,8) 
 	</select>
 	
-	<select id="calBoardDetail" parameterType="int" 
+	<select id="getcalBoardDetail" parameterType="int" 
 			resultType="CalDto">
 		SELECT id, startdate, enddate, category, title, content
 		FROM cal

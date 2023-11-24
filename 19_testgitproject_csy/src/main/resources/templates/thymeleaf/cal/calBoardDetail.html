@@ -16,172 +16,145 @@
 <body>
 <div layout:fragment="content">
 	<div id="container">
-		<h1>일정 상세보기</h1>
-		<form th:action="@{/schedule/calBoardUpdate}" method="post"
-			  th:object="${updateCalCommand}">
-			<input type="hidden" name="seq" th:field="*{seq}"/>
-			<table class="table">
-				<tr>
-					<th>ID</th>
-					<td>
-						<input class="form-control" type="text" name="id" th:field="*{id}"/>
-						<span class="errorField" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
-					</td>
-				</tr>
+		<h1>View Details</h1>
+		<form th:action="@{/schedule/calBoardDetail}" method="post" 
+											   th:object="${updateCalCommand}">
+		<table class="table">
+			<tr>
+				<th>ID</th>
+				<td>
+					<input type="text" name="id" th:value="${session.mdto.id}" />
+				</td>
+			</tr>
 			
-				<tr>
-					<th>START DATE</th>
-						<select name="years">
-							<th:block th:each="i:${#numbers.sequence(updateCalCommand.year-5,updateCalCommand.year+5)}">
-								<th:block th:if="${updateCalCommand.year==i}">
-									<option th:value="${i}" th:text="${i}" selected="selected"></option>
-								</th:block>
-							
-								<th:block th:unless="${updateCalCommand.year==i}">
-									<option th:value="${i}" th:text="${i}"></option>
-								</th:block>
-							<th:block>
-						</select>년
-						<select name="months">
-							<th:block th:each="i:${#numbers.sequence(1,12)}">
-								<th:block th:if="${updateCalCommand.month==i}">
-									<option th:value="${i}" th:text="${i}" selected="selected"></option>
-								</th:block>
-							
-								<th:block th:unless="${updateCalCommand.month==i}">
-									<option th:value="${i}" th:text="${i}"></option>
-								</th:block>
-							<th:block>
-						</select>월
-						<select name="dates">
-							<th:block th:each="i:${#numbers.sequence(1,31)}">
-								<th:block th:if="${updateCalCommand.date==i}">
-									<option th:value="${i}" th:text="${i}" selected="selected"></option>
-								</th:block>
-							
-								<th:block th:unless="${updateCalCommand.date==i}">
-									<option th:value="${i}" th:text="${i}"></option>
-								</th:block>
-							<th:block>
-						</select>일
-						<select name="hours">
+			<tr>
+				<th>START DATE</th>
+				<td>
+					<select name="years" >
+						<th:block th:each="i:${#numbers.sequence(updateCalCommand.year-5,updateCalCommand.year+5)}">
+							<th:block th:if="${updateCalCommand.year == i}">
+								<option th:value="${i}" th:text="${i}" selected="selected"></option>
+							</th:block>
+							<th:block th:unless="${updateCalCommand.year == i}">
+								<option th:value="${i}" th:text="${i}"></option>
+							</th:block>
+						</th:block>
+					</select>년
+					<select name="months" >
+						<th:block th:each="i:${#numbers.sequence(1,12)}">
+							<th:block th:if="${updateCalCommand.month == i}">
+								<option th:value="${i}" th:text="${i}" selected="selected"></option>
+							</th:block>
+							<th:block th:unless="${updateCalCommand.month == i}">
+								<option th:value="${i}" th:text="${i}"></option>
+							</th:block>
+						</th:block>
+					</select>월
+					<select name="dates" >
+						<th:block th:each="i:${#numbers.sequence(1,31)}">
+							<th:block th:if="${updateCalCommand.date == i}">
+								<option th:value="${i}" th:text="${i}" selected="selected"></option>
+							</th:block>
+							<th:block th:unless="${updateCalCommand.date == i}">
+								<option th:value="${i}" th:text="${i}"></option>
+							</th:block>
+						</th:block>
+					</select>일
+					<select name="hours" >
 						<th:block th:each="i:${#numbers.sequence(0,23)}">
-								<th:block th:if="${updateCalCommand.hour==i}">
-									<option th:value="${i}" th:text="${i}" selected="selected"></option>
-								</th:block>
-							
-								<th:block th:unless="${updateCalCommand.hour==i}">
-									<option th:value="${i}" th:text="${i}"></option>
-								</th:block>
-							<th:block>
-						</select>시
-						<select name="mins">
-							<th:block th:each="i:${#numbers.sequence(0,59)}">
-								<th:block th:if="${updateCalCommand.min==i}">
-									<option th:value="${i}" th:text="${i}" selected="selected"></option>
-								</th:block>
-							
-								<th:block th:unless="${updateCalCommand.min==i}">
-									<option th:value="${i}" th:text="${i}"></option>
-								</th:block>
-							<th:block>
-						</select>분
-					</td>
-				</tr>
-				
-				<tr>
-					<th>END DATE</th>
-						<select name="year">
-							<th:block th:each="i:${#numbers.sequence(updateCalCommand.year-5,updateCalCommand.year+5)}">
-								<th:block th:if="${updateCalCommand.year==i}">
-									<option th:value="${i}" th:text="${i}" selected="selected"></option>
-								</th:block>
-							
-								<th:block th:unless="${updateCalCommand.year==i}">
-									<option th:value="${i}" th:text="${i}"></option>
-								</th:block>
-							<th:block>
-						</select>년
-						<select name="month">
-							<th:block th:each="i:${#numbers.sequence(1,12)}">
-								<th:block th:if="${updateCalCommand.month==i}">
-									<option th:value="${i}" th:text="${i}" selected="selected"></option>
-								</th:block>
-							
-								<th:block th:unless="${updateCalCommand.month==i}">
-									<option th:value="${i}" th:text="${i}"></option>
-								</th:block>
-							<th:block>
-						</select>월
-						<select name="date">
-							<th:block th:each="i:${#numbers.sequence(1,31)}">
-								<th:block th:if="${updateCalCommand.date==i}">
-									<option th:value="${i}" th:text="${i}" selected="selected"></option>
-								</th:block>
-							
-								<th:block th:unless="${updateCalCommand.date==i}">
-									<option th:value="${i}" th:text="${i}"></option>
-								</th:block>
-							<th:block>
-						</select>일
-						<select name="hour">
+							<option th:value="${i}" th:text="${i}" ></option>
+						</th:block>
+					</select>시
+					<select name="mins" >
+						<th:block th:each="i:${#numbers.sequence(0,59)}">
+							<option th:value="${i}" th:text="${i}" ></option>
+						</th:block>
+					</select>분
+				</td>
+			</tr>
+			
+			<tr>
+				<th>END DATE</th>
+				<td>
+					<select name="year" >
+						<th:block th:each="i:${#numbers.sequence(updateCalCommand.year-5,updateCalCommand.year+5)}">
+							<th:block th:if="${updateCalCommand.year == i}">
+								<option th:value="${i}" th:text="${i}" selected="selected"></option>
+							</th:block>
+							<th:block th:unless="${updateCalCommand.year == i}">
+								<option th:value="${i}" th:text="${i}"></option>
+							</th:block>
+						</th:block>
+					</select>년
+					<select name="month" >
+						<th:block th:each="i:${#numbers.sequence(1,12)}">
+							<th:block th:if="${updateCalCommand.month == i}">
+								<option th:value="${i}" th:text="${i}" selected="selected"></option>
+							</th:block>
+							<th:block th:unless="${updateCalCommand.month == i}">
+								<option th:value="${i}" th:text="${i}"></option>
+							</th:block>
+						</th:block>
+					</select>월
+					<select name="date" >
+						<th:block th:each="i:${#numbers.sequence(1,31)}">
+							<th:block th:if="${updateCalCommand.date == i}">
+								<option th:value="${i}" th:text="${i}" selected="selected"></option>
+							</th:block>
+							<th:block th:unless="${updateCalCommand.date == i}">
+								<option th:value="${i}" th:text="${i}"></option>
+							</th:block>
+						</th:block>
+					</select>일
+					<select name="hour" >
 						<th:block th:each="i:${#numbers.sequence(0,23)}">
-								<th:block th:if="${updateCalCommand.hour==i}">
-									<option th:value="${i}" th:text="${i}" selected="selected"></option>
-								</th:block>
-							
-								<th:block th:unless="${updateCalCommand.hour==i}">
-									<option th:value="${i}" th:text="${i}"></option>
-								</th:block>
-							<th:block>
-						</select>시
-						<select name="min">
-							<th:block th:each="i:${#numbers.sequence(0,59)}">
-								<th:block th:if="${updateCalCommand.min==i}">
-									<option th:value="${i}" th:text="${i}" selected="selected"></option>
-								</th:block>
-							
-								<th:block th:unless="${updateCalCommand.min==i}">
-									<option th:value="${i}" th:text="${i}"></option>
-								</th:block>
-							<th:block>
-						</select>분
-					</td>
-				</tr>
-				
-				<tr>
-					<th>TITLE</th>
-					<td>
-						<input class="form-control" type="text" name="title" th:field="*{title}"/>
-						<span class="errorField" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
-					</td>
-				</tr>
-				<tr>
-					<th>CONTENT</th>
-					<td>
-						<textarea class="form-control" name="content" 
-								  rows="10" cols="60" 
-								  th:field="*{content}"></textarea>
-					    <span class="errorField" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<button type="submit" class="btn btn-default">Modify</button>
-						<button type="button" title="Cancel" class="btn btn-default" th:onclick="|location.href='@{/schedule/calMulDel(number=${updateCalCommand.number})}'|">
-                       		<span class="glyphicon glyphicon-trash" ></span>
-                  		</button>
-                  		<button type="button" title="List" class="btn btn-default" th:onclick="|location.href='@{/schedule/calBoardList}'|">
-                       		<span class="glyphicon glyphicon-list" ></span>
-                  		</button>
-                 		 <button type="button" title="Calendar" class="btn btn-default" 
-                        th:onclick="|location.href='@{/schedule/calendar(year=${session.ymdMap.year},month=${session.ymdMap.month})}'|">
-                       		<span class="glyphicon glyphicon-calendar" ></span>
-                 		 </button>
-					</td>
-				</tr>
-			</table>
-		</form>
+							<option th:value="${i}" th:text="${i}" ></option>
+						</th:block>
+					</select>시
+					<select name="min" >
+						<th:block th:each="i:${#numbers.sequence(0,59)}">
+							<option th:value="${i}" th:text="${i}" ></option>
+						</th:block>
+					</select>분
+				</td>
+			</tr>
+			
+			<tr>
+				<th>CATEGORY</th>
+				<td>
+					<input type="text" name="category" th:field="*{category}"/>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>TITLE</th>
+				<td>
+					<input type="text" name="title" th:field="*{title}"/>
+				</td>
+			</tr>
+			<tr>
+				<th>CONTENT</th>
+				<td>
+					<textarea rows="10" cols="60" name="content" th:field="*{content}"></textarea>
+				</td>
+			</tr>
+			<tr>
+               <td colspan="2">
+                  <button type="submit" class="btn btn-default" >Modify</button>
+                  
+                  <button type="button" title="Cancel" class="btn btn-default" 
+                        th:onclick="|location.href='@{/schedule/calMulDel(number=${updateCalCommand.number})}'|">
+                       <span class="glyphicon glyphicon-trash" ></span>
+                  </button>
+                  
+                  <button type="button" title="List" class="btn btn-default" 
+                        th:onclick="|location.href='@{/schedule/calBoardList}'|">
+                       <span class="glyphicon glyphicon-list" ></span>
+                  </button> 
+               </td>
+            </tr>
+		</table>
+	</form>
 	</div>
 </div>
 </body>
