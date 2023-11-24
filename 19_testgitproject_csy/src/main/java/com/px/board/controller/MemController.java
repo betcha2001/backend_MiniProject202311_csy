@@ -189,8 +189,8 @@ public class MemController {
 	public String MemAllList(Model model) {
 		System.out.println("MemAllList 요청");
 		
-		List<MemDto> mDtoList=memService.getAllMemList();	
-		model.addAttribute("mDtoList", mDtoList);
+		List<MemDto> mdto=memService.getAllMemList();	
+		model.addAttribute("mdto", mdto);
 		
 		return "mem/memAllList";
 	}
