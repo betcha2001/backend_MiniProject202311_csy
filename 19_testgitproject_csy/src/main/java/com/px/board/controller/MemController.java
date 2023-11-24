@@ -44,6 +44,13 @@ public class MemController {
 	@Autowired
 	private MemMapper memMapper;
 	
+	   // about
+	   @PostMapping(value="/about")
+	   public String about() {
+		   System.out.println("about 페이지 요청");
+		   return "about";
+	   }
+	
 	@GetMapping(value = "/addUser")
 	public String addUserForm(Model model) {
 		System.out.println("회원가입폼 이동");
