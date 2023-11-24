@@ -23,7 +23,7 @@
 				<col width="200px"/>
 				<col width="300px"/>
 				<tr>
-					<th><input type="checkbox" name="all" onclick="allSel(this.checked)"/></th>
+					<th><input type="hidden" name="all" onclick="allSel(this.checked)"/></th>
 					<th>ID</th>
 					<th>TITLE</th>
 					<th>START DATE</th>
@@ -35,17 +35,23 @@
 						<td colspan="6" style="text-align: center">작성된 일정이 없습니다.</td>
 					</tr>				
 				</th:block>
+				
 				<th:block th:unless="${#lists.isEmpty(list)}">
 					<tr th:each="dto:${list}">
-						<td><input type="text" name="number" th:value="${dto.number}"/></td>
+						<td><input type="hidden" name="number" th:value="${dto.number}"/></td>
 						<td th:text="${dto.id}"></td>
-						<td> 
-							<a th:href="@{/schedule/calBoardDetail(number=${dto.number})}" th:text="${dto.title}"></a>
+						
+						<td th:if="${session.mdto.grade == 'ADMIN'}"> 
+							<a th:href="@{/schedule/calBoardDetail(number=${dto.number})}" 
+								th:text="${dto.title}"></a>
 						</td>
+
+						<td th:unless="${session.mdto.grade == 'USER'}"> 
+							<td th:text="${dto.title}"></td>
+						</td>
+						
 						<td th:text="${dto.startdate}"></td>
 						<td th:text="${dto.enddate}"></td>
-<!--						<td th:text="${@util.toDates(dto.startdate)}"></td>-->
-<!--						<td th:text="${@util.toDate(dto.enddate)}"></td>-->
 						<td th:text="${dto.category}"></td>
 					</tr>				
 				</th:block>
