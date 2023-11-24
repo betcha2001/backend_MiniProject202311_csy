@@ -144,7 +144,9 @@
                   				month=${calMap.month},date=${i})}">
                      <img class="pen" th:src="@{/img/pen.png}"/>
                   </a>
+                  <div style="overflow:auto;height:80px;">
 				[(${@util.getCalViewList(i,clist)})]
+				  </div>
                </div>
             </th:block>
          </div>

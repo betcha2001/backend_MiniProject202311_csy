@@ -60,7 +60,7 @@ public class CalController {
       }
       
       String yyyyMM=year+Util.isTwo(month); //202311 6자리변환
-      List<CalDto>clist=calService.calViewList(id, yyyyMM);
+      List<CalDto>clist=calService.calViewList(yyyyMM);
       model.addAttribute("clist",clist);
       
       // 달력만들기위한 값 구하기

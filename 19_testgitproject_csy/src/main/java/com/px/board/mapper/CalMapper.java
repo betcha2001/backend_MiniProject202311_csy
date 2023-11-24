@@ -22,7 +22,7 @@ public interface CalMapper {
 	// 일정 삭제하기
 	public boolean calMulDel(Map<String,String[]>map);
 	// 일일의 일정 보여주기
-	public List<CalDto> calViewList(String id, String yyyyMM);
+	public List<CalDto> calViewList(String yyyyMM);
 	// 하루의 일정 개수 보여주기
 	public int calBoardCount(String id, String yyyyMMdd);
 	// 일일의 일정 뭔지 보여주기

@@ -36,20 +36,24 @@
 					</tr>
 				 </thead>
 				 <tbody>
-				 <tr>
-                         <th:if="${not #lists.isEmpty{mdto}" th:each="list:${mdto}">
-                             <td th:text="${list.number}"></td>
-                             <td th:text="${list.id}"></td>
-                             <td th:text="${list.name}"></td>
-                             <td th:text="${list.email}"></td>
-                             <td th:text="${list.phone}"></td>
-                             <td th:text="${list.grade}"></td>
-                             <td th:text="${list.unregister}"></td>
-                             <td th:text="${list.regdate}"></td>
-                          
-<!--                         <th:unless="${not #lists.isEmpty(mdto}">-->
-<!--                             <td colspan="8">등록된 회원의 정보가 없습니다.</td>-->
-				</tr>
+				 	<th:block th:if="${#lists.isEmpty(mdto)}">
+				 		<tr><td>--존재하지 않습니다.--</td></tr>
+				 	</th:block>
+				 	<th:block th:unless="${#lists.isEmpty(mdto)}"> 
+					 		<tr th:each="list:${mdto}">
+	                             <td th:text="${list.number}"></td>
+	                             <td th:text="${list.id}"></td>
+	                             <td th:text="${list.name}"></td>
+	                             <td th:text="${list.email}"></td>
+	                             <td th:text="${list.phone}"></td>
+	                             <td th:text="${list.grade}"></td>
+	                             <td th:text="${list.unregister}"></td>
+	                             <td th:text="${list.regdate}"></td>
+	                          
+	<!--                         <th:unless="${not #lists.isEmpty(mdto}">-->
+	<!--                             <td colspan="8">등록된 회원의 정보가 없습니다.</td>-->
+							</tr>
+					</th:block>
                   </tbody>
                  </table>
                  </th:block>

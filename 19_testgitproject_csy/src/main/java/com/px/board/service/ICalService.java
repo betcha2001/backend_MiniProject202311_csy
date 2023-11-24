@@ -25,7 +25,7 @@ public interface ICalService {
 		// 일정 삭제하기
 		public boolean calMulDel(Map<String,String[]>map);
 		// 일일의 일정 보여주기
-		public List<CalDto> calViewList(String id, String yyyyMM);
+		public List<CalDto> calViewList(String yyyyMM);
 		// 하루에 일정이 몇 개 있는지 보여주기
 		public int calBoardCount(String id, String yyyyMMdd);
 		// 일일의 카테고리,제목 보여주기

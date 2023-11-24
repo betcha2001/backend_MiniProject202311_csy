@@ -45,7 +45,7 @@ public class MemController {
 	private MemMapper memMapper;
 	
 	   // about
-	   @PostMapping(value="/about")
+	   @GetMapping(value="/about")
 	   public String about() {
 		   System.out.println("about 페이지 요청");
 		   return "about";
@@ -126,7 +126,7 @@ public class MemController {
 	      
 	      
 	    String yyyyMM=year+Util.isTwo(month); //202311 6자리변환
-	    List<CalDto>clist=calServiceImp.calViewList("white", yyyyMM);
+	    List<CalDto>clist=calServiceImp.calViewList(yyyyMM);
 	    model.addAttribute("clist",clist);
 	    
 
