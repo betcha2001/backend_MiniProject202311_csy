@@ -17,6 +17,7 @@ import com.px.board.dtos.MemDto;
 import com.px.board.mapper.MemMapper;
 import com.px.board.status.RoleStatus;
 
+import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -97,12 +98,18 @@ public class MemService {
 	
 	// 회원목록 전체조회......이게 맞나......
 	public List<MemDto> getAllMemList() {		
-		List<MemDto> mList = memMapper.getAllMemList();
-		List<MemDto> mDtoList = new ArrayList<>();
-		for (MemDto memDto : mList) {
-			mDtoList.add(memDto);
-		}
-		return mDtoList;
+//		List<MemDto> mList = memMapper.getAllMemList();
+//		List<MemDto> mDtoList = new ArrayList<>();
+//		for (MemDto memDto : mList) {
+//			mDtoList.add(memDto);
+//		}
+//		return mDtoList;
+		
+//		HttpSession session = request.getSession();
+		List<MemDto> mdto = memMapper.getAllMemList();
+		
+		return mdto;
+		
 	}
 	
 	
