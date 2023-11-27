@@ -85,10 +85,8 @@ public class MemService {
 	// 나의 정보 수정
 	public boolean updateMem(UpdateUserCommand updateUserCommand) {
 		MemDto mdto=new MemDto();
+		
 		mdto.setName(updateUserCommand.getName());		
-		//password 암호화하여 저장
-		mdto.setPassword(passwordEncoder.encode(updateUserCommand.getPassword()));
-			
 		mdto.setEmail(updateUserCommand.getEmail());
 		mdto.setPhone(updateUserCommand.getPhone());
 		

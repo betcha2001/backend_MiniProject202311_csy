@@ -144,13 +144,20 @@ public class MemController {
 	
 	// 나의 정보 조회
 	@GetMapping(value="/memInfo")
-	public String memInfo(String id, Model model, HttpServletRequest request) {
+	public String memInfo(String id, Model model, HttpServletRequest request, 
+			UpdateUserCommand updateUserCommand) {
 
 		System.out.println("memInfo 요청");
 
 		MemDto mdto = memService.getmemInfo(id, model, request);	
 	    model.addAttribute("mdto",mdto);
 				
+//	    updateUserCommand.setName(mdto.getName());
+//		updateUserCommand.setPhone(mdto.getPhone());
+//		updateUserCommand.setEmail(mdto.getEmail());
+//	    
+//	    model.addAttribute("updateUserCommand", updateUserCommand);
+		
 		return "mem/meminfo";
 		
 	}
@@ -159,22 +166,25 @@ public class MemController {
 	// 나의 정보 수정
 	@PostMapping(value="/updateMem")
 	public String updateMem(@Validated UpdateUserCommand updateUserCommand,
-			BindingResult result, Model model) {
+			BindingResult result, Model model ) {
 
+		System.out.println("updateMem 요청");
+//		MemDto mdto=new MemDto();
+		
+//		MemDto mdto = memService.updateMem();
+//		
+//		updateUserCommand.setName(mdto.getName());
+//		updateUserCommand.setPhone(mdto.getPhone());
+//		updateUserCommand.setEmail(mdto.getEmail());
+		
 		if(result.hasErrors()) {
-			System.out.println("나의 정보 수정 유효값 오류");
-			return "mem/updateMemForm";
+			System.out.println("수정할 목록을 확인하세요");
+			return "mem/meminfo";
 		}
 		
-		try {
-			memService.updateMem(updateUserCommand);
-			System.out.println("나의 정보 수정 성공");
-			return "redirect:/updateMem";
-		} catch (Exception e) {
-			System.out.println("나의 정보 수정 실패");
-			e.printStackTrace();
-			return "error";
-		}		
+		memService.updateMem(updateUserCommand);
+		
+		return "mem/meminfo";
 	}
 	
 	
