@@ -1,6 +1,7 @@
 package com.px.board.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -23,7 +24,7 @@ public interface MemMapper {
 	
 	public boolean memUpdateRole(MemDto dto);
 	
-	public String delMem();
+	public boolean delMem(Map<String, String[]> map);
 }
 
 

@@ -2,6 +2,7 @@ package com.px.board.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -95,16 +96,8 @@ public class MemService {
 	}
 		
 	
-	// 회원목록 전체조회......이게 맞나......
+	// 회원목록 전체조회
 	public List<MemDto> getAllMemList() {		
-//		List<MemDto> mList = memMapper.getAllMemList();
-//		List<MemDto> mDtoList = new ArrayList<>();
-//		for (MemDto memDto : mList) {
-//			mDtoList.add(memDto);
-//		}
-//		return mDtoList;
-		
-//		HttpSession session = request.getSession();
 		List<MemDto> mdto = memMapper.getAllMemList();
 		
 		return mdto;
@@ -115,6 +108,7 @@ public class MemService {
 	// 회원 등급 수정
 	public boolean memUpdateRole(UpdateRoleCommand updateRoleCommand) {
 		MemDto mdto=new MemDto();
+		
 		mdto.setId(updateRoleCommand.getId());
 		mdto.setName(updateRoleCommand.getName());		
 		mdto.setGrade(updateRoleCommand.getGrade());
@@ -123,10 +117,10 @@ public class MemService {
 	}
 	
 	
-	// 회원 탈퇴....모르겠음.....
-	public String delMem(String id) {
+	// 회원 삭제
+	public boolean delMem(Map<String, String[]> map) {
 			
-		return memMapper.delMem();
+		return memMapper.delMem(map);
 	}
 
 }

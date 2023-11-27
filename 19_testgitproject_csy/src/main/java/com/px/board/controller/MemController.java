@@ -187,6 +187,9 @@ public class MemController {
 	public String MemAllList(Model model) {
 		System.out.println("MemAllList 요청");
 		
+		model.addAttribute("deleteUserCommand", new DeleteUserCommand());
+		
+		
 		List<MemDto> mdto=memService.getAllMemList();	
 		model.addAttribute("mdto", mdto);
 		
@@ -199,7 +202,7 @@ public class MemController {
 	public String memRoleForm(Model model) {
 		System.out.println("memRoleForm요청");
 		
-		return "user/memRoleForm";
+		return "mem/memRoleForm";
 	}
 	
 	
@@ -228,15 +231,56 @@ public class MemController {
 	}
 	
 	// 회원탈퇴
-	@PostMapping(value="/delMem")
-	public String delMem(@Validated DeleteUserCommand deleteUserCommand,
-			BindingResult result, Model model, HttpSession session) {
-		
-		String id = (String) session.getAttribute("id");
-		memService.delMem(id);
-		session.invalidate();
-		return "login";			
-	}
+//	@PostMapping(value="/delMem")
+//	public String delMem(@Validated DeleteUserCommand deleteUserCommand,
+//			BindingResult result, Model model, HttpSession session) {
+//		
+//		String id = (String) session.getAttribute("id");
+//		memService.delMem(id);
+//		session.invalidate();
+//		return "login";			
+//	}
+	
+	@PostMapping(value = "/delMem")
+	   public String delMem(@Validated DeleteUserCommand deleteUserCommand,
+	                     BindingResult result,
+	                     HttpServletRequest request,
+	                     Model model) {
+	      
+	      if(result.hasErrors()) {
+	         System.out.println("최소 하나 이상 체크하기!");
+	         
+	         HttpSession session = request.getSession();
+	         MemDto dto = (MemDto)session.getAttribute("mdto");
+	         String id=dto.getId(); //나중에 세션에서 가져온 아이디 사용
+	         
+	         // session에 저장된 ymd 값은 목록 조회할때 추가되는 코드
+	         Map<String, String>map=(Map<String, String>)session.getAttribute("ymdMap");
+	         
+	         List<MemDto> list= memService.getAllMemList();
+	         // 다시 돌아갈 때는 list 객체가 없으니까
+	         // 객체를 다시 만들어서 보내줘야 해!
+	         model.addAttribute("list", list);
+	         return "mem/memAllList";
+	      }
+	      
+	      Map<String,String[]>map=new HashMap<>();
+	      map.put("numbers", deleteUserCommand.getNumber());
+	      memService.delMem(map);
+	      
+	      return "redirect:/user/MemAllList";
+	   }
+	   
+	   
+	   @GetMapping(value = "/delMem")
+	   public String delMem(String[] number) {
+	      System.out.println("회원삭제하기");
+	      System.out.println(number[0]);
+	      Map<String, String[]>map = new HashMap<>();
+	      map.put("numbers", number);
+	      memService.delMem(map);
+	      return "redirect:/user/MemAllList";
+	   }
 }
 
 

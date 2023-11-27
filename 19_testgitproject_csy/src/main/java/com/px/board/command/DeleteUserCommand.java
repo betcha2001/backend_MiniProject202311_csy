@@ -1,29 +1,36 @@
 package com.px.board.command;
 
-public class DeleteUserCommand {
-	
-	private String id;
+import java.util.Arrays;
 
+public class DeleteUserCommand {
+
+	private String[] number;
+	
 	public DeleteUserCommand() {
 		super();
 	}
 
-	public DeleteUserCommand(String id) {
+	public DeleteUserCommand(String[] number) {
 		super();
-		this.id = id;
+		this.number = number;
 	}
 
-	public String getId() {
-		return id;
+	public String[] getNumber() {
+		return number;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setNumber(String[] number) {
+		this.number = number;
 	}
 
 	@Override
 	public String toString() {
-		return "DeleteUserCommand [id=" + id + "]";
+		return "DeleteUserCommand [number=" + Arrays.toString(number) + "]";
 	}
+
+	
+	
+
+	
 
 }

@@ -6,7 +6,20 @@
 <meta charset="UTF-8">
 <title>calBoardList</title>
 <script type="text/javascript">
-
+function isCheck() {
+      if(confirm("정말 삭제하시겠습니까?")) {
+         return true;
+      } 
+      
+      return false;
+   }
+   
+function allSel(bool){
+         var chks=document.getElementsByName("number");// [seq,seq,seq,seq..]
+         for (var i = 0; i < chks.length; i++) {
+            chks[i].checked = bool;//각각의 체크박스에 체크여부를 true/false로 적용
+         }
+   }
 </script>
 <style type="text/css">
 
@@ -16,12 +29,14 @@
 <div layout:fragment="content">
 	<div id="container">
 		<h1>Reservation List</h1>
+		<form th:action="@{/schedule/calMulDel}" method="post"
+			  th:object="${deleteCalCommand}" onsubmit="return isCheck()">
 			<table class="table">
 <!--				<col width="50px"/>-->
 				<col width="200px"/>
-				<col width="300px"/>
 				<col width="200px"/>
-				<col width="300px"/>
+				<col width="200px"/>
+				<col width="200px"/>
 				<tr>
 					<th><input type="hidden" name="all" onclick="allSel(this.checked)"/></th>
 					<th>ID</th>
@@ -49,7 +64,7 @@
 						</th:block>
 
 						<th:block th:unless="${session.mdto.grade eq 'ADMIN'}">						
-							[[${dto.title}]]*
+							[[${dto.title}]]
 						</th:block>
 						</td>
 						
@@ -61,6 +76,7 @@
 				</th:block>
 				
 			</table>
+			</form>
 	</div>
 </div>
 </body>

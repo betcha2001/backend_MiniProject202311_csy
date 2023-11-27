@@ -6,7 +6,20 @@
 <meta charset="UTF-8">
 <title>memAllList</title>
 <script type="text/javascript">
-
+function isCheck() {
+      if(confirm("정말 삭제하시겠습니까?")) {
+         return true;
+      } 
+      
+      return false;
+   }
+   
+function allSel(bool){
+         var chks=document.getElementsByName("number");// [seq,seq,seq,seq..]
+         for (var i = 0; i < chks.length; i++) {
+            chks[i].checked = bool;//각각의 체크박스에 체크여부를 true/false로 적용
+         }
+   }
 </script>
 <style type="text/css">
 
@@ -16,15 +29,23 @@
 <div layout:fragment="content">
 <!--관리자 회원 전체 조회 페이지-->
 <div id="container">
-<table class="table">
-<div class="main">
-        <div class="contents">
-            <h1>Member List</h1>
-            
-            <th:block layout:fragments="customContents">
-                 <table class="table" border="1">
-                 <thead>
+ <h1>Member List</h1>
+<form th:action="@{/user/delMem}" method="post"
+	th:object="${deleteUserCommand}" onsubmit="return isCheck()">
+<table class="table" border="2">
+            <th:block>              
+                 	<col width="50px"/>
+					<col width="500px"/>
+					<col width="500px"/>
+					<col width="500px"/>
+					<col width="500px"/>
+					<col width="500px"/>
+					<col width="500px"/>
+					<col width="50px"/>
+					<col width="500px"/>
+                 
                      <tr>
+                     	<th><input type="checkbox" name="all" onclick="allSel(this.checked)"/></th>
 						<th>NUMBER</th>
     					<th>ID</th>
     					<th>NAME</th>
@@ -34,10 +55,9 @@
     					<th>UNREGISTER</th>
     					<th>JOIN</th>
 					</tr>
-				 </thead>
-				 <tbody>
+				
 				 	<th:block th:if="${#lists.isEmpty(mdto)}">
-				 		<tr><td>--존재하지 않습니다.--</td></tr>
+				 		<tr><td>--회원이 존재하지 않습니다.--</td></tr>
 				 	</th:block>
 				 	<th:block th:unless="${#lists.isEmpty(mdto)}"> 
 					 		<tr th:each="list:${mdto}">
@@ -46,29 +66,27 @@
 	                             <td th:text="${list.name}"></td>
 	                             <td th:text="${list.email}"></td>
 	                             <td th:text="${list.phone}"></td>
+	                            
 	                             <td th:text="${list.grade}">	           	
-<!--                                     <th:block th:if="${list.id==mdto.id}">-->
-<!--                                        <small style="color:red;">자신의 등급은 수정불가</small>-->
-<!--                                     <th:block>-->
-<!--                                     <th:block th:unless="${list.id==mdto.id}">-->
-<!--                                         <button type="button" onclick="RoleForm('${list.id}')">변경</button>-->
-<!--                                     <th:block>-->
-                                 </td>  
-                                 <button type="button" onclick="memRoleForm('${list.id}')">변경</button>
-                                 
+                                     <th:block th:if="${list.id==mdto.id}">
+                                        <small style="color:red;">자신의 등급은 수정불가</small>
+                                     </th:block>
+                                     
+                                     <th:block th:unless="${list.id==mdto.id}">
+                                         <button type="button" th:onclick="memRoleForm('${list.id}')">변경</button>
+                                     </th:block>
+                                 </td> 
+                                                             
 	                             <td th:text="${list.unregister}"></td>
-	                             <td th:text="${list.regdate}"></td>
-	                          
-	<!--                         <th:unless="${not #lists.isEmpty(mdto}">-->
-	<!--                             <td colspan="8">등록된 회원의 정보가 없습니다.</td>-->
-							</tr>
-					</th:block>
-                  </tbody>
-                 </table>
+	                             <td th:text="${list.regdate}"></td>	                    
+							</tr>							
+					</th:block>                
+                 </form>
                  </th:block>
-        </div>
-    </div>
-</table>
+				 </table>
+				<button type="submit" title="회원삭제" class="btn btn-default" >
+                       <span class="glyphicon glyphicon-trash" ></span>
+                </button>
 </div>
 </body>
 </html>

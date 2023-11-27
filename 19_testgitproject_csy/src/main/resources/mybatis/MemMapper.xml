@@ -44,10 +44,13 @@
 		WHERE ID=#{id}
 	</update>
 	
-<!-- 	// 회원 탈퇴 -->
-	<update id="delMem" parameterType="String">
-		UPDATE mem SET unregister='Y'
-		WHERE ID=#{id}
+<!-- 	// 회원 삭제 -->
+	<update id="delMem" parameterType="Map">
+		DELETE FROM mem WHERE number IN
+		<foreach collection="numbers" item="number"
+				open="(" close=")" separator=",">
+			#{number}		
+		</foreach>
 	</update>
 </mapper>
 
