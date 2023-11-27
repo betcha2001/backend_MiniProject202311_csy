@@ -163,14 +163,7 @@ public class MemController {
 			BindingResult result, Model model) {
 
 		System.out.println("updateMem 요청");
-//		MemDto mdto=new MemDto();
-		
-//		MemDto mdto = memService.updateMem();
-//		
-//		updateUserCommand.setName(mdto.getName());
-//		updateUserCommand.setPhone(mdto.getPhone());
-//		updateUserCommand.setEmail(mdto.getEmail());
-		
+
 		if(result.hasErrors()) {
 			System.out.println("수정할 목록을 확인하세요");
 			return "mem/meminfo";
@@ -268,7 +261,7 @@ public class MemController {
 	      map.put("numbers", deleteUserCommand.getNumber());
 	      memService.delMem(map);
 	      
-	      return "redirect:/user/MemAllList";
+	      return "redirect:/user/memAllList";
 	   }
 	   
 	   
@@ -279,7 +272,7 @@ public class MemController {
 	      Map<String, String[]>map = new HashMap<>();
 	      map.put("numbers", number);
 	      memService.delMem(map);
-	      return "redirect:/user/MemAllList";
+	      return "redirect:/user/memAllList";
 	   }
 }
 

@@ -40,7 +40,7 @@ function allSel(bool){
 					<col width="500px"/>
 					<col width="500px"/>
 					<col width="500px"/>
-					<col width="500px"/>
+					<col width="650px"/>
 					<col width="50px"/>
 					<col width="500px"/>
                  
@@ -61,22 +61,25 @@ function allSel(bool){
 				 	</th:block>
 				 	<th:block th:unless="${#lists.isEmpty(mdto)}"> 
 					 		<tr th:each="list:${mdto}">
+					 			<td><input type="checkbox" name="all" onclick="allSel(this.checked)"/></td>
 	                             <td th:text="${list.number}"></td>
 	                             <td th:text="${list.id}"></td>
 	                             <td th:text="${list.name}"></td>
 	                             <td th:text="${list.email}"></td>
 	                             <td th:text="${list.phone}"></td>
 	                            
-	                             <td th:text="${list.grade}">	           	
-                                     <th:block th:if="${list.id==mdto.id}">
+	                             <td>	           	
+                                     <th:block th:if="${list.id==session.mdto.id}">
+                                     	[[${list.grade}]]
+                                     	<br>
                                         <small style="color:red;">자신의 등급은 수정불가</small>
                                      </th:block>
                                      
-                                     <th:block th:unless="${list.id==mdto.id}">
-                                         <button type="button" th:onclick="memRoleForm('${list.id}')">변경</button>
+                                     <th:block th:unless="${list.id==session.mdto.id}">
+                                     	[[${list.grade}]]
+                                         <button type="button"><a href="memRoleForm?id="+mdto.getId()>변경</a></button>
                                      </th:block>
-                                 </td> 
-                                                             
+                                 </td>                              
 	                             <td th:text="${list.unregister}"></td>
 	                             <td th:text="${list.regdate}"></td>	                    
 							</tr>							
