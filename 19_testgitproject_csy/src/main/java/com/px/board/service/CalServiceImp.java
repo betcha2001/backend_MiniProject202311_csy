@@ -120,7 +120,7 @@ public class CalServiceImp implements ICalService {
    }
 
    @Override
-   public boolean calBoardUpdate(UpdateCalCommand updateCalCommand) {
+   public boolean CalBoardUpdate(UpdateCalCommand updateCalCommand) {
       // command : year, month, date.. --> dto : mdate
       String startdate = updateCalCommand.getYears()
             + Util.isTwo(updateCalCommand.getMonths()+"")   
@@ -141,7 +141,7 @@ public class CalServiceImp implements ICalService {
       dto.setStartdate(startdate);
       dto.setEnddate(enddate);
       
-      return calMapper.calBoardUpdate(dto);
+      return calMapper.CalBoardUpdate(dto);
    }
 
    @Override
@@ -155,14 +155,6 @@ public class CalServiceImp implements ICalService {
       return calMapper.calViewList(yyyyMM);
    }
 
-//   @Override
-//   public List<CalDto> calBoardSummary(String category, String title) {
-//      return calMapper.calBoardSummary(category, title);
-//   }
-   
-   @Override
-	public int calBoardCount(String id, String yyyyMMdd) {
-		return calMapper.calBoardCount(id, yyyyMMdd);
-	}
+  
    
 }

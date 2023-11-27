@@ -40,7 +40,6 @@ public class CalController {
    private ICalService calService;
    
 
-   
    @GetMapping(value="/calendar")
    public String calendar(Model model, HttpServletRequest request) {
       logger.info("달력보기");
@@ -184,24 +183,9 @@ public class CalController {
 		   return "thymeleaf/cal/calBoardDetail";
 	   }
 	   
-	   calService.calBoardUpdate(updateCalCommand);
+	   calService.CalBoardUpdate(updateCalCommand);
 	   
-	   return "redirect:/schedule/calBoardDetail?seq="+updateCalCommand.getNumber();
+	   return "redirect:/schedule/calBoardDetail?number="+updateCalCommand.getNumber();
    }
    
-   @ResponseBody
-   @GetMapping(value = "/calCountAjax")
-   public Map<String, Integer> calCountAjax(String yyyyMMdd, HttpServletRequest request) {
-	   logger.info("일정개수");
-	   Map<String, Integer> map = new HashMap<>();
-	 
-	   HttpSession session = request.getSession();
-	   MemDto dto = (MemDto)session.getAttribute("mdto");
-	   String id=dto.getId(); //나중에 세션에서 가져온 아이디 사용
-	   // String id = "st";
-	   int count = calService.calBoardCount(id, yyyyMMdd);
-	   map.put("count", count);
-		
-	   return map;	
-   }
 }

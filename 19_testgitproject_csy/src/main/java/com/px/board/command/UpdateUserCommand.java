@@ -7,6 +7,9 @@ import jakarta.validation.constraints.NotBlank;
 public class UpdateUserCommand {
 	
 	
+	@NotBlank(message = "아이디를 입력하세요")
+	private String id;
+	
 	@NotBlank(message = "이름을 입력하세요")
 	private String name;
 	
@@ -21,12 +24,21 @@ public class UpdateUserCommand {
 		super();
 	}
 
-	public UpdateUserCommand(@NotBlank(message = "이름을 입력하세요") String name,
+	public UpdateUserCommand(@NotBlank(message = "아이디를 입력하세요") String id, @NotBlank(message = "이름을 입력하세요") String name,
 			@NotBlank(message = "전화번호를 입력하세요") String phone, @NotBlank(message = "이메일을 입력하세요") String email) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.phone = phone;
 		this.email = email;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -55,8 +67,10 @@ public class UpdateUserCommand {
 
 	@Override
 	public String toString() {
-		return "UpdateUserCommand [name=" + name + ", phone=" + phone + ", email=" + email + "]";
+		return "UpdateUserCommand [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + "]";
 	}
+
+	
 
 }
 

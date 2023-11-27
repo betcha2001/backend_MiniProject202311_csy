@@ -151,12 +151,6 @@ public class MemController {
 
 		MemDto mdto = memService.getmemInfo(id, model, request);	
 	    model.addAttribute("mdto",mdto);
-				
-//	    updateUserCommand.setName(mdto.getName());
-//		updateUserCommand.setPhone(mdto.getPhone());
-//		updateUserCommand.setEmail(mdto.getEmail());
-//	    
-//	    model.addAttribute("updateUserCommand", updateUserCommand);
 		
 		return "mem/meminfo";
 		
@@ -184,7 +178,7 @@ public class MemController {
 		
 		memService.updateMem(updateUserCommand);
 		
-		return "mem/meminfo";
+		return "redirect:/user/memInfo?id="+updateUserCommand.getId();
 	}
 	
 	

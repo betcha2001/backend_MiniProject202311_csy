@@ -49,24 +49,6 @@
 		WHERE rn BETWEEN 1 AND 3		
 	</select>
 	
-	
-	<select id="calBoardSummary" parameterType="Map"
-			resultType="Integer">
-		SELECT title, category
-		FROM cal
-		WHERE BETWEEN SUBSTR(startdate,1,8)=#{yyyyMMdd} AND 
-		SUBSTR(enddate,1,8)=#{yyyyMMdd}		
-	</select>
-	
-	
-	<select id="calBoardCount" parameterType="Map"
-			resultType="Integer">
-		SELECT COUNT(*)
-		FROM cal
-		WHERE id=#{id} AND SUBSTR(startdate,1,8)=#{yyyyMMdd}		
-	</select>
-	
-	
 </mapper>
 
 
