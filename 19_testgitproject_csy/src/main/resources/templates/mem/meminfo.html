@@ -19,7 +19,7 @@
 <div id="container">
 <!--사용자 나의 정보 조회 페이지-->
 	<h1>MY PAGE</h1>
-	<form onsubmit="return submitChk()" method="post">
+	<form onsubmit="return submitChk()" method="post" action="/user/updateMem">
 		<table class="table">	
 			<tr>
 				<th>NAME</th>
@@ -55,11 +55,10 @@
 			
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="Modify" class="btn" />
+					<button type="submit" value="Modify" class="btn">Modify</button>
 				</td>
 			</tr>
-			
-			
+
 		</table>
 	</form>
 </div>

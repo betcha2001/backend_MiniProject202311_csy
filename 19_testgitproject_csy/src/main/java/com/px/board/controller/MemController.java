@@ -160,7 +160,7 @@ public class MemController {
 	// 나의 정보 수정
 	@PostMapping(value="/updateMem")
 	public String updateMem(@Validated UpdateUserCommand updateUserCommand,
-			BindingResult result, Model model ) {
+			BindingResult result, Model model) {
 
 		System.out.println("updateMem 요청");
 //		MemDto mdto=new MemDto();
@@ -196,7 +196,7 @@ public class MemController {
 	
 	// 회원등급수정폼이동
 	@GetMapping(value="/memRoleForm")
-	public String roleForm(Model model) {
+	public String memRoleForm(Model model) {
 		System.out.println("memRoleForm요청");
 		
 		return "user/memRoleForm";
@@ -205,7 +205,7 @@ public class MemController {
 	
 	// 회원등급수정
 	@PostMapping(value="/memUpdateRole")
-	public String userUpdateRole(@Validated UpdateRoleCommand updateRoleCommand,
+	public String memUpdateRole(@Validated UpdateRoleCommand updateRoleCommand,
 			BindingResult result, Model model) {
 
 		System.out.println("memUpdateRole요청");
@@ -218,7 +218,7 @@ public class MemController {
 		try {
 			memService.memUpdateRole(updateRoleCommand);
 			System.out.println("회원등급수정 성공");
-			return "redirect:/";
+			return "redirect:/memUpdateRole";
 		} catch (Exception e) {
 			System.out.println("회원등급수정 실패");
 			e.printStackTrace();

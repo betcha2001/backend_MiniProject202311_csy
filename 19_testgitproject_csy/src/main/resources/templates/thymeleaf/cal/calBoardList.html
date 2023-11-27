@@ -37,23 +37,27 @@
 				</th:block>
 				
 				<th:block th:unless="${#lists.isEmpty(list)}">
-					<tr th:each="dto:${list}">
+					<th:block th:each="dto:${list}">
+					<tr>
 						<td><input type="hidden" name="number" th:value="${dto.number}"/></td>
 						<td th:text="${dto.id}"></td>
 						
-						<td th:if="${session.mdto.grade == 'ADMIN'}"> 
+						<td> 
+						<th:block th:if="${session.mdto.grade eq 'ADMIN'}">
 							<a th:href="@{/schedule/calBoardDetail(number=${dto.number})}" 
 								th:text="${dto.title}"></a>
-						</td>
+						</th:block>
 
-						<td th:unless="${session.mdto.grade == 'USER'}"> 
-							<td th:text="${dto.title}"></td>
+						<th:block th:unless="${session.mdto.grade eq 'ADMIN'}">						
+							[[${dto.title}]]*
+						</th:block>
 						</td>
 						
 						<td th:text="${dto.startdate}"></td>
 						<td th:text="${dto.enddate}"></td>
 						<td th:text="${dto.category}"></td>
-					</tr>				
+					</tr>
+					</th:block>				
 				</th:block>
 				
 			</table>

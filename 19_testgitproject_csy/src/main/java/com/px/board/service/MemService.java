@@ -86,6 +86,7 @@ public class MemService {
 	public boolean updateMem(UpdateUserCommand updateUserCommand) {
 		MemDto mdto=new MemDto();
 		
+		mdto.setId(updateUserCommand.getId());
 		mdto.setName(updateUserCommand.getName());		
 		mdto.setEmail(updateUserCommand.getEmail());
 		mdto.setPhone(updateUserCommand.getPhone());

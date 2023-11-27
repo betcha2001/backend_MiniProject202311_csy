@@ -46,7 +46,16 @@
 	                             <td th:text="${list.name}"></td>
 	                             <td th:text="${list.email}"></td>
 	                             <td th:text="${list.phone}"></td>
-	                             <td th:text="${list.grade}"></td>
+	                             <td th:text="${list.grade}">	           	
+<!--                                     <th:block th:if="${list.id==mdto.id}">-->
+<!--                                        <small style="color:red;">자신의 등급은 수정불가</small>-->
+<!--                                     <th:block>-->
+<!--                                     <th:block th:unless="${list.id==mdto.id}">-->
+<!--                                         <button type="button" onclick="RoleForm('${list.id}')">변경</button>-->
+<!--                                     <th:block>-->
+                                 </td>  
+                                 <button type="button" onclick="memRoleForm('${list.id}')">변경</button>
+                                 
 	                             <td th:text="${list.unregister}"></td>
 	                             <td th:text="${list.regdate}"></td>
 	                          
