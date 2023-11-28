@@ -116,9 +116,6 @@ public class MemController {
 		Map<String, Integer>map=calServiceImp.makeCalendar(request); 
 		model.addAttribute("calMap",map);
 		
-		// clist 가져오기
-//	    List<CalDto> clist = Util.getCalViewList(, clist);
-//		model.addAttribute("clist", clist);
 		  
 	    Calendar cal=Calendar.getInstance();
 	    String year=cal.get(Calendar.YEAR)+"";
@@ -195,6 +192,8 @@ public class MemController {
 	public String memRoleForm(Model model) {
 		System.out.println("memRoleForm요청");
 		
+	    model.addAttribute("updateRoleCommand",new UpdateRoleCommand());
+		
 		return "mem/memRoleForm";
 	}
 	
@@ -223,16 +222,6 @@ public class MemController {
 		
 	}
 	
-	// 회원탈퇴
-//	@PostMapping(value="/delMem")
-//	public String delMem(@Validated DeleteUserCommand deleteUserCommand,
-//			BindingResult result, Model model, HttpSession session) {
-//		
-//		String id = (String) session.getAttribute("id");
-//		memService.delMem(id);
-//		session.invalidate();
-//		return "login";			
-//	}
 	
 	@PostMapping(value = "/delMem")
 	   public String delMem(@Validated DeleteUserCommand deleteUserCommand,
@@ -275,6 +264,4 @@ public class MemController {
 	      return "redirect:/user/MemAllList";
 	   }
 }
-
-
 

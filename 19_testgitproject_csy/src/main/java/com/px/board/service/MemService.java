@@ -118,8 +118,7 @@ public class MemService {
 	
 	
 	// 회원 삭제
-	public boolean delMem(Map<String, String[]> map) {
-			
+	public boolean delMem(Map<String, String[]> map) {			
 		return memMapper.delMem(map);
 	}
 

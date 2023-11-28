@@ -40,7 +40,7 @@
 	
 <!-- 	회원 등급 수정 -->
 	<update id="memUpdateRole" parameterType="memDto">
-		UPDATE mem SET GRADE=#{grade}
+		UPDATE mem SET grade=#{grade}
 		WHERE ID=#{id}
 	</update>
 	

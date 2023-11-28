@@ -19,6 +19,7 @@
 <div id="container">
 <!--사용자 나의 정보 조회 페이지-->
 	<h1>MY PAGE</h1>
+	<br>
 	<form onsubmit="return submitChk()" method="post" action="/user/updateMem">
 		<table class="table">	
 			<tr>
@@ -32,10 +33,8 @@
 			<tr>
 				<th>ID</th>
 				<td>
-<!--				세션 받아오는 걸 위해 th:value로 바꿨는데 맞나 모르겠다......-->
 					<input th:value="${mdto.id}" type="text" 
 						   class="form-control" name="id" />
-					
 				</td>
 			</tr>
 	

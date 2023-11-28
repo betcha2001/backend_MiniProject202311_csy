@@ -29,7 +29,8 @@ function allSel(bool){
 <div layout:fragment="content">
 <!--관리자 회원 전체 조회 페이지-->
 <div id="container">
- <h1>Member List</h1>
+ <h1>MEMBER LIST</h1>
+ <br>
 <form th:action="@{/user/delMem}" method="post"
 	th:object="${deleteUserCommand}" onsubmit="return isCheck()">
 <table class="table" border="2">

@@ -10,7 +10,7 @@ public class UpdateRoleCommand {
 
 	public UpdateRoleCommand() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public UpdateRoleCommand(String id, String name, String grade) {
