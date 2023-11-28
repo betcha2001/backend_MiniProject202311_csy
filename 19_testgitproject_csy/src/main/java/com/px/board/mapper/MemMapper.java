@@ -20,6 +20,8 @@ public interface MemMapper {
 	
 	public List<MemDto> getAllMemList();
 	
+	public MemDto getmemList(String id);
+	
 	public boolean updateMem(MemDto dto);
 	
 	public boolean memUpdateRole(MemDto dto);

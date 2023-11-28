@@ -28,34 +28,47 @@ form{
 						<tr>
 							<th>ID</th>
 							<td>
-							<input th:value="${mdto?.id}" type="text" class="form-control" name="id" />
+							<input th:value="${mdto.id}" type="text" class="form-control" name="id" />
 							</td>			
 						</tr>
 						<tr>
 							<th>NAME</th>
-							<td><input th:value="${mdto?.name}" type="text" class="form-control" name="name"/></td>						
+							<td><input th:value="${mdto.name}" type="text" class="form-control" name="name"/></td>						
 						</tr>
 						<tr>
 							<th>GRADE</th>
 							<td>
 <!--								<input th:value="${mdto?.grade}" type="text" class="form-control" name="grade"/>-->
 								<select name="grade" class="form-control">
-								
-								<option name="grade" th:value="${mdto?.grade}" th:text="${mdto?.grade}" disabled selected></option>
+								<option name="grade">==등급을 선택하세요==</option>
+<!--								<option name="grade" th:value="${mdto.grade}" th:text="${mdto.grade}"></option>-->
 								<option name="grade" value="USER">USER</option>
 								<option name="grade" value="ADMIN">ADMIN</option>
-								
-<!--									<option value="ADMIN"   ${mdto?.grade eq "ADMIN" ? "selected": ""}>관리자</option>-->
-<!--									<option value="USER"    ${mdto?.grade eq "USER" ? "selected": ""}>일반회원</option>								-->
+													
 								</select>
 							</td>						
 						</tr>
-						<tr>
+<!--						<tr>-->
+<!--							<td colspan="2">-->
+<!--								<button type="submit" value="MODIFY" class="btn">Modify</button>-->
+				
+<!--							</td>	-->
+												
+<!--						</tr>-->
+					</table>	
+					
+					<tr>
 							<td colspan="2">
 								<button type="submit" value="MODIFY" class="btn">Modify</button>
-							</td>						
-						</tr>
-					</table>	
+				
+							</td>	
+												
+					</tr>
+					
+					<button type="button" title="List" class="btn btn-default" 
+                       			 th:onclick="|location.href='@{/user/MemAllList}'|">
+                       			<span class="glyphicon glyphicon-list" ></span>
+                  			</button>
 				</form>		
 			</div>
 		</div>

@@ -189,8 +189,11 @@ public class MemController {
 	
 	// 회원등급수정폼이동
 	@GetMapping(value="/memRoleForm")
-	public String memRoleForm(Model model) {
+	public String memRoleForm(Model model, String id, HttpServletRequest request) {
 		System.out.println("memRoleForm요청");
+
+		MemDto mdto = memService.getmemList(id);	
+	    model.addAttribute("mdto",mdto);
 		
 	    model.addAttribute("updateRoleCommand",new UpdateRoleCommand());
 		
@@ -205,20 +208,24 @@ public class MemController {
 
 		System.out.println("memUpdateRole요청");
 		
-		if(result.hasErrors()) {
-			System.out.println("회원등급 수정 유효값 오류");
-			return "mem/memUpdateRole";
-		}
+//		if(result.hasErrors()) {
+//			System.out.println("회원등급 수정 유효값 오류");
+//			return "mem/memUpdateRole";
+//		}
+//		
+//		try {
+//			memService.memUpdateRole(updateRoleCommand);
+//			System.out.println("회원등급수정 성공");
+//			return "redirect:/memUpdateRole";
+//		} catch (Exception e) {
+//			System.out.println("회원등급수정 실패");
+//			e.printStackTrace();
+//			return "redirect:memUpdateRole";
+//		}
 		
-		try {
-			memService.memUpdateRole(updateRoleCommand);
-			System.out.println("회원등급수정 성공");
-			return "redirect:/memUpdateRole";
-		} catch (Exception e) {
-			System.out.println("회원등급수정 실패");
-			e.printStackTrace();
-			return "redirect:memUpdateRole";
-		}
+		memService.memUpdateRole(updateRoleCommand);
+		
+		return "redirect:/user/memRoleForm?id="+updateRoleCommand.getId();
 		
 	}
 	

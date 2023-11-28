@@ -104,6 +104,13 @@ public class MemService {
 		
 	}
 	
+	// 회원 정보 조회
+	public MemDto getmemList(String id) { 
+		
+		MemDto mdto = memMapper.getmemList(id);
+	    
+		return memMapper.getmemInfo(mdto.getId());
+	}
 	
 	// 회원 등급 수정
 	public boolean memUpdateRole(UpdateRoleCommand updateRoleCommand) {

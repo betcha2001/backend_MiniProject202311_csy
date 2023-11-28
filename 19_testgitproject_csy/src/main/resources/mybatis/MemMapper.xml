@@ -19,18 +19,25 @@
 		WHERE ID = #{id}
 	</select>
 	
-<!-- 	// 나의 정보 조회 -->
+<!-- 	나의 정보 조회 -->
 	<select id="getmemInfo" parameterType="String" resultType="memDto">
 		SELECT NAME, id, PASSWORD, phone, email
 		FROM mem
 		WHERE ID=#{id}
 	</select>
 	
-<!-- 	// 나의 정보 수정 -->
+<!-- 	나의 정보 수정 -->
 	<update id="updateMem" parameterType="memDto">
 		UPDATE mem SET NAME=#{name}, phone=#{phone}, email=#{email}
 		WHERE ID=#{id}
 	</update>
+	
+<!-- 	회원 정보 조회 -->
+	<select id="getmemList" parameterType="String" resultType="memDto">
+		SELECT id, NAME, grade
+		FROM mem
+		WHERE ID=#{id}
+	</select>
 	
 <!-- 	회원목록 전체 조회 -->
 	<select id="getAllMemList" resultType="memDto">

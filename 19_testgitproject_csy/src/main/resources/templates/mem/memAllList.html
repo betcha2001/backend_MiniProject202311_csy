@@ -79,7 +79,7 @@ function allSel(bool){
                                      <th:block th:unless="${list.id==session.mdto.id}">
                                      	[[${list.grade}]]
 <!--                                         <button type="button"><a href="memRoleForm?id="+mdto.getId()>변경</a></button>-->
-										<button type="button" th:onclick="|location.href='@{memRoleForm(id=${list.id})}'|">변경</button>
+										<button type="button" th:onclick="|location.href='@{/user/memRoleForm(id=${list.id})}'|">변경</button>
                                      </th:block>
                                  </td>                              
 	                             <td th:text="${list.unregister}"></td>
