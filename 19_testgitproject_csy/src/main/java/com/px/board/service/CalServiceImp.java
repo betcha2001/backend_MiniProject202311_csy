@@ -139,6 +139,7 @@ public class CalServiceImp implements ICalService {
       dto.setNumber(updateCalCommand.getNumber());
       dto.setTitle(updateCalCommand.getTitle());
       dto.setContent(updateCalCommand.getContent());
+      dto.setCategory(updateCalCommand.getCategory());
       dto.setStartdate(startdate);
       dto.setEnddate(enddate);
       

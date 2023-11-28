@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="calBoardDetail" parameterType="int" resultType="CalDto">
-		SELECT id, startdate, enddate, category, title, content
+		SELECT number, id, startdate, enddate, category, title, content
 		FROM cal
 		WHERE number=#{number}
 	</select>
@@ -32,8 +32,12 @@
 	</update>
 	
 	
-	<delete id="calMulDel" parameterType="Integer">
-		DELETE FROM cal WHERE NUMBER=#{number}
+	<delete id="calMulDel" parameterType="Map">		
+		DELETE FROM cal WHERE number IN
+		<foreach collection="numbers" item="number"
+				open="(" close=")" separator=",">
+			#{number}		
+		</foreach>
 	</delete>
 	
 	

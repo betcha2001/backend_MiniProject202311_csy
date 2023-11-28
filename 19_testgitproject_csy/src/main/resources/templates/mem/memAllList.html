@@ -61,7 +61,8 @@ function allSel(bool){
 				 	</th:block>
 				 	<th:block th:unless="${#lists.isEmpty(mdto)}"> 
 					 		<tr th:each="list:${mdto}">
-					 			<td><input type="checkbox" name="all" onclick="allSel(this.checked)"/></td>
+					 			<td><input type="checkbox" name="number" th:value="${list.number}"/></td>
+					 			
 	                             <td th:text="${list.number}"></td>
 	                             <td th:text="${list.id}"></td>
 	                             <td th:text="${list.name}"></td>

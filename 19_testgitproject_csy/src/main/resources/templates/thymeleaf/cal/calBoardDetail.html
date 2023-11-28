@@ -17,10 +17,14 @@
 <div layout:fragment="content">
 	<div id="container">
 		<h1>View Details</h1>
-		<form th:action="@{/schedule/calBoardDetail}" method="post" 
-											   th:object="${updateCalCommand}">
+		<form th:action="@{/schedule/calBoardUpdate}" method="post" 
+											   th:object="${updateCalCommand}" >
+											   
+		<input type="hidden" name="number" th:field="*{number}"/>									   
+		
 		<table class="table">
 			<tr>
+				
 				<th>ID</th>
 				<td>
 					<input type="text" name="id" th:field="*{id}"/>

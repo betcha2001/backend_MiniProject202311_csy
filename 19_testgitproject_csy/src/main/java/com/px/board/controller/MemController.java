@@ -261,7 +261,7 @@ public class MemController {
 	      map.put("numbers", deleteUserCommand.getNumber());
 	      memService.delMem(map);
 	      
-	      return "redirect:/user/memAllList";
+	      return "redirect:/user/MemAllList";
 	   }
 	   
 	   
@@ -272,7 +272,7 @@ public class MemController {
 	      Map<String, String[]>map = new HashMap<>();
 	      map.put("numbers", number);
 	      memService.delMem(map);
-	      return "redirect:/user/memAllList";
+	      return "redirect:/user/MemAllList";
 	   }
 }
 
