@@ -135,11 +135,20 @@ public class CalController {
    
    
    @GetMapping("/calMulDel")
-   public String calDel(String[] seq) {
+   public String calMulDel(String[] number) {
 	   logger.info("일정삭제하기");
-	   System.out.println(seq[0]);
+	   System.out.println(number[0]);
 	   Map<String, String[]>map=new HashMap<>();
-	   map.put("seqs", seq);
+	   map.put("numbers", number);
+	   calService.calMulDel(map);
+	   return "redirect:/schedule/calBoardList";
+   }
+   
+   @PostMapping("/calMulDel")
+   public String calMulDel(@Validated DeleteCalCommand deleteCalCommand,
+		   					BindingResult result, HttpServletRequest request, Model model) {
+	   Map<String, String[]>map=new HashMap<>();
+	   map.put("numbers", deleteCalCommand.getNumber());
 	   calService.calMulDel(map);
 	   return "redirect:/schedule/calBoardList";
    }
@@ -175,7 +184,8 @@ public class CalController {
    }
    
    @PostMapping(value = "/calBoardUpdate")
-   public String calBoardUpdate(@Validated UpdateCalCommand updateCalCommand,BindingResult result,Model model) {
+   public String calBoardUpdate(@Validated UpdateCalCommand updateCalCommand,
+		   BindingResult result, Model model) {
 	   logger.info("일정 수정하기");
 	   
 	   if(result.hasErrors()) {
@@ -186,6 +196,21 @@ public class CalController {
 	   calService.CalBoardUpdate(updateCalCommand);
 	   
 	   return "redirect:/schedule/calBoardDetail?number="+updateCalCommand.getNumber();
+	   
+	   
    }
    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -27,7 +27,7 @@
 		UPDATE cal
 		SET startdate=#{startdate}, enddate=#{enddate},
 			category=#{category}, title=#{title}, 
-			content="#{content}"
+			content=#{content}
 		WHERE NUMBER=#{number}
 	</update>
 	

@@ -71,13 +71,13 @@ function allSel(bool){
 	                             <td>	           	
                                      <th:block th:if="${list.id==session.mdto.id}">
                                      	[[${list.grade}]]
-                                     	<br>
-                                        <small style="color:red;">자신의 등급은 수정불가</small>
+                                        <small style="color:red;">관리자</small>
                                      </th:block>
                                      
                                      <th:block th:unless="${list.id==session.mdto.id}">
                                      	[[${list.grade}]]
-                                         <button type="button"><a href="memRoleForm?id="+mdto.getId()>변경</a></button>
+<!--                                         <button type="button"><a href="memRoleForm?id="+mdto.getId()>변경</a></button>-->
+										<button type="button" th:onclick="|location.href='@{memRoleForm(id=${list.id})}'|">변경</button>
                                      </th:block>
                                  </td>                              
 	                             <td th:text="${list.unregister}"></td>
