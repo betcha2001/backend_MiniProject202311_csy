@@ -4,11 +4,12 @@
 	  layout:decorate="~{layouts/layout}">
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>RESERVATION</title>
 <style type="text/css">
+body{background-color:#F6F1EE;}
 </style>
 <script type="text/javascript">
-// 뭐임
+
 </script>
 </head>
 <body>
@@ -146,9 +147,12 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="일정추가"/>
-					<input type="button" value="달력"
-										 th:onclick="|location.href='@{/schedule/calendar}'|"/>
+					<input type="submit" value="Add" style="background-color:#D1B2BA; border:none;
+														border-radius:5px; font-weight:bold;"/>
+					<input type="button" value="Calendar"
+										 th:onclick="|location.href='@{/schedule/calendar}'|"
+										 style="background-color:#D1B2BA; border:none;
+										 border-radius:5px;  font-weight:bold;"/>
 				</td>
 			</tr>
 		</table>

@@ -4,12 +4,13 @@
      layout:decorate="~{layouts/layout}">
 <head>
 <meta charset="UTF-8">
-<title>calendar</title>
+<title>CALENDAR</title>
 <style type="text/css">
 
+body{background-color:#F6F1EE;}
    .cal { width:100%; }
    
-   .cal #thead > div, 
+   .cal #thead > div,
    .cal #tbody > div { display: inline-block; width: 140px; }
    
    /*날짜표현 div*/
@@ -20,7 +21,7 @@
    					  
    #ctitle{ text-align:center; }
    
-   .pen{ width:20px; height:20px; }
+   .plus{ width:18px; height:18px; }
    
    .d { font-weight: bold; }
    
@@ -89,7 +90,7 @@
       <div class="choice">
       	<div id="cho">
       <th:block th:if="${session.mdto.grade == 'ADMIN'}">
-      		<span><a th:href="@{/user/MemAllList}">MEMBER LIST</a></span>
+      		<span><a th:href="@{/user/MemAllList}" style="color:black;">MEMBER LIST</a></span>
 <!--      		<input type="button" value="달력"-->
 <!--				th:onclick="|location.href='@{/schedule/calendar}'|"/>-->
 <!--			<button type="button" title="Member List" class="btn btn-default" -->
@@ -143,7 +144,7 @@
                   </a>
                   <a th:href="@{/schedule/addCalBoardForm(year=${calMap.year},
                   				month=${calMap.month},date=${i})}">
-                     <img class="pen" th:src="@{/img/pen.png}"/>
+                     <img class="plus" th:src="@{/img/cal.png}"/>
                   </a>
                   <div style="overflow:auto;height:80px;">
 				[(${@util.getCalViewList(i,clist)})]

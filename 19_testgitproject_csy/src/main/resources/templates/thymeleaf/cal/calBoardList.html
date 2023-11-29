@@ -4,7 +4,7 @@
 	  layout:decorate="~{layouts/layout}">
 <head>
 <meta charset="UTF-8">
-<title>calBoardList</title>
+<title>RESERVATION LIST</title>
 <script type="text/javascript">
 function isCheck() {
       if(confirm("정말 삭제하시겠습니까?")) {
@@ -22,7 +22,7 @@ function allSel(bool){
    }
 </script>
 <style type="text/css">
-
+body{background-color:#F6F1EE;}
 </style>
 </head>
 <body>
@@ -60,7 +60,7 @@ function allSel(bool){
 						<td> 
 						<th:block th:if="${session.mdto.grade eq 'ADMIN'}">
 							<a th:href="@{/schedule/calBoardDetail(number=${dto.number})}" 
-								th:text="${dto.title}"></a>
+								th:text="${dto.title}" style="font-weight:bold; color:black;"></a>
 						</th:block>
 
 						<th:block th:unless="${session.mdto.grade eq 'ADMIN'}">						

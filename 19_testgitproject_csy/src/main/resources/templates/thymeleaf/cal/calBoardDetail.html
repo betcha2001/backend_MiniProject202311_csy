@@ -10,7 +10,7 @@
 
 </script>
 <style type="text/css">
-
+body{background-color:#F6F1EE;}
 </style>
 </head>
 <body>
@@ -166,7 +166,8 @@
 			</tr>
 			<tr>
                <td colspan="2">
-                  <button type="submit" class="btn btn-default" >Modify</button>
+                  <button type="submit" class="btn btn-default" style="background-color:#D1B2BA; border:none;
+										 border-radius:5px;  font-weight:bold;" >Modify</button>
                   
                   <button type="button" title="Cancel" class="btn btn-default" 
                         th:onclick="|location.href='@{/schedule/calMulDel(number=${updateCalCommand.number})}'|">
