@@ -8,9 +8,11 @@
 
 ### 참여인원 : 4명
   
-### 사용 도구 : Eclipse, HeidiSQL, Git
+### 사용 도구
+* Eclipse, HeidiSQL, Git
   
-### 사용 기술 : MariaDB, JAVA, Spring Boot, JavaScript, jQuery, JSP, CSS3, HTML5, MyBatis
+### 사용 기술
+* MariaDB, JAVA, Spring Boot, JavaScript, jQuery, JSP, CSS3, HTML5, MyBatis
 
 ### 주제 설명 
 * 개인, 단체, 기업이 창의적인 특정 아이디어나 프로젝트를 통해 불특정 다수를 상대로 활동 계획을 알리고 자금을 모집하거나 수익을 내며 프로젝트를 실현하는 크라우드 펀딩 사이트
